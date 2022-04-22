@@ -1,0 +1,19 @@
+.navbar{
+    z-index: 50;
+}
+.navbar-brand{
+    margin: auto;
+}
+#banner-main{
+    z-index: 10;
+    background-image: url(../media/bg-banner-main.jpg);
+    background-size: cover;
+    background-position: 0px -90px;
+    transform: skewY(-2deg);
+    margin-top: -2%;
+    height: 400px;
+    padding: 2%;
+}
+#banner-main *{
+    transform: skewY(2deg);
+}
