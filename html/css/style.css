@@ -1,3 +1,25 @@
+h1, h2, h3, h4, h5{
+    font-family: russo;
+}
+h1{
+    font-size: 3.8em;
+}
+@font-face {
+    font-family: archivo;
+    src: url(../fonts/ArchivoBlack-Regular.ttf);
+}
+@font-face {
+    font-family: quatrobold;
+    src: url(../fonts/QuattrocentoSans-Bold.ttf);
+}
+@font-face {
+    font-family: quatroregular;
+    src: url(../fonts/QuattrocentoSans-Regular.ttf);
+}
+@font-face {
+    font-family: russo;
+    src: url(../fonts/RussoOne-Regular.ttf);
+}
 .navbar{
     z-index: 50;
 }
@@ -8,7 +30,7 @@
     z-index: 10;
     background-image: url(../media/bg-banner-main.jpg);
     background-size: cover;
-    background-position: 0px -90px;
+    background-position: 0px -200px;
     transform: skewY(-2deg);
     margin-top: -2%;
     height: 400px;
@@ -16,4 +38,24 @@
 }
 #banner-main *{
     transform: skewY(2deg);
+}
+#banner-main div{
+    margin-left: 50%;
+    margin-top: 4%;
+}
+main{
+    margin-top: 75px;
+}
+#circuit *{
+    flex-basis: 50%;
+}
+#datos-circuito{
+    font-family: russo;
+}
+#datos-circuito>div>div{
+    width: 200px;
+    height: 150px;
+    border-radius: 25px;
+    font-size: 3em;
+    padding-top: 15%;
 }
