@@ -49,11 +49,15 @@ main{
 #circuit *{
     flex-basis: 50%;
 }
+#img-circuito img{
+    width: 140%;
+}
 #datos-circuito{
     font-family: russo;
 }
 #datos-circuito>div>div{
     width: 75%;
+    min-width: 100px;
     height: 50%;
     border-radius: 25px;
     font-size: 3em;
@@ -86,4 +90,30 @@ main{
     z-index: 50;
     position:relative;
     margin-top: -2.5%;
+}
+@media screen AND (max-width: 1080px) {
+    #banner-main{
+        background-position: 0px 0px;
+    }
+    #img-circuito img{
+        width: 500px;
+        margin-left: -10%;
+    }
+    .h3{
+        font-size: 1.2em;
+    }
+    #karts-pc{
+        display: none !important;
+    }
+    #karts-mobile{
+        visibility: visible;
+    }
+}
+@media screen AND (min-width: 1080px) {
+    #karts-pc{
+        visibility: visible;
+    }
+    #karts-mobile{
+        visibility: hidden;
+    }
 }

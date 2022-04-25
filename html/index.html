@@ -35,27 +35,27 @@
         </div>
     </div>
     <main class="w-75 mx-auto">
-        <div id="circuit" class="d-flex flex-row">
-          <div class="w-50 mt-4">
-            <h2>Nuestro circuito</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus at excepturi, voluptates explicabo ducimus delectus laudantium est quas, saepe beatae incidunt natus suscipit quibusdam iure molestiae consequuntur. Ab, 
+        <div id="circuit" class="row">
+          <div class="col-lg- mt-4">
+            <h2 class="text-center">Nuestro circuito</h2>
+            <p class="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus at excepturi, voluptates explicabo ducimus delectus laudantium est quas, saepe beatae incidunt natus suscipit quibusdam iure molestiae consequuntur. Ab, 
               sed deserunt! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam optio atque ut facilis dolorum est aspernatur similique quo labore debitis provident, nisi, aliquid saepe mollitia distinctio sit! Voluptatum, 
               praesentium recusandae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, error vero facere ex hic, reprehenderit modi provident nihil, incidunt accusantium odit. Quisquam delectus numquam commodi provident
                sapiente. Quis, tempora repellat?</p>
-            <div id="datos-circuito" class="d-flex flex-row mt-5 text-center">
-              <div>
+            <div id="datos-circuito" class="d-flex flex-row mt-5 text-center justify-content-around">
+              <div class="mx-1">
                 <div class="bg-dark mx-auto text-white">
                   <p>10</p>
                 </div>
                 <p class="h3 mt-3">Curvas a<br>dominar.</p>
               </div>
-              <div>
+              <div class="mx-1">
                 <div class="bg-dark mx-auto text-white">
                   <p>150</p>
                 </div>
                 <p class="h3 mt-3">Pilotos<br>que batir.</p>
               </div>
-              <div>
+              <div class="mx-1">
                 <div class="bg-dark mx-auto text-white">
                   <p>5</p>
                 </div>
@@ -63,13 +63,13 @@
               </div>
             </div>
           </div>
-          <div id="img-circuito" class="w-50">
-            <img src="media/bg-main-png.png" alt="sdfs">
+          <div id="img-circuito" class="col-m-">
+            <img src="media/bg-main-png.png" alt="circuito">
           </div>
         </div>
         <div id="karts" class="bg-danger mt-5 text-white">
-          <h2 class="h2">Nuestros karts</h2>
-          <div class="d-flex flex-row">
+          <h2 class="h2 mx-5">Nuestros karts</h2>
+          <div id="karts-pc" class="d-flex flex-row px-4">
             <div class="card mx-2 border border-white border-1">
               <img class="card-img-top" src="media/kart1.jpg" alt="Card image">
               <div class="card-body">
@@ -95,9 +95,53 @@
               </div>
             </div>
           </div>
+          <div id="karts-mobile" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+              <div class="carousel-item active card border border-white border-1 w-100">
+                <img class="card-img-top" src="media/kart1.jpg" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title">Junior</h4>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste recusandae minima similique.</p>
+                  <a href="#" class="btn btn-outline-light">Reservar</a>
+                </div>
+              </div>
+              <div class="carousel-item card border border-white border-1 w-100">
+                <img class="card-img-top" src="media/kart2.jpg" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title">Competicion</h4>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste recusandae minima similique.</p>
+                  <a href="#" class="btn btn-outline-light">Reservar</a>
+                </div>
+              </div>
+              <div class="carousel-item card border border-white border-1 w-100">
+                <img class="card-img-top" src="media/kart3.jpg" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title">F3000</h4>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste recusandae minima similique.</p>
+                  <a href="#" class="btn btn-outline-light">Reservar</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#karts-mobile" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#karts-mobile" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
         </div>
         <div id="grupo" class="bg-white">
-
+          
         </div>
     </main>
     <footer class="w-100 d-flex flex-row bg-dark text-white py-4 px-5">
