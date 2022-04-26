@@ -21,10 +21,37 @@ h1{
     src: url(../fonts/RussoOne-Regular.ttf);
 }
 .navbar{
+    margin-top: -95px;
     z-index: 50;
+    height: 70px;
 }
 .navbar-brand{
+    display: block;
+    z-index: 60;
     margin: auto;
+    margin-top: 10px;
+    height: 85px;
+    width: 85px;
+    border-radius: 50px;
+    position: sticky;
+    top: 10px;
+}
+.navbar-brand img{
+    height: 70px;
+    margin: 8px;
+    margin-top: 2px;
+}
+#login input{
+    border-bottom: 2px solid white !important;
+    width: 100%;
+}
+#login input::placeholder{
+    color: white;
+    text-align: center;
+    font-family: quatrobold;
+}
+#login caption{
+    font-family: quatroregular;
 }
 #banner-main{
     z-index: 10;
@@ -79,17 +106,51 @@ main{
 .card{
     width: 400px;
     background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+.card-text{
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.card ul{
+    display: flex;
+    justify-content: space-around;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.separador{
+    width: 125px;
+    background-color: white;
+    height: 5px;
+    margin: 10px auto 10px auto;
+    transform: skewX(-20deg);
+}
+.precios{
+    font-size: 1.4em;
+    justify-content: center;
+    font-family: quatroregular;
+}
+.precios *{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.precio{
+    font-family: russo;
 }
 #grupo{
     width: 150%;
     margin-left: -25%;
-    height: 400px;
     padding-left: 25%;
     padding-right: 25%;
     padding-top: 3%;
     z-index: 50;
     position:relative;
     margin-top: -2.5%;
+}
+#grupo>div:first-child{
+    background-image: url(../media/bg-grupo.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
 }
 .dropdown-menu{
     margin-left: -150%;
@@ -101,6 +162,12 @@ main{
 }
 .dropdown-menu input::placeholder{
     color: white;
+}
+.logo{
+    width: 100px;
+}
+footer>*{
+    width: auto !important;
 }
 @media screen AND (max-width: 1080px) {
     #banner-main{
