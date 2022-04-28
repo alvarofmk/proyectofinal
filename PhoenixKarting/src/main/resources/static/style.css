@@ -6,19 +6,19 @@ h1{
 }
 @font-face {
     font-family: archivo;
-    src: url(../fonts/ArchivoBlack-Regular.ttf);
+    src: url(fonts/ArchivoBlack-Regular.ttf);
 }
 @font-face {
     font-family: quatrobold;
-    src: url(../fonts/QuattrocentoSans-Bold.ttf);
+    src: url(fonts/QuattrocentoSans-Bold.ttf);
 }
 @font-face {
     font-family: quatroregular;
-    src: url(../fonts/QuattrocentoSans-Regular.ttf);
+    src: url(fonts/QuattrocentoSans-Regular.ttf);
 }
 @font-face {
     font-family: russo;
-    src: url(../fonts/RussoOne-Regular.ttf);
+    src: url(fonts/RussoOne-Regular.ttf);
 }
 .navbar{
     margin-top: -95px;
@@ -55,7 +55,7 @@ h1{
 }
 #banner-main{
     z-index: 10;
-    background-image: url(../media/bg-banner-main.jpg);
+    background-image: url(../static/media/bg-banner-main.jpg);
     background-size: cover;
     background-position: 0px -200px;
     transform: skewY(-2deg);
