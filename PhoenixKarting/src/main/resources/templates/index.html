@@ -93,115 +93,51 @@
             <img th:src="@{/media/bg-main-png.png}" alt="circuito">
           </div>
         </div>
+        
         <div id="karts" class="bg-danger mt-5 text-white">
           <h2 class="h2">Tarifas individuales</h2>
           <div id="karts-pc" class="d-flex flex-row px-4">
-            <div class="card mx-2 border border-white border-1">
-              <img class="card-img-top" th:src="@{media/kart1.jpg}" alt="Card image">
-              <div class="card-body">
-                <h4 class="card-title">Junior</h4>
-                <p class="card-text">La experiencia completa lista para los más chicos.</p>
-                <ul>
-                  <li>10 cv</li>
-                  <li>75 cc</li>
-                  <li>50 km/h</li>
-                </ul>
-                <div class="separador"></div>
-                <div class="precios w-100 mt-2 text-white d-flex flex-row">
-                  <p>1 TANDA</p><p class="precio">14€</p>
-                </div>
-                <a href="#" class="btn btn-outline-light w-100">Reservar</a>
-              </div>
-            </div>
-            <div class="card mx-2 border border-white border-1">
+          
+            <div class="card mx-2 border border-white border-1" th:each="kart : ${karts}">
               <img class="card-img-top" th:src="@{media/kart2.jpg}" alt="Card image">
               <div class="card-body">
-                <h4 class="card-title">Competicion</h4>
-                <p class="card-text">La experiencia completa lista para los más chicos.</p>
+                <h4 class="card-title" th:text="${kart.nombre}"></h4>
+                <p class="card-text" th:text="${kart.descripcion}"></p>
                   <ul>
-                    <li>10 cv</li>
-                    <li>75 cc</li>
-                    <li>50 km/h</li>
+                    <li th:text="${kart.potencia + ' cv'}"></li>
+                    <li th:text="${kart.centimetrosCubicos + ' cc'}"></li>
+                    <li th:text="${kart.velocidadMaxima + ' km/h'}"></li>
                   </ul>
                 <div class="separador"></div>
                 <div class="precios w-100 mt-2 text-white d-flex flex-row">
-                  <p>1 TANDA</p><p class="precio">14€</p>
+                  <p>1 TANDA</p><p class="precio" th:text="${kart.precioSesion + ' €'}"></p>
                 </div>
                 <a href="#" class="btn btn-outline-light w-100">Reservar</a>
               </div>
             </div>
-            <div class="card mx-2 border border-white border-1">
-              <img class="card-img-top" th:src="@{media/kart3.jpg}" alt="Card image">
-              <div class="card-body">
-                <h4 class="card-title">F3000</h4>
-                <p class="card-text">La experiencia completa lista para los más chicos.</p>
-                  <ul>
-                    <li>10 cv</li>
-                    <li>75 cc</li>
-                    <li>50 km/h</li>
-                  </ul>
-                <div class="separador"></div>
-                <div class="precios w-100 mt-2 text-white d-flex flex-row">
-                  <p>1 TANDA</p><p class="precio">14€</p>
-                </div>
-                <a href="#" class="btn btn-outline-light w-100">Reservar</a>
-              </div>
-            </div>
+            
           </div>
+          
           <div id="karts-mobile" class="carousel slide" data-bs-ride="carousel">
 
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
-              <div class="carousel-item active card border border-white border-1 w-100">
-                <img class="card-img-top" th:src="@{media/kart1.jpg}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">Junior</h4>
-                  <p class="card-text">La experiencia completa lista para los más chicos.</p>
-                  <ul>
-                    <li>10 cv</li>
-                    <li>75 cc</li>
-                    <li>50 km/h</li>
-                  </ul>
-                  <div class="separador"></div>
-                  <div class="precios w-100 mt-2 text-white d-flex flex-row">
-                    <p>1 TANDA</p><p class="precio">14€</p>
-                  </div>
-                  <a href="#" class="btn btn-outline-light w-100">Reservar</a>
-                </div>
-              </div>
-              <div class="carousel-item card border border-white border-1 w-100">
+              <div class="carousel-item card active border border-white border-1 w-100" th:each="kart,iterador : ${karts}">
                 <img class="card-img-top" th:src="@{media/kart2.jpg}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">Competicion</h4>
-                  <p class="card-text">La experiencia completa lista para los más chicos.</p>
-                  <ul>
-                    <li>10 cv</li>
-                    <li>75 cc</li>
-                    <li>50 km/h</li>
-                  </ul>
-                  <div class="separador"></div>
-                  <div class="precios w-100 mt-2 text-white d-flex flex-row">
-                    <p>1 TANDA</p><p class="precio">14€</p>
-                  </div>
-                  <a href="#" class="btn btn-outline-light w-100">Reservar</a>
-                </div>
-              </div>
-              <div class="carousel-item card border border-white border-1 w-100">
-                <img class="card-img-top" th:src="@{media/kart3.jpg}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">F3000</h4>
-                  <p class="card-text">La experiencia completa lista para los más chicos.</p>
-                  <ul>
-                    <li>10 cv</li>
-                    <li>75 cc</li>
-                    <li>50 km/h</li>
-                  </ul>
-                  <div class="separador"></div>
-                  <div class="precios w-100 mt-2 text-white d-flex flex-row">
-                    <p>1 TANDA</p><p class="precio">14€</p>
-                  </div>
-                  <a href="#" class="btn btn-outline-light w-100">Reservar</a>
-                </div>
+	            <div class="card-body">
+	              <h4 class="card-title" th:text="${kart.nombre}"></h4>
+	              <p class="card-text" th:text="${kart.descripcion}"></p>
+	                <ul>
+	                  <li th:text="${kart.potencia + ' cv'}"></li>
+	                  <li th:text="${kart.centimetrosCubicos + ' cc'}"></li>
+	                  <li th:text="${kart.velocidadMaxima + ' km/h'}"></li>
+	                </ul>
+	              <div class="separador"></div>
+	              <div class="precios w-100 mt-2 text-white d-flex flex-row">
+	                <p>1 TANDA</p><p class="precio" th:text="${kart.precioSesion + ' €'}"></p>
+	              </div>
+	              <a href="#" class="btn btn-outline-light w-100">Reservar</a>
+	            </div>
               </div>
             </div>
 
