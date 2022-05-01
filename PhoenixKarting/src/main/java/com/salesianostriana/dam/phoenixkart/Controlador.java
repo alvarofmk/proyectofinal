@@ -18,8 +18,8 @@ public class Controlador {
 		karts.add(new Kart("Junior", "Prueba", 12.5, 50.0, 60.0, 10, 12.0));
 		karts.add(new Kart("Senior", "Prueba2", 25.5, 56.0, 70.0, 18, 14.0));
 		karts.add(new Kart("Competicion", "Prueba3", 60, 250.0, 95.0, 20, 18.0));
+		karts.add(new Kart("Competicion", "Prueba3", 60, 250.0, 95.0, 20, 18.0));
 		model.addAttribute("numeroPilotos", 10);
-		model.addAttribute("numeroKarts", 3);
 		model.addAttribute("karts", karts);
 		return "index";
 	}
