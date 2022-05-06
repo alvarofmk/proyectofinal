@@ -1,0 +1,278 @@
+h1, h2, h3, h4, h5{
+    font-family: russo;
+}
+h1{
+    font-size: 3.8em;
+}
+@font-face {
+    font-family: archivo;
+    src: url(../fonts/ArchivoBlack-Regular.ttf);
+}
+@font-face {
+    font-family: quatrobold;
+    src: url(../fonts/QuattrocentoSans-Bold.ttf);
+}
+@font-face {
+    font-family: quatroregular;
+    src: url(../fonts/QuattrocentoSans-Regular.ttf);
+}
+@font-face {
+    font-family: russo;
+    src: url(../fonts/RussoOne-Regular.ttf);
+}
+.navbar{
+    margin-top: -95px;
+    z-index: 50;
+    height: 70px;
+}
+.navbar-brand{
+    display: block;
+    z-index: 60;
+    margin: auto;
+    margin-top: 10px;
+    height: 85px;
+    width: 85px;
+    border-radius: 50px;
+    position: sticky;
+    top: 10px;
+}
+.navbar-brand img{
+    height: 70px;
+    margin: 8px;
+    margin-top: 2px;
+}
+#login input{
+    border-bottom: 2px solid white !important;
+    width: 100%;
+}
+#login input::placeholder{
+    color: white;
+    text-align: center;
+    font-family: quatrobold;
+}
+#login caption{
+    font-family: quatroregular;
+}
+#banner-main{
+    z-index: 10;
+    background-image: url(../media/bg-banner-main.jpg);
+    background-size: cover;
+    background-position: 0px -200px;
+    transform: skewY(-2deg);
+    margin-top: -2%;
+    height: 400px;
+    padding: 2%;
+}
+#banner-main>*{
+    transform: skewY(2deg);
+}
+#banner-main div{
+    margin-left: 50%;
+    margin-top: 4%;
+}
+main{
+    margin-top: 75px;
+}
+#circuit *{
+    flex-basis: 50%;
+}
+#img-circuito img{
+    width: 140%;
+}
+#datos-circuito{
+    font-family: russo;
+}
+#datos-circuito>div>div{
+    width: 75%;
+    min-width: 100px;
+    height: 50%;
+    border-radius: 25px;
+    font-size: 3em;
+    padding: 10%;
+}
+#karts{
+    width: 150%;
+    transform: skewY(2deg);
+    margin-left: -25%;
+    padding-bottom: 75px;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 3%;
+    z-index: 40;
+}
+#karts>*{
+    transform: skewY(-2deg);
+}
+.card{
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+.card-text{
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.card ul{
+    display: flex;
+    justify-content: space-around;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.separador{
+    width: 125px;
+    background-color: white;
+    height: 5px;
+    margin: 10px auto 10px auto;
+    transform: skewX(-20deg);
+}
+.precios{
+    font-size: 1.4em;
+    justify-content: center;
+    font-family: quatroregular;
+}
+.precios *{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.precio{
+    font-family: russo;
+}
+#grupo{
+    width: 150%;
+    margin-left: -25%;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 3%;
+    z-index: 50;
+    position:relative;
+    margin-top: -2.5%;
+}
+#grupo>div:first-child{
+    background-image: url(../media/bg-grupo.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+}
+.dropdown-menu{
+    margin-left: -150%;
+}
+.dropdown-menu input{
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 0px;
+    border-bottom: 1px solid white;
+}
+.dropdown-menu input::placeholder{
+    color: white;
+}
+.logo{
+    width: 100px;
+}
+footer>*{
+    width: auto !important;
+}
+@media screen AND (max-width: 1080px) {
+    #banner-main{
+        background-position: 0px 0px;
+    }
+    #img-circuito img{
+        width: 500px;
+        margin-left: -10%;
+    }
+    .h3{
+        font-size: 1.2em;
+    }
+    #karts-pc{
+        display: none !important;
+    }
+    #karts-mobile{
+        display: visible !important;
+    }
+    #banner-main div{
+        margin-left: 1%;
+        margin-right: 1%;
+        text-align: center;
+        line-height: 1.2em;
+    }
+    .carousel-control-prev{
+        margin-left: -15%;
+    }
+    .carousel-control-next{
+        margin-right: -15%;
+    }
+    #karts{
+        padding-bottom: 25px;
+    }
+    .navadmin{
+		width: 3%;
+		transition: all 0.4s;
+		padding-left: 10px !important;
+		padding-right: 35px !important;
+	}
+	.navadmin img, .navadmin .separador{
+		display: none;
+	}
+	.navadmin ul{
+		visibility: hidden;
+	}
+	.navadmin:hover {
+		width: 20%;
+	}
+	.navadmin:hover ul{
+		visibility: visible;
+	}
+	.navadmin i{
+		display: visible;
+	}
+}
+@media screen AND (min-width: 1080px) {
+    #karts-pc{
+        display: visible !important;
+    }
+    #karts-mobile{
+        display: none !important;
+    }
+    .navadmin i{
+		display: none;
+	}
+	.mainadmin>div:nth-child(2), .mainadmin>div:nth-child(3){
+		margin-top: -23em;
+	}
+
+}
+
+.mainadmin{
+	width: 90%;
+}
+.navadmin{
+	width: 10%;
+	height: 100vh;
+}
+.navadmin ul{
+	list-style-type: none !important;
+	font-family: russo;
+	box-shadow: none;
+}
+.navadmin a{
+	text-decoration: none !important;
+	color: white;
+}
+.mainadmin>div:nth-child(2){
+	padding-top: 1em !important;
+}
+.mainadmin>div:nth-child(2) #buscar{
+	border: 0px;
+	border-bottom: solid 2px black;
+}
+td{
+	height: 70px;
+	vertical-align: middle;
+}
+tr{
+	transition: all 0.4s;
+}
+tr:hover{
+	background-color: lightgrey;
+}
+::placeholder{
+	font-family: russo;
+	text-align: center;
+}
