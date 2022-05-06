@@ -26,7 +26,7 @@
   			</ul>
   		</nav>
   		<main class="mainadmin mt-0 p-5 row">
-  			<h1 class="col-xl-9 order-xl-1">Karts</h1>
+  			<h1 class="col-xl-9 order-xl-1">Sesiones</h1>
   			<div class="col-xl-3 order-xl-3">
   				<form>
   					<input id="buscar" type="text" placeholder="Buscar" class="w-100">
@@ -37,24 +37,22 @@
 	  			<table class="table table-hover">
 	  				<thead>
 						<tr>
-							<th></th>
 							<th>ID</th>
-							<th>Nombre</th>
-							<th>Cilindrada</th>
-							<th>Velocidad</th>
-							<th>Edad minima</th>
-							<th>Precio</th>
+							<th>Reserva</th>
+							<th>Sesion</th>
+							<th>Kart</th>
+							<th>Participantes</th>
+							<th>Total</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="kart : ${karts}">
-							<td><img src="../static/media/kart2.jpg" th:src="@{media/kart2.jpg}" class="h-100"></td>
-							<td th:text="${kart.id}"></td>
-							<td th:text="${kart.nombre}"></td>
-							<td th:text="${kart.centimetrosCubicos} + ' cc'"></td>
-							<td th:text="${kart.velocidadMaxima + ' km/h'}"></td>
-							<td th:text="${kart.edadMinima}"></td>
-							<td th:text="${kart.precioSesion} + ' €'"></td>
+						<tr th:each="sesion : ${listaSesiones}">
+							<td th:text="${sesion.id}"></td>
+							<td th:text="${sesion.fechaReserva}"></td>
+							<td th:text="${sesion.fechaSesion}"></td>
+							<td th:text="${sesion.kart.nombre}"></td>
+							<td>2</td>
+							<td th:text="${sesion.precio} + ' €'"></td>
 						</tr>
 					</tbody>
 	  			</table>

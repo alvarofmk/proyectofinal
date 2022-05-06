@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.salesianostriana.dam.karting.service.KartService;
 import com.salesianostriana.dam.karting.service.PilotoService;
+import com.salesianostriana.dam.karting.service.SesionService;
 
 @Controller
 public class MainController {
@@ -15,6 +16,8 @@ public class MainController {
 	private KartService kartservice;
 	@Autowired
 	private PilotoService pilotoService;
+	@Autowired
+	private SesionService sesionService;
 	
 	@GetMapping("/")
 	public String landing(Model model) {
@@ -37,7 +40,7 @@ public class MainController {
 	
 	@GetMapping("/sesiones")
 	public String sesionesAdmin(Model model) {
-		model.addAttribute("listaPilotos", pilotoService.generarPilotos());
+		model.addAttribute("listaSesiones", sesionService.generarSesiones());
 		return "sesiones";
 	}
 

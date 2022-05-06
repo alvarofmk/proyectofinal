@@ -5,7 +5,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@Data @AllArgsConstructor
 public class Sesion {
 	
 	private int id;
