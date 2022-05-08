@@ -28,6 +28,11 @@ public class SesionService {
 				new Kart(001, "Junior", "Prueba", "", 12.5, 50.0, 60.0, 10, 12.0), new HashMap<Piloto, List<Duration>>() ));
 		
 		sesiones.get(0).getRegistroVueltas().put(new Piloto("78643876", "Alvaro", "Franco Martinez", "alvarofmk@gmail.com", "", LocalDate.of(1995, 11, 14)), vueltasService.generarVueltas(null, new Kart(001, "Junior", "Prueba", "", 12.5, 50.0, 60.0, 10, 12.0), Duration.ofMinutes(15)));
+		sesiones.add(new Sesion(0, LocalDateTime.of(2022, 3, 2, 10, 32), LocalDateTime.of(2022, 3, 5, 18, 30), 40.0, 
+				new Kart(001, "Junior", "Prueba", "", 12.5, 50.0, 60.0, 10, 12.0), new HashMap<Piloto, List<Duration>>() ));
+		
+		sesiones.get(1).getRegistroVueltas().put(new Piloto("78643876", "Alvaro", "Franco Martinez", "alvarofmk@gmail.com", "", LocalDate.of(1995, 11, 14)), vueltasService.generarVueltas(null, new Kart(001, "Junior", "Prueba", "", 12.5, 50.0, 60.0, 10, 12.0), Duration.ofMinutes(15)));
+		sesiones.get(0).getRegistroVueltas().put(new Piloto("254364356", "Mamon", "Martinez", "alvarofmk@gmail.com", "", LocalDate.of(1995, 11, 14)), vueltasService.generarVueltas(null, new Kart(001, "Junior", "Prueba", "", 12.5, 50.0, 60.0, 10, 12.0), Duration.ofMinutes(15)));
 		return sesiones;
 	}
 

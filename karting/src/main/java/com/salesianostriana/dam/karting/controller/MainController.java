@@ -40,8 +40,16 @@ public class MainController {
 	
 	@GetMapping("/sesiones")
 	public String sesionesAdmin(Model model) {
+		model.addAttribute("karts", kartservice.generarKarts());
 		model.addAttribute("listaSesiones", sesionService.generarSesiones());
+		model.addAttribute("listaPilotos", pilotoService.generarPilotos());
 		return "sesiones";
+	}
+	
+	@GetMapping("/sesiondetalles")
+	public String detallesSesionAdmin(Model model) {
+		model.addAttribute("sesion", sesionService.generarSesiones().get(0));
+		return "sesiondetalles";
 	}
 
 }

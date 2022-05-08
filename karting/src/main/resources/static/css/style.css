@@ -4,6 +4,9 @@ h1, h2, h3, h4, h5{
 h1{
     font-size: 3.8em;
 }
+.bg-secondary{
+	background-color: rgb(180, 180, 180) !important;
+}
 @font-face {
     font-family: archivo;
     src: url(../fonts/ArchivoBlack-Regular.ttf);
@@ -275,4 +278,21 @@ tr:hover{
 ::placeholder{
 	font-family: russo;
 	text-align: center;
+}
+tr div{
+	width: 100%;
+	height: 100px;
+	background-color: red;
+}
+.details>div{
+	border-top-right-radius: 15px;
+}
+.detallesSesion tr{
+	transition: none;
+}
+.detallesSesion td{
+	height: auto;
+}
+.detallesSesion tr:hover{
+	background-color: white;
 }

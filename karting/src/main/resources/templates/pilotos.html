@@ -64,7 +64,7 @@
 			
 			      <!-- Modal Header -->
 			      <div class="modal-header">
-			        <h4 class="modal-title">Nuevo Kart</h4>
+			        <h4 class="modal-title">Nuevo Piloto</h4>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 			      </div>
 			
@@ -72,41 +72,27 @@
 			      <div class="modal-body">
 			        <form>
 			        	<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre">
-						  <label for="nombreKart">Nombre</label>
-						</div>
-						<div class="form-floating">
-						  <textarea class="form-control" id="descripcionKart" name="Descripcion" placeholder="Introduzca la descripcion para la página web"></textarea>
-						  <label for="descripcionKart">Descripcion</label>
+						  <input type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre">
+						  <label for="nombrePiloto">Nombre</label>
 						</div>
 						<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="imgKart" placeholder="Pege la url de la imagen" name="Imagen">
-						  <label for="imgKart">Imagen (URL)</label>
+						  <input type="text" class="form-control" id="apellidosPiloto" placeholder="Introduzca los apellidos" name="Apellidos">
+						  <label for="apellidosPiloto">Apellidos</label>
 						</div>
-						<div class="row">
-							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
-							  <input type="text" class="form-control" id="cv" placeholder="Potencia" name="Potencia">
-							  <label for="cv">Potencia</label>
-							</div>
-							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
-							  <input type="text" class="form-control" id="cc" placeholder="Cilindrada" name="Cilindrada">
-							  <label for="cc">Cilindrada</label>
-							</div>
-							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
-							  <input type="text" class="form-control" id="kmh" placeholder="Velocidad punta" name="Velocidad punta">
-							  <label for="kmh">Velocidad punta</label>
-							</div>
+						<div class="form-floating mb-3 mt-3">
+						  <input type="text" class="form-control" id="dniPiloto" placeholder="Introduzca el dni" name="dni">
+						  <label for="dniPiloto">DNI</label>
 						</div>
-						<div class="row">
-							<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-							  <input type="text" class="form-control" id="EdadMinima" placeholder="Edad minima" name="Edad minima">
-							  <label for="EdadMinima">Edad minima</label>
-							</div>
-							<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-							  <input type="text" class="form-control" id="PrecioSesion" placeholder="Precio" name="Precio">
-							  <label for="PrecioSesion">Precio</label>
-							</div>
+						<div class="form-floating mb-3 mt-3">
+						  <input type="text" class="form-control" id="imgPiloto" placeholder="Pege la url de la imagen" name="Imagen">
+						  <label for="imgPiloto">Imagen (URL)</label>
 						</div>
+						<div class="form-floating mb-3 mt-3">
+						  <input type="text" class="form-control" id="emailPiloto" placeholder="Introduzca el email" name="Email">
+						  <label for="emailPiloto">Email</label>
+						</div>
+						<label for="fechaNacimiento">Fecha de nacimiento</label>
+  						<input type="date" id="fechaNacimiento" name="fechaNacimiento">
 			        </form>
 			      </div>
 			
