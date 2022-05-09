@@ -72,7 +72,7 @@
 			
 			      <!-- Modal body -->
 			      <div class="modal-body">
-			        <form method="POST" th:action="karts/add" th:object="${nuevoKart}">
+			        <form method="POST" th:action="addkart" th:object="${nuevoKart}">
 			        	<div class="form-floating mb-3 mt-3">
 						  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
 						  <label for="nombreKart">Nombre</label>

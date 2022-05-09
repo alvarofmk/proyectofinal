@@ -48,8 +48,8 @@
 					<tbody>
 						<tr th:each="sesion : ${listaSesiones}">
 							<td th:text="${sesion.id}"></td>
-							<td th:text="${sesion.fechaReserva}"></td>
-							<td th:text="${sesion.fechaSesion}"></td>
+							<td th:text="${#temporals.format(sesion.fechaReserva, 'dd-MM-YY HH:mm')}"></td>
+							<td th:text="${#temporals.format(sesion.fechaSesion, 'dd-MM-YY HH:mm')}"></td>
 							<td th:text="${sesion.kart.nombre}"></td>
 							<td th:text="${#maps.size(sesion.registroVueltas)}"></td>
 							<td th:text="${sesion.precio} + ' €'"></td>	
