@@ -23,7 +23,7 @@ public class KartController {
 		return "karts";
 	}
 	
-	@PostMapping("/karts/add")
+	@PostMapping("/addkart")
 	public String addKart() {
 		return "redirect:/karts";
 	}

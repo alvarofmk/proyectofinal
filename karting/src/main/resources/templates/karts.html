@@ -86,17 +86,17 @@
 						  <label for="imgKart">Imagen (URL)</label>
 						</div>
 						<div class="row">
-							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
+							<div class="input-group col-* mx-auto">
 							  <input type="text" class="form-control" id="cv" placeholder="Potencia" name="Potencia" th:field="*{potencia}">
-							  <label for="cv">Potencia</label>
+							  <span class="input-group-text">cv</span>
 							</div>
-							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
+							<div class="input-group col-* mx-auto">
 							  <input type="text" class="form-control" id="cc" placeholder="Cilindrada" name="Cilindrada" th:field="*{centimetrosCubicos}">
-							  <label for="cc">Cilindrada</label>
+							  <span class="input-group-text">cc</span>
 							</div>
-							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
+							<div class="input-group col-* mx-auto">
 							  <input type="text" class="form-control" id="kmh" placeholder="Velocidad punta" name="Velocidad punta" th:field="*{velocidadMaxima}">
-							  <label for="kmh">Velocidad punta</label>
+							  <span class="input-group-text">km/h</span>
 							</div>
 						</div>
 						<div class="row">
@@ -109,13 +109,11 @@
 							  <label for="PrecioSesion">Precio</label>
 							</div>
 						</div>
+						<div class="modal-footer">
+							<input type="submit" class="btn btn-success" value="Guardar">
+					      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+					    </div>
 			        </form>
-			      </div>
-			
-			      <!-- Modal footer -->
-			      <div class="modal-footer">
-			      	<button type="button" class="btn btn-success">Guardar</button>
-			        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 			      </div>
 			
 			    </div>

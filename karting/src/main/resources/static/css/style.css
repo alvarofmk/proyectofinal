@@ -273,6 +273,9 @@ footer>*{
 	border-radius: 0px !important;
 	font-family: russo;
 }
+.input-group{
+	width: 33% !important;
+}
 td{
 	height: 70px;
 	vertical-align: middle;
