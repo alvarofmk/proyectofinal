@@ -17,7 +17,7 @@
     <div class="m-0 d-flex flex-row h-100">
   		<nav class="bg-danger navadmin p-4">
   			<i class="bi bi-list text-white h2"></i>
-  			<a href="#"><img src="../static/media/logo gris.png" th:src="@{media/logo gris.png}" alt="Phoenix Karting" class="w-100"></a>
+  			<a href="#"><img src="../static/media/logo blanco.png" th:src="@{media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
   			<div class="separador"></div>
   			<ul class="px-1">
   				<li class="my-2"><a href="http://localhost:9000/sesiones">Sesiones</a></li>
@@ -68,32 +68,33 @@
 			        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 			      </div>
 			
+				<!-- Falfa comprobar que los formularios mandan bien la informaicion y como tratarla -->
+			
+			
 			      <!-- Modal body -->
 			      <div class="modal-body">
-			        <form>
+			        <form method="POST" th:action="addSesion" th:object="${nuevaSesion}">
 			        	<div class="mb-3 mt-3">
 			        		<label for="fechaSesion">Fecha y hora de sesion</label>
-  							<input type="datetime-local" id="fechaSesion" name="fechaSesion">
+  							<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}">
 			        	</div>
 			        	<div class="mb-3 mt-3">
 			        		<label for="kart" class="form-label">Kart</label>
-							<select class="form-select" name="kart" id="kart">
-							  <option th:each="kart : ${karts}" th:text="${kart.nombre + ' ' + kart.precioSesion + '€'}"></option>
+							<select class="form-select" name="kart" id="kart" th:field="*{kart}">
+							  <option th:each="kart : ${karts}" th:text="${kart.nombre + ' ' + kart.precioSesion + '€'}" value="${kart.id}"></option>
 							</select>
 			        	</div>
 			        	<div class="mb-3 mt-3">
 			        		<label for="participantes" class="form-label">Participantes</label>
-							<select multiple class="form-select" name="participantes" id="participantes">
-							  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}"></option>
+							<select multiple class="form-select" name="participantes" id="participantes" th:field="*{registroVueltas}">
+							  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" value="${piloto.dni}"></option>
 							</select>
 			        	</div>
+			        	<div class="modal-footer">
+							<input type="submit" class="btn btn-success" value="Guardar">
+					      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+					    </div>
 			        </form>
-			      </div>
-			
-			      <!-- Modal footer -->
-			      <div class="modal-footer">
-			      	<button type="button" class="btn btn-success">Guardar</button>
-			        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 			      </div>
 			
 			    </div>

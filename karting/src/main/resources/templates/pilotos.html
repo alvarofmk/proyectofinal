@@ -17,7 +17,7 @@
     <div class="m-0 d-flex flex-row h-100">
   		<nav class="bg-danger navadmin p-4">
   			<i class="bi bi-list text-white h2"></i>
-  			<a href="#"><img src="../static/media/logo gris.png" th:src="@{media/logo gris.png}" alt="Phoenix Karting" class="w-100"></a>
+  			<a href="#"><img src="../static/media/logo blanco.png" th:src="@{media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
   			<div class="separador"></div>
   			<ul class="px-1">
   				<li class="my-2"><a href="http://localhost:9000/sesiones">Sesiones</a></li>
@@ -70,36 +70,34 @@
 			
 			      <!-- Modal body -->
 			      <div class="modal-body">
-			        <form>
+			        <form method="POST" th:action="addpiloto" th:object="${nuevoPiloto}">
 			        	<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre">
+						  <input type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
 						  <label for="nombrePiloto">Nombre</label>
 						</div>
 						<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="apellidosPiloto" placeholder="Introduzca los apellidos" name="Apellidos">
+						  <input type="text" class="form-control" id="apellidosPiloto" placeholder="Introduzca los apellidos" name="Apellidos" th:field="*{apellidos}">
 						  <label for="apellidosPiloto">Apellidos</label>
 						</div>
 						<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="dniPiloto" placeholder="Introduzca el dni" name="dni">
+						  <input type="text" class="form-control" id="dniPiloto" placeholder="Introduzca el dni" name="dni" th:field="*{dni}">
 						  <label for="dniPiloto">DNI</label>
 						</div>
 						<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="imgPiloto" placeholder="Pege la url de la imagen" name="Imagen">
+						  <input type="text" class="form-control" id="imgPiloto" placeholder="Pege la url de la imagen" name="Imagen" th:field="*{imgUrl}">
 						  <label for="imgPiloto">Imagen (URL)</label>
 						</div>
 						<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="emailPiloto" placeholder="Introduzca el email" name="Email">
+						  <input type="email" class="form-control" id="emailPiloto" placeholder="Introduzca el email" name="Email" th:field="*{email}">
 						  <label for="emailPiloto">Email</label>
 						</div>
 						<label for="fechaNacimiento">Fecha de nacimiento</label>
-  						<input type="date" id="fechaNacimiento" name="fechaNacimiento">
+  						<input type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}">
+  						<div class="modal-footer">
+							<input type="submit" class="btn btn-success" value="Guardar">
+					      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+					    </div>
 			        </form>
-			      </div>
-			
-			      <!-- Modal footer -->
-			      <div class="modal-footer">
-			      	<button type="button" class="btn btn-success">Guardar</button>
-			        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 			      </div>
 			
 			    </div>
