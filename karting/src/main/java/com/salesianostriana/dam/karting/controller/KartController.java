@@ -6,20 +6,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.karting.model.Kart;
 import com.salesianostriana.dam.karting.service.KartService;
-import com.salesianostriana.dam.karting.service.PilotoService;
 
 @Controller
-public class MainController {
+public class KartController {
 	
 	@Autowired
 	private KartService kartservice;
 	
-	@GetMapping("/")
-	public String landing(Model model) {
-		model.addAttribute("numeroPilotos", 10);
+	@GetMapping("/karts")
+	public String kartsAdmin(Model model) {
+		Kart nuevoKart = new Kart();
 		model.addAttribute("karts", kartservice.generarKarts());
-		return "index";
+		model.addAttribute("nuevoKart", nuevoKart);
+		return "karts";
+	}
+	
+	@PostMapping("/karts/add")
+	public String addKart() {
+		return "redirect:/karts";
 	}
 
 }

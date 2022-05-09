@@ -4,22 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.dam.karting.service.KartService;
 import com.salesianostriana.dam.karting.service.PilotoService;
 
 @Controller
-public class MainController {
+public class PilotoController {
 	
 	@Autowired
-	private KartService kartservice;
+	private PilotoService pilotoService;
 	
-	@GetMapping("/")
-	public String landing(Model model) {
-		model.addAttribute("numeroPilotos", 10);
-		model.addAttribute("karts", kartservice.generarKarts());
-		return "index";
+	@GetMapping("/pilotos")
+	public String pilotosAdmin(Model model) {
+		model.addAttribute("listaPilotos", pilotoService.generarPilotos());
+		return "pilotos";
 	}
 
 }

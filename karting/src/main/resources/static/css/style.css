@@ -236,6 +236,10 @@ footer>*{
     .navadmin i{
 		display: none;
 	}
+	.mainadmin h1{
+		height: 0px !important;
+		margin-bottom: 0px !important;
+	}
 	.mainadmin>div:nth-child(2), .mainadmin>div:nth-child(3){
 		margin-top: -10em;
 	}
