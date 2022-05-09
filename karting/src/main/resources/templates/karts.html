@@ -72,40 +72,40 @@
 			
 			      <!-- Modal body -->
 			      <div class="modal-body">
-			        <form>
+			        <form method="POST" th:action="karts/add" th:object="${nuevoKart}">
 			        	<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre">
+						  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
 						  <label for="nombreKart">Nombre</label>
 						</div>
 						<div class="form-floating">
-						  <textarea class="form-control" id="descripcionKart" name="Descripcion" placeholder="Introduzca la descripcion para la página web"></textarea>
+						  <textarea class="form-control" id="descripcionKart" name="Descripcion" placeholder="Introduzca la descripcion para la página web" th:field="*{descripcion}"></textarea>
 						  <label for="descripcionKart">Descripcion</label>
 						</div>
 						<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="imgKart" placeholder="Pege la url de la imagen" name="Imagen">
+						  <input type="text" class="form-control" id="imgKart" placeholder="Pege la url de la imagen" name="Imagen" th:field="*{imgUrl}">
 						  <label for="imgKart">Imagen (URL)</label>
 						</div>
 						<div class="row">
 							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
-							  <input type="text" class="form-control" id="cv" placeholder="Potencia" name="Potencia">
+							  <input type="text" class="form-control" id="cv" placeholder="Potencia" name="Potencia" th:field="*{potencia}">
 							  <label for="cv">Potencia</label>
 							</div>
 							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
-							  <input type="text" class="form-control" id="cc" placeholder="Cilindrada" name="Cilindrada">
+							  <input type="text" class="form-control" id="cc" placeholder="Cilindrada" name="Cilindrada" th:field="*{centimetrosCubicos}">
 							  <label for="cc">Cilindrada</label>
 							</div>
 							<div class="form-floating mb-3 mt-3 col-* w-25 mx-auto">
-							  <input type="text" class="form-control" id="kmh" placeholder="Velocidad punta" name="Velocidad punta">
+							  <input type="text" class="form-control" id="kmh" placeholder="Velocidad punta" name="Velocidad punta" th:field="*{velocidadMaxima}">
 							  <label for="kmh">Velocidad punta</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-							  <input type="text" class="form-control" id="EdadMinima" placeholder="Edad minima" name="Edad minima">
+							  <input type="text" class="form-control" id="EdadMinima" placeholder="Edad minima" name="Edad minima" th:field="*{edadMinima}">
 							  <label for="EdadMinima">Edad minima</label>
 							</div>
 							<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-							  <input type="text" class="form-control" id="PrecioSesion" placeholder="Precio" name="Precio">
+							  <input type="text" class="form-control" id="PrecioSesion" placeholder="Precio" name="Precio" th:field="*{precioSesion}">
 							  <label for="PrecioSesion">Precio</label>
 							</div>
 						</div>
