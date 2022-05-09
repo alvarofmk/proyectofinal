@@ -15,7 +15,7 @@ public class VueltasService {
 	public List<Duration> generarVueltas (Piloto conductor, Kart kartUsado, Duration tiempoLimite){
 		Duration vueltaMedia = Duration.ofSeconds(Math.round((120-(kartUsado.getPotencia()*0.8))));
 		
-		Duration desviacionMedia = Duration.ofSeconds(Math.round(Math.random()*(6-0)), Math.round(Math.random()*(999-0)));
+		Duration desviacionMedia = Duration.ofMillis(Math.round(Math.random()*(6500-0)));
 		if(Math.random()>0.5) {
 			vueltaMedia = vueltaMedia.plus(desviacionMedia);
 		}else {

@@ -100,7 +100,7 @@
 						<tbody th:each="registro : ${sesion.registroVueltas}">
 							<tr th:each="vuelta, iter : ${registro.value}">
 								<td th:text="${iter.index + 1}"></td>
-								<td th:text="${vuelta}"></td>
+								<td th:text="${vuelta.seconds / 60} + ':' + ${vuelta.seconds - (60 * (vuelta.seconds/60))} + '.' + ${#numbers.formatInteger(vuelta.nano/1000000,3)}"></td>
 							</tr>
 						</tbody>
 					</table>
