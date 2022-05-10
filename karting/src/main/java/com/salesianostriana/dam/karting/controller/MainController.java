@@ -18,7 +18,7 @@ public class MainController {
 	@GetMapping("/")
 	public String landing(Model model) {
 		model.addAttribute("numeroPilotos", 10);
-		model.addAttribute("karts", kartservice.generarKarts());
+		model.addAttribute("karts", kartservice.findAll());
 		return "index";
 	}
 

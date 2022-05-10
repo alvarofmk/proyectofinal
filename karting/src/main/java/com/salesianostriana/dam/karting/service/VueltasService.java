@@ -8,10 +8,19 @@ import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.karting.model.Kart;
 import com.salesianostriana.dam.karting.model.Piloto;
+import com.salesianostriana.dam.karting.model.Vuelta;
+import com.salesianostriana.dam.karting.model.VueltaPK;
+import com.salesianostriana.dam.karting.repository.VueltaRepository;
+import com.salesianostriana.dam.karting.service.baseservice.BaseService;
 
 @Service
-public class VueltasService {
+public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaRepository> {
 	
+	public VueltasService(VueltaRepository repositorio) {
+		super(repositorio);
+		// TODO Auto-generated constructor stub
+	}
+
 	public List<Duration> generarVueltas (Piloto conductor, Kart kartUsado, Duration tiempoLimite){
 		Duration vueltaMedia = Duration.ofSeconds(Math.round((120-(kartUsado.getPotencia()*0.8))));
 		

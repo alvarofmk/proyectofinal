@@ -86,7 +86,7 @@
 			        	</div>
 			        	<div class="mb-3 mt-3">
 			        		<label for="participantes" class="form-label">Participantes</label>
-							<select multiple class="form-select" name="participantes" id="participantes" th:field="*{registroVueltas}">
+							<select multiple class="form-select" name="participantes" id="participantes" th:field="*{participantes}">
 							  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" value="${piloto.dni}"></option>
 							</select>
 			        	</div>

@@ -24,9 +24,9 @@ public class SesionController {
 	@GetMapping("/sesiones")
 	public String sesionesAdmin(Model model) {
 		Sesion nuevaSesion = new Sesion ();
-		model.addAttribute("karts", kartservice.generarKarts());
-		model.addAttribute("listaSesiones", sesionService.generarSesiones());
-		model.addAttribute("listaPilotos", pilotoService.generarPilotos());
+		model.addAttribute("karts", kartservice.findAll());
+		model.addAttribute("listaSesiones", sesionService.findAll());
+		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("nuevaSesion", nuevaSesion);
 		return "sesiones";
 	}
