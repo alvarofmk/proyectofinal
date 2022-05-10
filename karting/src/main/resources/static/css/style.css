@@ -286,7 +286,7 @@ td{
 tr{
 	transition: all 0.4s;
 }
-tr:hover{
+tbody tr:hover{
 	background-color: lightgrey;
 }
 ::placeholder{
@@ -312,5 +312,4 @@ tr div{
 }
 .selected{
 	background-color: rgb(180, 180, 180) !important;
-	font-weight: bold !important;
 }
