@@ -225,6 +225,9 @@ footer>*{
 	.navadmin i{
 		display: visible;
 	}
+	.mainadmin{
+		margin-left: 2% !important;
+	}
 }
 @media screen AND (min-width: 1080px) {
     #karts-pc{
@@ -241,7 +244,6 @@ footer>*{
 	}
 
 }
-
 .mainadmin{
 	margin-left: 10%;
 	width: 90%;
@@ -307,4 +309,8 @@ tr div{
 }
 .detallesSesion tr:hover{
 	background-color: white;
+}
+.selected{
+	background-color: rgb(180, 180, 180) !important;
+	font-weight: bold !important;
 }
