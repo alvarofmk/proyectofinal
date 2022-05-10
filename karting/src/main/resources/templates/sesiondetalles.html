@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="../static/js/sesionDetails.js" th:src="@{/js/sesionDetails.js}" defer></script>
 </head>
 <body>
     <div class="m-0 d-flex flex-row h-100">
@@ -87,17 +88,17 @@
   					<div class="d-flex flex-row">
   						<label for="pilotoVueltas" class="form-label m-2">Piloto</label>
 						<select class="form-select" name="pilotoVueltas" id="pilotoVueltas">
-						  <option th:each="registro : ${sesion.registroVueltas}" th:text="${registro.key.nombre + ' ' + registro.key.apellidos}"></option>
+						  <option th:each="registro : ${sesion.registroVueltas}" th:text="${registro.key.nombre + ' ' + registro.key.apellidos}" th:value="${registro.key.dni}"></option>
 						</select>
   					</div>
-  					<table class="table">
+  					<table class="table" id="tablaVueltas">
 	  					<thead>
 	  						<tr>
 	  							<th>Numero</th>
 								<th>Tiempo vuelta</th>
 							</tr>
 						</thead>
-						<tbody th:each="registro : ${sesion.registroVueltas}">
+						<tbody th:each="registro : ${sesion.registroVueltas}" th:id="${registro.key.dni}">
 							<tr th:each="vuelta, iter : ${registro.value}">
 								<td th:text="${iter.index + 1}"></td>
 								<td th:text="${vuelta.seconds / 60} + ':' + ${vuelta.seconds - (60 * (vuelta.seconds/60))} + '.' + ${#numbers.formatInteger(vuelta.nano/1000000,3)}"></td>
