@@ -14,113 +14,111 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="m-0 d-flex flex-row h-100">
-  		<nav class="bg-danger navadmin p-4">
-  			<i class="bi bi-list text-white h2"></i>
-  			<a href="#"><img src="../static/media/logo blanco.png" th:src="@{media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
-  			<div class="separador"></div>
-  			<ul class="px-1">
-  				<li class="my-2"><a href="http://localhost:9000/sesiones">Sesiones</a></li>
-  				<li class="my-2"><a href="http://localhost:9000/karts">Karts</a></li>
-  				<li class="my-2"><a href="http://localhost:9000/pilotos">Pilotos</a></li>
-  			</ul>
-  		</nav>
-  		<main class="mainadmin mt-0 p-5 row">
-  			<h1 class="col-xl-9 order-xl-1 w-50">Karts</h1>
-  			<div class="col-xl-3 order-xl-3">
-  				<form>
-  					<input id="buscar" type="text" placeholder="Buscar" class="w-100">
-  					<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger mt-3 rounded-3 w-100">
-  				</form>
-  			</div>
-  			<div class="col-xl-9 order-xl-2">
-	  			<table class="table table-hover">
-	  				<thead>
-						<tr>
-							<th></th>
-							<th>ID</th>
-							<th>Nombre</th>
-							<th>Cilindrada</th>
-							<th>Velocidad</th>
-							<th>Edad minima</th>
-							<th>Precio</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="kart : ${karts}">
-							<td><img src="../static/media/kart2.jpg" th:src="@{media/kart2.jpg}" class="h-100"></td>
-							<td th:text="${kart.id}"></td>
-							<td th:text="${kart.nombre}"></td>
-							<td th:text="${kart.centimetrosCubicos} + ' cc'"></td>
-							<td th:text="${kart.velocidadMaxima + ' km/h'}"></td>
-							<td th:text="${kart.edadMinima}"></td>
-							<td th:text="${kart.precioSesion} + ' €'"></td>
-						</tr>
-					</tbody>
-	  			</table>
-  			</div>
-  			
-  			<div class="modal" id="addKart">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			
-			      <!-- Modal Header -->
-			      <div class="modal-header">
-			        <h4 class="modal-title">Nuevo Kart</h4>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-			      </div>
-			
-			      <!-- Modal body -->
-			      <div class="modal-body">
-			        <form method="POST" th:action="addkart" th:object="${nuevoKart}">
-			        	<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
-						  <label for="nombreKart">Nombre</label>
+	<nav class="bg-danger navadmin p-4">
+		<i class="bi bi-list text-white h2"></i>
+		<a href="#"><img src="../static/media/logo blanco.png" th:src="@{media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
+		<div class="separador"></div>
+		<ul class="px-1">
+			<li class="my-2"><a href="http://localhost:9000/sesiones">Sesiones</a></li>
+			<li class="my-2"><a href="http://localhost:9000/karts">Karts</a></li>
+			<li class="my-2"><a href="http://localhost:9000/pilotos">Pilotos</a></li>
+		</ul>
+	</nav>
+	<main class="mainadmin mt-0 p-5 row">
+		<h1 class="col-xl-9 order-xl-1 w-50">Karts</h1>
+		<div class="col-xl-3 order-xl-3">
+			<form>
+				<input id="buscar" type="text" placeholder="Buscar" class="w-100">
+				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger mt-3 rounded-3 w-100">
+			</form>
+		</div>
+		<div class="col-xl-9 order-xl-2">
+  			<table class="table table-hover">
+  				<thead>
+					<tr>
+						<th></th>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Cilindrada</th>
+						<th>Velocidad</th>
+						<th>Edad minima</th>
+						<th>Precio</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="kart : ${karts}">
+						<td><img src="../static/media/kart2.jpg" th:src="@{media/kart2.jpg}" class="h-100"></td>
+						<td th:text="${kart.id}"></td>
+						<td th:text="${kart.nombre}"></td>
+						<td th:text="${kart.centimetrosCubicos} + ' cc'"></td>
+						<td th:text="${kart.velocidadMaxima + ' km/h'}"></td>
+						<td th:text="${kart.edadMinima}"></td>
+						<td th:text="${kart.precioSesion} + ' €'"></td>
+					</tr>
+				</tbody>
+  			</table>
+		</div>
+		
+		<div class="modal" id="addKart">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">Nuevo Kart</h4>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body">
+		        <form method="POST" th:action="addkart" th:object="${nuevoKart}">
+		        	<div class="form-floating mb-3 mt-3">
+					  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
+					  <label for="nombreKart">Nombre</label>
+					</div>
+					<div class="form-floating">
+					  <textarea class="form-control" id="descripcionKart" name="Descripcion" placeholder="Introduzca la descripcion para la página web" th:field="*{descripcion}"></textarea>
+					  <label for="descripcionKart">Descripcion</label>
+					</div>
+					<div class="form-floating mb-3 mt-3">
+					  <input type="text" class="form-control" id="imgKart" placeholder="Pege la url de la imagen" name="Imagen" th:field="*{imgUrl}">
+					  <label for="imgKart">Imagen (URL)</label>
+					</div>
+					<div class="row">
+						<div class="input-group col-* mx-auto">
+						  <input type="text" class="form-control" id="cv" placeholder="Potencia" name="Potencia" th:field="*{potencia}">
+						  <span class="input-group-text">cv</span>
 						</div>
-						<div class="form-floating">
-						  <textarea class="form-control" id="descripcionKart" name="Descripcion" placeholder="Introduzca la descripcion para la página web" th:field="*{descripcion}"></textarea>
-						  <label for="descripcionKart">Descripcion</label>
+						<div class="input-group col-* mx-auto">
+						  <input type="text" class="form-control" id="cc" placeholder="Cilindrada" name="Cilindrada" th:field="*{centimetrosCubicos}">
+						  <span class="input-group-text">cc</span>
 						</div>
-						<div class="form-floating mb-3 mt-3">
-						  <input type="text" class="form-control" id="imgKart" placeholder="Pege la url de la imagen" name="Imagen" th:field="*{imgUrl}">
-						  <label for="imgKart">Imagen (URL)</label>
+						<div class="input-group col-* mx-auto">
+						  <input type="text" class="form-control" id="kmh" placeholder="Velocidad punta" name="Velocidad punta" th:field="*{velocidadMaxima}">
+						  <span class="input-group-text">km/h</span>
 						</div>
-						<div class="row">
-							<div class="input-group col-* mx-auto">
-							  <input type="text" class="form-control" id="cv" placeholder="Potencia" name="Potencia" th:field="*{potencia}">
-							  <span class="input-group-text">cv</span>
-							</div>
-							<div class="input-group col-* mx-auto">
-							  <input type="text" class="form-control" id="cc" placeholder="Cilindrada" name="Cilindrada" th:field="*{centimetrosCubicos}">
-							  <span class="input-group-text">cc</span>
-							</div>
-							<div class="input-group col-* mx-auto">
-							  <input type="text" class="form-control" id="kmh" placeholder="Velocidad punta" name="Velocidad punta" th:field="*{velocidadMaxima}">
-							  <span class="input-group-text">km/h</span>
-							</div>
+					</div>
+					<div class="row">
+						<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
+						  <input type="text" class="form-control" id="EdadMinima" placeholder="Edad minima" name="Edad minima" th:field="*{edadMinima}">
+						  <label for="EdadMinima">Edad minima</label>
 						</div>
-						<div class="row">
-							<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-							  <input type="text" class="form-control" id="EdadMinima" placeholder="Edad minima" name="Edad minima" th:field="*{edadMinima}">
-							  <label for="EdadMinima">Edad minima</label>
-							</div>
-							<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-							  <input type="text" class="form-control" id="PrecioSesion" placeholder="Precio" name="Precio" th:field="*{precioSesion}">
-							  <label for="PrecioSesion">Precio</label>
-							</div>
+						<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
+						  <input type="text" class="form-control" id="PrecioSesion" placeholder="Precio" name="Precio" th:field="*{precioSesion}">
+						  <label for="PrecioSesion">Precio</label>
 						</div>
-						<div class="modal-footer">
-							<input type="submit" class="btn btn-success" value="Guardar">
-					      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-					    </div>
-			        </form>
-			      </div>
-			
-			    </div>
-			  </div>
-			</div>
-			
-  		</main>
-    </div>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-success" value="Guardar">
+				      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				    </div>
+		        </form>
+		      </div>
+		
+		    </div>
+		  </div>
+		</div>
+		
+	</main>
 </body>
 </html>

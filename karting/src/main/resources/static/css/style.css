@@ -237,21 +237,22 @@ footer>*{
 		display: none;
 	}
 	.mainadmin h1{
-		height: 0px !important;
 		margin-bottom: 0px !important;
-	}
-	.mainadmin>div:nth-child(2), .mainadmin>div:nth-child(3){
-		margin-top: -10em;
 	}
 
 }
 
 .mainadmin{
+	margin-left: 10%;
 	width: 90%;
 }
 .navadmin{
+	height: 100%; /* Full-height: remove this if you want "auto" height */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
 	width: 10%;
-	height: 100vh;
 }
 .navadmin ul{
 	list-style-type: none !important;
