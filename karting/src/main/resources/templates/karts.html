@@ -58,6 +58,7 @@
 						<td th:text="${kart.precioSesion} + ' €'"></td>
 						<td>
 							<a th:href="@{/karts/update/{id}(id=${kart.id})}"><i class="bi bi-pencil-square"></i></a>
+							<a th:href="@{/karts/remove/{id}(id=${kart.id})}"><i class="bi bi-trash"></i></a>
 						</td>
 					</tr>
 				</tbody>
