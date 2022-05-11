@@ -17,12 +17,12 @@
     <div class="m-0 d-flex flex-row h-100">
   		<nav class="bg-danger navadmin p-4">
   			<i class="bi bi-list text-white h2"></i>
-  			<a href="#"><img src="../static/media/logo blanco.png" th:src="@{media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
+  			<a href="#"><img src="../static/media/logo blanco.png" th:src="@{/media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
   			<div class="separador"></div>
   			<ul class="px-1">
-  				<li class="my-2"><a href="http://localhost:9000/sesiones">Sesiones</a></li>
-  				<li class="my-2"><a href="http://localhost:9000/karts">Karts</a></li>
-  				<li class="my-2"><a href="http://localhost:9000/pilotos">Pilotos</a></li>
+  				<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
+  				<li class="my-2"><a href="http://localhost:9000/karts/">Karts</a></li>
+  				<li class="my-2"><a href="http://localhost:9000/pilotos/">Pilotos</a></li>
   			</ul>
   		</nav>
   		<main class="mainadmin mt-0 p-5 row">
@@ -30,7 +30,7 @@
   			<div class="col-xl-3 order-xl-3">
   				<form>
   					<input id="buscar" type="text" placeholder="Buscar" class="w-100">
-  					<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger mt-3 rounded-3 w-100">
+  					<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addPiloto" class="btn-danger mt-3 rounded-3 w-100">
   				</form>
   			</div>
   			<div class="col-xl-9 order-xl-2">
@@ -43,6 +43,7 @@
 							<th>Apellidos</th>
 							<th>Email</th>
 							<th>Fecha nacimiento</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,12 +54,16 @@
 							<td th:text="${piloto.apellidos}"></td>
 							<td th:text="${piloto.email}"></td>
 							<td th:text="${piloto.fechaNacimiento}"></td>
+							<td>
+								<a th:href="@{/pilotos/update/{id}(id=${piloto.dni})}"><i class="bi bi-pencil-square"></i></a>
+								<a th:href="@{/pilotos/remove/{id}(id=${piloto.dni})}"><i class="bi bi-trash"></i></a>
+							</td>
 						</tr>
 					</tbody>
 	  			</table>
   			</div>
   			
-  			<div class="modal" id="addKart">
+  			<div class="modal" id="addPiloto">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			
@@ -70,7 +75,7 @@
 			
 			      <!-- Modal body -->
 			      <div class="modal-body">
-			        <form method="POST" th:action="addpiloto" th:object="${nuevoPiloto}">
+			        <form method="POST" th:action="@{/pilotos/edicion}" th:object="${piloto}">
 			        	<div class="form-floating mb-3 mt-3">
 						  <input type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
 						  <label for="nombrePiloto">Nombre</label>

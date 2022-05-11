@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianostriana.dam.karting.model.Piloto;
 import com.salesianostriana.dam.karting.model.Sesion;
@@ -14,6 +15,7 @@ import com.salesianostriana.dam.karting.service.PilotoService;
 import com.salesianostriana.dam.karting.service.SesionService;
 
 @Controller
+@RequestMapping
 public class SesionController {
 	
 	@Autowired
@@ -23,7 +25,7 @@ public class SesionController {
 	@Autowired
 	private SesionService sesionService;
 
-	@GetMapping("/sesiones")
+	@GetMapping("/")
 	public String sesionesAdmin(Model model) {
 		Sesion nuevaSesion = new Sesion ();
 		model.addAttribute("karts", kartservice.findAll());
