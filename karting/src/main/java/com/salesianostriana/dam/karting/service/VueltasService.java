@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.karting.model.Kart;
+import com.salesianostriana.dam.karting.model.Participacion;
 import com.salesianostriana.dam.karting.model.Piloto;
 import com.salesianostriana.dam.karting.model.Vuelta;
 import com.salesianostriana.dam.karting.model.VueltaPK;
@@ -21,8 +22,9 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Duration> generarVueltas (Piloto conductor, Kart kartUsado, Duration tiempoLimite){
-		Duration vueltaMedia = Duration.ofSeconds(Math.round((120-(kartUsado.getPotencia()*0.8))));
+	public List<Vuelta> generarVueltasPiloto (Participacion participacion, Duration tiempoLimite){
+		int numeroVuelta = 1;
+		Duration vueltaMedia = Duration.ofSeconds(Math.round((120-(participacion.getSesion().getKart().getPotencia()*0.8))));
 		
 		Duration desviacionMedia = Duration.ofMillis(Math.round(Math.random()*(6500-0)));
 		if(Math.random()>0.5) {
@@ -31,8 +33,10 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 			vueltaMedia = vueltaMedia.minus(desviacionMedia);
 		}
 		
-		List<Duration> vueltas = new ArrayList<Duration>();
-		vueltas.add(vueltaMedia);
+		List<Vuelta> vueltas = new ArrayList<Vuelta>();
+		Vuelta primeraVuelta = new Vuelta(participacion, numeroVuelta, vueltaMedia);
+		this.save(primeraVuelta);
+		vueltas.add(primeraVuelta);
 		Duration sum = vueltaMedia;
 		
 		while(sum.compareTo(tiempoLimite)<0) {
@@ -40,13 +44,18 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 			Duration nuevaVuelta;
 			
 			if(Math.random()>0.55) {
-				nuevaVuelta = vueltas.get(vueltas.size()-1).plus(desviacionVuelta);
+				nuevaVuelta = vueltas.get(numeroVuelta-1).getTiempo().plus(desviacionVuelta);
 			}else {
-				nuevaVuelta = vueltas.get(vueltas.size()-1).minus(desviacionVuelta);
+				nuevaVuelta = vueltas.get(numeroVuelta-1).getTiempo().minus(desviacionVuelta);
 			}
-			vueltas.add(nuevaVuelta);
+			numeroVuelta++;
+			Vuelta siguienteVuelta = new Vuelta(participacion, numeroVuelta, nuevaVuelta);
+			this.save(siguienteVuelta);
+			vueltas.add(siguienteVuelta);
 			sum = sum.plus(nuevaVuelta);
 		}
+		
+		participacion.setRegistroVueltas(vueltas);
 		return vueltas;
 	}
 

@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -18,9 +20,16 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Participacion {
 	
+	public Participacion(Sesion sesion, Piloto piloto, double precio) {
+		this.sesion = sesion;
+		this.piloto = piloto;
+		this.precio = precio;
+	}
+
 	@EmbeddedId
 	private ParticipacionPK id;
 	

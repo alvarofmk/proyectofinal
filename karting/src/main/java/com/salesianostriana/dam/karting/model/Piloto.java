@@ -36,10 +36,10 @@ public class Piloto {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 	
+	@Builder.Default
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany(mappedBy="piloto", fetch = FetchType.EAGER)
 	private List<Participacion> participaciones = new ArrayList<>();
-	
 
 }

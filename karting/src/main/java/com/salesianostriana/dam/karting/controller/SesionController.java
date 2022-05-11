@@ -15,7 +15,7 @@ import com.salesianostriana.dam.karting.service.PilotoService;
 import com.salesianostriana.dam.karting.service.SesionService;
 
 @Controller
-@RequestMapping
+@RequestMapping("sesiones")
 public class SesionController {
 	
 	@Autowired

@@ -16,6 +16,10 @@ public class BaseService <T, ID, R extends JpaRepository<T, ID>> implements Base
 	public T save(T t) {
 		return repositorio.save(t);
 	}
+	
+	public List<T> saveAll(List<T> list){
+		return repositorio.saveAll(list);
+	}
 
 	@Override
 	public T findById(ID id) {

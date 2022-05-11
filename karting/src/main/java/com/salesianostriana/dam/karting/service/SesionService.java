@@ -28,6 +28,11 @@ public class SesionService extends BaseService<Sesion, Long, SesionRepository> {
 	@Autowired
 	private VueltasService vueltasService;
 	
+	public void realizarSesion (Sesion sesion) {
+		sesion.getParticipantes().stream().forEach(p -> vueltasService.generarVueltasPiloto(p, Duration.ofMinutes(15)));
+		this.save(sesion);
+	}
+	
 	public List<Sesion> generarSesiones (){
 		List <Duration> vueltas = new ArrayList <Duration>();
 		List <Sesion> sesiones = new ArrayList <Sesion>();

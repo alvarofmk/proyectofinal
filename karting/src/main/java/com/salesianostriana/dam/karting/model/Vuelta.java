@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
