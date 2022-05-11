@@ -32,10 +32,6 @@
 				<input id="buscar" type="text" placeholder="Buscar" class="w-100">
 				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger mt-3 rounded-3 w-100">
 			</form>
-			<form id="modifyRemoveButtons">
-				<input id="modify" type="button" value="Modificar" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger mt-3 rounded-3 w-100">
-				<input id="remove" type="button" value="Borrar" class="btn-danger mt-3 rounded-3 w-100">
-			</form>
 		</div>
 		<div class="col-xl-9 order-xl-2">
   			<table class="table table-hover">
@@ -48,6 +44,7 @@
 						<th>Velocidad</th>
 						<th>Edad minima</th>
 						<th>Precio</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -59,6 +56,9 @@
 						<td th:text="${kart.velocidadMaxima + ' km/h'}"></td>
 						<td th:text="${kart.edadMinima}"></td>
 						<td th:text="${kart.precioSesion} + ' €'"></td>
+						<td>
+							<a th:href="@{/karts/update/{id}(id=${kart.id})}"><i class="bi bi-pencil-square"></i></a>
+						</td>
 					</tr>
 				</tbody>
   			</table>
@@ -76,7 +76,8 @@
 		
 		      <!-- Modal body -->
 		      <div class="modal-body">
-		        <form method="POST" th:action="addkart" th:object="${nuevoKart}">
+		        <form method="POST" th:action="@{/karts/edicion}" th:object="${kart}">
+		        	<input th:if="${kart.id != 0}" type="hidden" name="id" th:field="*{id}" />
 		        	<div class="form-floating mb-3 mt-3">
 					  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
 					  <label for="nombreKart">Nombre</label>

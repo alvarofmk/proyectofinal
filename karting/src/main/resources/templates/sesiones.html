@@ -76,7 +76,7 @@
 			        <form method="POST" th:action="addSesion" th:object="${nuevaSesion}">
 			        	<div class="mb-3 mt-3">
 			        		<label for="fechaSesion">Fecha y hora de sesion</label>
-  							<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}">
+  							<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" >
 			        	</div>
 			        	<div class="mb-3 mt-3">
 			        		<label for="kart" class="form-label">Kart</label>

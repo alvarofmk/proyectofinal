@@ -13,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,6 +34,8 @@ public class Sesion {
 	private long id;
 	
 	private LocalDateTime fechaReserva;
+	
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime fechaSesion;
 	private double precio;
 	

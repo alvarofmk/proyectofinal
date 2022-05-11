@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.karting.model.Kart;
@@ -18,15 +19,22 @@ public class KartController {
 	
 	@GetMapping("/karts")
 	public String kartsAdmin(Model model) {
-		Kart nuevoKart = new Kart();
+		Kart kart = new Kart();
 		model.addAttribute("karts", kartservice.findAll());
-		model.addAttribute("nuevoKart", nuevoKart);
+		model.addAttribute("kart", kart);
 		return "karts";
 	}
 	
-	@PostMapping("/addkart")
-	public String addKart(@ModelAttribute("nuevoKart") Kart nuevoKart,  Model model) {
-		kartservice.save(nuevoKart);
+	@GetMapping("/karts/update/{id}")
+	public String actualizarKart(@PathVariable("id") long id,  Model model) {
+		model.addAttribute("karts", kartservice.findAll());
+		model.addAttribute("kart", kartservice.findById(id));
+		return "karts";
+	}
+	
+	@PostMapping("/karts/edicion")
+	public String guardarKart(@ModelAttribute("kart") Kart kart,  Model model) {
+		kartservice.edit(kart);
 		return "redirect:/karts";
 	}
 

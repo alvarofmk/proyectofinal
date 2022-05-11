@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.karting.model.Piloto;
 import com.salesianostriana.dam.karting.model.Sesion;
 import com.salesianostriana.dam.karting.service.KartService;
 import com.salesianostriana.dam.karting.service.PilotoService;
@@ -32,7 +34,8 @@ public class SesionController {
 	}
 	
 	@PostMapping("/addSesion")
-	public String addSesion() {
+	public String addSesion(@ModelAttribute("nuevaSesion") Sesion nuevaSesion,  Model model) {
+		sesionService.save(nuevaSesion);
 		return "redirect:/sesiones";
 	}
 	
