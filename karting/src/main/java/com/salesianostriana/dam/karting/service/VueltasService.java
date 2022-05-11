@@ -35,7 +35,6 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 		
 		List<Vuelta> vueltas = new ArrayList<Vuelta>();
 		Vuelta primeraVuelta = new Vuelta(participacion, numeroVuelta, vueltaMedia);
-		this.save(primeraVuelta);
 		vueltas.add(primeraVuelta);
 		Duration sum = vueltaMedia;
 		
@@ -49,12 +48,11 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 				nuevaVuelta = vueltas.get(numeroVuelta-1).getTiempo().minus(desviacionVuelta);
 			}
 			numeroVuelta++;
-			Vuelta siguienteVuelta = new Vuelta(participacion, numeroVuelta, nuevaVuelta);
-			this.save(siguienteVuelta);
-			vueltas.add(siguienteVuelta);
+			vueltas.add(new Vuelta(participacion, numeroVuelta, nuevaVuelta));
 			sum = sum.plus(nuevaVuelta);
 		}
 		
+		this.saveAll(vueltas);
 		participacion.setRegistroVueltas(vueltas);
 		return vueltas;
 	}

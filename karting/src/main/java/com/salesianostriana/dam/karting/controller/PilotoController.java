@@ -24,6 +24,7 @@ public class PilotoController {
 	public String pilotosAdmin(Model model) {
 		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("piloto", new Piloto());
+		model.addAttribute("mostrarForm", false);
 		return "pilotos";
 	}
 	
@@ -31,6 +32,7 @@ public class PilotoController {
 	public String actualizarPiloto(@PathVariable("id") String dni,  Model model) {
 		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("piloto", pilotoService.findById(dni));
+		model.addAttribute("mostrarForm", true);
 		return "pilotos";
 	}
 	

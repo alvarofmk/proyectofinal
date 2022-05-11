@@ -39,7 +39,7 @@
   				</div>
   				<div class="col-xl-3">
   					<h3>Participantes</h3>
-	  				<p th:text="${#maps.size(sesion.registroVueltas)}" class="h5"></p>
+	  				<p th:text="${#lists.size(sesion.participantes)}" class="h5"></p>
   				</div>
   				<div class="col-xl-3">
   					<h3>Precio Total</h3>
@@ -57,7 +57,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="registro : ${sesion.registroVueltas}">
+							<tr th:each="participacion : ${sesion.participantes}">
 								<td th:text="${registro.key.dni}"></td>
 								<td th:text="${registro.key.nombre + ' ' + registro.key.apellidos}"></td>
 							</tr>

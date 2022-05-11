@@ -1,10 +1,13 @@
 package com.salesianostriana.dam.karting.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,23 +30,40 @@ public class SesionController {
 
 	@GetMapping("/")
 	public String sesionesAdmin(Model model) {
-		Sesion nuevaSesion = new Sesion ();
+		Sesion sesion = new Sesion ();
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("listaSesiones", sesionService.findAll());
 		model.addAttribute("listaPilotos", pilotoService.findAll());
-		model.addAttribute("nuevaSesion", nuevaSesion);
+		model.addAttribute("sesion", sesion);
 		return "sesiones";
 	}
 	
-	@PostMapping("/addSesion")
+	@PostMapping("/edicion")
 	public String addSesion(@ModelAttribute("nuevaSesion") Sesion nuevaSesion,  Model model) {
 		sesionService.save(nuevaSesion);
-		return "redirect:/sesiones";
+		return "redirect:/sesiones/";
 	}
 	
-	@GetMapping("/sesiondetalles")
-	public String detallesSesionAdmin(Model model) {
-		model.addAttribute("sesion", sesionService.generarSesiones().get(0));
+	@GetMapping("/update/{id}")
+	public String actualizarPiloto(@PathVariable("id") Long id,  Model model) {
+		model.addAttribute("karts", kartservice.findAll());
+		model.addAttribute("listaSesiones", sesionService.findAll());
+		model.addAttribute("listaPilotos", pilotoService.findAll());
+		model.addAttribute("sesion", sesionService.findById(id));
+		return "sesiones";
+	}
+	
+	@GetMapping("/remove/{id}")
+	public String borrarSesion(@PathVariable("id") Long id,  Model model) {
+		sesionService.deleteById(id);
+		return "redirect:/sesiones/";
+	}
+	
+	@GetMapping("/detalles/{id}")
+	public String detallesSesionAdmin(@PathVariable("id") Long id, Model model) {
+		Sesion sesion = sesionService.findById(id);
+		
+		model.addAttribute("sesion", sesion);
 		return "sesiondetalles";
 	}
 

@@ -13,13 +13,17 @@ import com.salesianostriana.dam.karting.service.PilotoService;
 public class MainController {
 	
 	@Autowired
+	private PilotoService pilotoService;
+	
+	@Autowired
 	private KartService kartservice;
 	
 	@GetMapping("/")
 	public String landing(Model model) {
-		model.addAttribute("numeroPilotos", 10);
+		model.addAttribute("numeroPilotos", pilotoService.findAll().size());
 		model.addAttribute("karts", kartservice.findAll());
 		return "index";
 	}
+
 
 }

@@ -43,6 +43,7 @@
 							<th>Kart</th>
 							<th>Participantes</th>
 							<th>Total</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -51,8 +52,13 @@
 							<td th:text="${#temporals.format(sesion.fechaReserva, 'dd-MM-YY HH:mm')}"></td>
 							<td th:text="${#temporals.format(sesion.fechaSesion, 'dd-MM-YY HH:mm')}"></td>
 							<td th:text="${sesion.kart.nombre}"></td>
-							<td th:text="${#maps.size(sesion.registroVueltas)}"></td>
-							<td th:text="${sesion.precio} + ' €'"></td>	
+							<td th:text="${#lists.size(sesion.participantes)}"></td>
+							<td th:text="${sesion.precio} + ' €'"></td>
+							<td>
+								<a th:href="@{/sesiones/update/{id}(id=${sesion.id})}"><i class="bi bi-pencil-square"></i></a>
+								<a th:href="@{/sesiones/remove/{id}(id=${sesion.id})}"><i class="bi bi-trash"></i></a>
+								<a th:href="@{/sesiones/detalles/{id}(id=${sesion.id})}"><i class="bi bi-journal-text"></i></a>
+							</td>
 						</tr>
 					</tbody>
 	  			</table>
@@ -73,7 +79,8 @@
 			
 			      <!-- Modal body -->
 			      <div class="modal-body">
-			        <form method="POST" th:action="addSesion" th:object="${nuevaSesion}">
+			        <form method="POST" th:action="@{/sesiones/edicion}" th:object="${sesion}">
+			        	<input th:if="${sesion.id != 0}" type="hidden" name="id" th:field="*{id}" />
 			        	<div class="mb-3 mt-3">
 			        		<label for="fechaSesion">Fecha y hora de sesion</label>
   							<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" >
@@ -81,13 +88,13 @@
 			        	<div class="mb-3 mt-3">
 			        		<label for="kart" class="form-label">Kart</label>
 							<select class="form-select" name="kart" id="kart" th:field="*{kart}">
-							  <option th:each="kart : ${karts}" th:text="${kart.nombre + ' ' + kart.precioSesion + '€'}" value="${kart.id}"></option>
+							  <option th:each="kart : ${karts}" th:text="${kart.nombre} + ' ' + ${kart.precioSesion} + '€'" th:value="${kart.id}"></option>
 							</select>
 			        	</div>
 			        	<div class="mb-3 mt-3">
 			        		<label for="participantes" class="form-label">Participantes</label>
 							<select multiple class="form-select" name="participantes" id="participantes" th:field="*{participantes}">
-							  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" value="${piloto.dni}"></option>
+							  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" th:value="${piloto.dni}"></option>
 							</select>
 			        	</div>
 			        	<div class="modal-footer">
