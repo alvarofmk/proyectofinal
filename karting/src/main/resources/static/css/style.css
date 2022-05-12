@@ -23,6 +23,9 @@ h1{
     font-family: russo;
     src: url(../fonts/RussoOne-Regular.ttf);
 }
+.btn-dark{
+	font-family: russo;
+}
 .navbar{
     margin-top: -95px;
     z-index: 50;
