@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="m-0 d-flex flex-row h-100">
-  		<nav class="bg-danger navadmin p-4">
+  		<nav class="bg-danger navadmin p-4 text-center">
   			<i class="bi bi-list text-white h2"></i>
   			<a href="#"><img src="../static/media/logo gris.png" th:src="@{media/logo gris.png}" alt="Phoenix Karting" class="w-100"></a>
   			<div class="separador"></div>
@@ -25,6 +25,7 @@
   				<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
   				<li class="my-2"><a href="http://localhost:9000/karts/">Karts</a></li>
   				<li class="my-2"><a href="http://localhost:9000/pilotos/">Pilotos</a></li>
+  				<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}">Log out</a></li>
   			</ul>
   		</nav>
   		<main class="mainadmin mt-0 p-5 row">

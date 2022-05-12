@@ -14,101 +14,100 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="m-0 d-flex flex-row h-100">
-  		<nav class="bg-danger navadmin p-4">
-  			<i class="bi bi-list text-white h2"></i>
-  			<a href="#"><img src="../static/media/logo blanco.png" th:src="@{/media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
-  			<div class="separador"></div>
-  			<ul class="px-1">
-  				<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
-  				<li class="my-2"><a href="http://localhost:9000/karts/">Karts</a></li>
-  				<li class="my-2"><a href="http://localhost:9000/pilotos/">Pilotos</a></li>
-  			</ul>
-  		</nav>
-  		<main class="mainadmin mt-0 p-5 row">
-  			<h1 class="col-xl-9 order-xl-1 w-50">Sesiones</h1>
-  			<div class="col-xl-3 order-xl-3">
-  				<form>
-  					<input id="buscar" type="text" placeholder="Buscar" class="w-100">
-  					<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addSesion" class="btn-danger mt-3 rounded-3 w-100">
-  				</form>
-  			</div>
-  			<div class="col-xl-9 order-xl-2">
-	  			<table class="table table-hover">
-	  				<thead>
-						<tr>
-							<th>ID</th>
-							<th>Reserva</th>
-							<th>Sesion</th>
-							<th>Kart</th>
-							<th>Participantes</th>
-							<th>Total</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="sesion : ${listaSesiones}">
-							<td th:text="${sesion.id}"></td>
-							<td th:text="${#temporals.format(sesion.fechaReserva, 'dd-MM-YY HH:mm')}"></td>
-							<td th:text="${#temporals.format(sesion.fechaSesion, 'dd-MM-YY HH:mm')}"></td>
-							<td th:text="${sesion.kart.nombre}"></td>
-							<td th:text="${#lists.size(sesion.participantes)}"></td>
-							<td th:text="${sesion.precio} + ' €'"></td>
-							<td>
-								<a th:href="@{/sesiones/update/{id}(id=${sesion.id})}"><i class="bi bi-pencil-square"></i></a>
-								<a th:href="@{/sesiones/remove/{id}(id=${sesion.id})}"><i class="bi bi-trash"></i></a>
-								<a th:href="@{/sesiones/detalles/{id}(id=${sesion.id})}"><i class="bi bi-journal-text"></i></a>
-							</td>
-						</tr>
-					</tbody>
-	  			</table>
-  			</div>
-  			
-  			<div class="modal" id="addSesion">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			
-			      <!-- Modal Header -->
-			      <div class="modal-header">
-			        <h4 class="modal-title">Nueva Reserva</h4>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-			      </div>
-			
-				<!-- Falfa comprobar que los formularios mandan bien la informaicion y como tratarla -->
-			
-			
-			      <!-- Modal body -->
-			      <div class="modal-body">
-			        <form method="POST" th:action="@{/sesiones/edicion}" th:object="${sesion}">
-			        	<input th:if="${sesion.id != 0}" type="hidden" name="id" th:field="*{id}" />
-			        	<div class="mb-3 mt-3">
-			        		<label for="fechaSesion">Fecha y hora de sesion</label>
-  							<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" >
-			        	</div>
-			        	<div class="mb-3 mt-3">
-			        		<label for="kart" class="form-label">Kart</label>
-							<select class="form-select" name="kart" id="kart" th:field="*{kart}">
-							  <option th:each="kart : ${karts}" th:text="${kart.nombre} + ' ' + ${kart.precioSesion} + '€'" th:value="${kart.id}"></option>
-							</select>
-			        	</div>
-			        	<div class="mb-3 mt-3">
-			        		<label for="participantes" class="form-label">Participantes</label>
-							<select multiple class="form-select" name="participantes" id="participantes" th:field="*{participantes}">
-							  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" th:value="${piloto.dni}"></option>
-							</select>
-			        	</div>
-			        	<div class="modal-footer">
-							<input type="submit" class="btn btn-success" value="Guardar">
-					      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-					    </div>
-			        </form>
-			      </div>
-			
-			    </div>
-			  </div>
-			</div>
-			
-  		</main>
-    </div>
+	<nav class="bg-danger navadmin p-4 text-center">
+		<i class="bi bi-list text-white h2"></i>
+		<a href="#"><img src="../static/media/logo blanco.png" th:src="@{/media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
+		<div class="separador"></div>
+		<ul class="px-1">
+			<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
+			<li class="my-2"><a href="http://localhost:9000/karts/">Karts</a></li>
+			<li class="my-2"><a href="http://localhost:9000/pilotos/">Pilotos</a></li>
+			<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}">Log out</a></li>
+		</ul>
+	</nav>
+	<main class="mainadmin mt-0 p-5 row">
+		<h1 class="col-xl-9 order-xl-1 w-50">Sesiones</h1>
+		<div class="col-xl-3 order-xl-3">
+			<form>
+				<input id="buscar" type="text" placeholder="Buscar" class="w-100">
+				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addSesion" class="btn-danger mt-3 rounded-3 w-100">
+			</form>
+		</div>
+		<div class="col-xl-9 order-xl-2">
+  			<table class="table table-hover">
+  				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Reserva</th>
+						<th>Sesion</th>
+						<th>Kart</th>
+						<th>Participantes</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="sesion : ${listaSesiones}">
+						<td th:text="${sesion.id}"></td>
+						<td th:text="${#temporals.format(sesion.fechaReserva, 'dd-MM-YY HH:mm')}"></td>
+						<td th:text="${#temporals.format(sesion.fechaSesion, 'dd-MM-YY HH:mm')}"></td>
+						<td th:text="${sesion.kart.nombre}"></td>
+						<td th:text="${#lists.size(sesion.participantes)}"></td>
+						<td th:text="${sesion.precio} + ' €'"></td>
+						<td>
+							<a th:href="@{/sesiones/update/{id}(id=${sesion.id})}"><i class="bi bi-pencil-square"></i></a>
+							<a th:href="@{/sesiones/remove/{id}(id=${sesion.id})}"><i class="bi bi-trash"></i></a>
+							<a th:href="@{/sesiones/detalles/{id}(id=${sesion.id})}"><i class="bi bi-journal-text"></i></a>
+						</td>
+					</tr>
+				</tbody>
+  			</table>
+		</div>
+		
+		<div class="modal" id="addSesion">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">Nueva Reserva</h4>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		      </div>
+		
+			<!-- Falfa comprobar que los formularios mandan bien la informaicion y como tratarla -->
+		
+		
+		      <!-- Modal body -->
+		      <div class="modal-body">
+		        <form method="POST" th:action="@{/sesiones/edicion}" th:object="${sesion}">
+		        	<input th:if="${sesion.id != 0}" type="hidden" name="id" th:field="*{id}" />
+		        	<div class="mb-3 mt-3">
+		        		<label for="fechaSesion">Fecha y hora de sesion</label>
+						<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" >
+		        	</div>
+		        	<div class="mb-3 mt-3">
+		        		<label for="kart" class="form-label">Kart</label>
+						<select class="form-select" name="kart" id="kart" th:field="*{kart}">
+						  <option th:each="kart : ${karts}" th:text="${kart.nombre} + ' ' + ${kart.precioSesion} + '€'" th:value="${kart.id}"></option>
+						</select>
+		        	</div>
+		        	<div class="mb-3 mt-3">
+		        		<label for="participantes" class="form-label">Participantes</label>
+						<select multiple class="form-select" name="participantes" id="participantes" th:field="*{participantes}">
+						  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" th:value="${piloto.dni}"></option>
+						</select>
+		        	</div>
+		        	<div class="modal-footer">
+						<input type="submit" class="btn btn-success" value="Guardar">
+				      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				    </div>
+		        </form>
+		      </div>
+		
+		    </div>
+		  </div>
+		</div>
+		
+	</main>
 </body>
 </html>

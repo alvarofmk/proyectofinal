@@ -19,7 +19,7 @@
     <script src="../static/js/mostrarFormularioEditar.js" th:src="@{/js/mostrarFormularioEditar.js}" defer ></script>
 </head>
 <body>
-	<nav class="bg-danger navadmin p-4">
+	<nav class="bg-danger navadmin p-4 text-center">
 		<i class="bi bi-list text-white h2"></i>
 		<a href="#"><img src="../static/media/logo blanco.png" th:src="@{/media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
 		<div class="separador"></div>
@@ -27,6 +27,7 @@
 			<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
 			<li class="my-2"><a href="http://localhost:9000/karts/">Karts</a></li>
 			<li class="my-2"><a href="http://localhost:9000/pilotos/">Pilotos</a></li>
+			<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}">Log out</a></li>
 		</ul>
 	</nav>
 	<main class="mainadmin mt-0 p-5 row">

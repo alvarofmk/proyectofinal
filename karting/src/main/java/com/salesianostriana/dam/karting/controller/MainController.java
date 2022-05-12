@@ -24,6 +24,20 @@ public class MainController {
 		model.addAttribute("karts", kartservice.findAll());
 		return "index";
 	}
+	
+	@GetMapping("/login")
+	public String landingLogged(Model model) {
+		model.addAttribute("numeroPilotos", pilotoService.findAll().size());
+		model.addAttribute("karts", kartservice.findAll());
+		return "index";
+	}
+	
+	@GetMapping("/login-error")
+	public String loginFail(Model model) {
+		model.addAttribute("numeroPilotos", pilotoService.findAll().size());
+		model.addAttribute("karts", kartservice.findAll());
+		return "index";
+	}
 
 
 }
