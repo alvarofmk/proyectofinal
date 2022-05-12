@@ -1,5 +1,5 @@
-let formulario = document.getElementById("formAddModify");
+let formulario = document.getElementById("add");
 
 if(mostrar){
-	formulario.style.display = "block";
+	formulario.click();
 }

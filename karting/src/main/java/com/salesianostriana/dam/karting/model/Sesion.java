@@ -45,6 +45,6 @@ public class Sesion {
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany(mappedBy="sesion", fetch = FetchType.EAGER)
-	private List<Participacion> participantes = new ArrayList<>();
+	private List<Participacion> participantes = new ArrayList<Participacion>();
 	
 }

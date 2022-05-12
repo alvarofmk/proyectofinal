@@ -73,8 +73,10 @@
 			
 			      <!-- Modal Header -->
 			      <div class="modal-header">
-			        <h4 class="modal-title">Nuevo Piloto</h4>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			        <h4 class="modal-title" th:text="${mostrarForm}? 'Editar piloto' : 'Nuevo Piloto'"></h4>
+			        <form action="http://localhost:9000/pilotos/">
+			        	<button type="submit" class="btn-close"></button>
+			        </form>
 			      </div>
 			
 			      <!-- Modal body -->
@@ -104,7 +106,6 @@
   						<input type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}">
   						<div class="modal-footer">
 							<input type="submit" class="btn btn-success" value="Guardar">
-					      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 					    </div>
 			        </form>
 			      </div>
