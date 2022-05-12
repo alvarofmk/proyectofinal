@@ -24,6 +24,7 @@ public class KartController {
 		Kart kart = new Kart();
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("kart", kart);
+		model.addAttribute("mostrarForm", false);
 		return "karts";
 	}
 	
@@ -31,6 +32,7 @@ public class KartController {
 	public String actualizarKart(@PathVariable("id") long id,  Model model) {
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("kart", kartservice.findById(id));
+		model.addAttribute("mostrarForm", true);
 		return "karts";
 	}
 	

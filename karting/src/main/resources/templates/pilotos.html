@@ -81,7 +81,7 @@
 			
 			      <!-- Modal body -->
 			      <div class="modal-body">
-			        <form method="POST" th:action="@{/pilotos/edicion}" th:object="${piloto}" id="formAddModify">
+			        <form method="POST" th:action="@{/pilotos/edicion}" th:object="${piloto}">
 			        	<div class="form-floating mb-3 mt-3">
 						  <input type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
 						  <label for="nombrePiloto">Nombre</label>

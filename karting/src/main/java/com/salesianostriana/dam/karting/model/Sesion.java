@@ -42,6 +42,7 @@ public class Sesion {
 	@ManyToOne
 	private Kart kart;
 	
+	@Builder.Default
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany(mappedBy="sesion", fetch = FetchType.EAGER)
