@@ -74,8 +74,10 @@
 		
 		      <!-- Modal Header -->
 		      <div class="modal-header">
-		        <h4 class="modal-title">Nueva Reserva</h4>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		      	<h4 class="modal-title" th:text="${mostrarForm}? 'Editar reserva' : 'Nueva reserva'"></h4>
+		        <form action="http://localhost:9000/sesiones/">
+		        	<button type="submit" class="btn-close"></button>
+		        </form>
 		      </div>
 		
 			<!-- Falfa comprobar que los formularios mandan bien la informaicion y como tratarla -->
@@ -85,7 +87,7 @@
 		      <div class="modal-body">
 		        <form method="POST" th:action="@{/sesiones/edicion}" th:object="${sesion}">
 		        	<input th:if="${sesion.id != 0}" type="hidden" name="id" th:field="*{id}" />
-		        	<div class="mb-3 mt-3 hidden">
+		        	<div class="mb-3 mt-3 d-none">
 						<input type="datetime-local" id="fechaReserva" name="fechaReserva" th:field="*{fechaReserva}" th:value="${fechaReserva}">
 		        	</div>
 		        	<div class="mb-3 mt-3">
@@ -106,7 +108,6 @@
 		        	</div>
 		        	<div class="modal-footer">
 						<input type="submit" class="btn btn-success" value="Guardar">
-				      	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 				    </div>
 		        </form>
 		      </div>
