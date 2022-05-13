@@ -8,6 +8,6 @@ import com.salesianostriana.dam.karting.model.Kart;
 
 public interface KartRepository extends JpaRepository<Kart, Long> {
 	
-	public List<Kart> findByNombreLike (String nombre);
+	public List<Kart> findByNombre (String nombre);
 
 }

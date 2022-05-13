@@ -33,10 +33,10 @@
 	<main class="mainadmin mt-0 p-5 row">
 		<h1 class="col-xl-9 order-xl-1 w-50">Karts</h1>
 		<div class="col-xl-3 order-xl-3">
-			<form>
+			<form method="GET" th:action="@{/karts/busqueda}">
 				<div class="input-group mb-3">
-				  <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Buscar" th:value="${searchName}">
-				  <button class="btn btn-danger" type="submit" th:href="@{/karts/busqueda?{nombre}(nombre=${searchName})}">Go</button>
+				  <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Buscar">
+				  <button class="btn btn-danger" type="submit">Go</button>
 				</div>
 			</form>
 			<form>

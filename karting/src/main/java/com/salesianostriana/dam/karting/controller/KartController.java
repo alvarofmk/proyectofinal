@@ -27,7 +27,6 @@ public class KartController {
 		Kart kart = new Kart();
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("kart", kart);
-		model.addAttribute("searchName", "");
 		model.addAttribute("mostrarForm", false);
 		return "karts";
 	}
@@ -47,11 +46,10 @@ public class KartController {
 	}
 	
 	@GetMapping("/busqueda")
-	public String buscarKart(@RequestParam(name = "nombre")String nombre,  Model model) {
+	public String buscarKart(@RequestParam("nombre")String nombre,  Model model) {
 		Kart kart = new Kart();
 		model.addAttribute("karts", kartservice.buscarPorNombre(nombre));
 		model.addAttribute("kart", kart);
-		model.addAttribute("searchName", "");
 		model.addAttribute("mostrarForm", false);
 		return "karts";
 	}

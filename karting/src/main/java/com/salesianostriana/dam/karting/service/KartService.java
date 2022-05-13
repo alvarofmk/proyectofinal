@@ -29,7 +29,7 @@ public class KartService extends BaseService<Kart, Long, KartRepository> {
 	}
 	
 	public List<Kart> buscarPorNombre (String nombre){
-		return repositorio.findByNombreLike("%"+nombre+"%");
+		return repositorio.findByNombre(nombre);
 	}
 
 }
