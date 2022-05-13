@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.karting.controller;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +36,16 @@ public class SesionController {
 		model.addAttribute("listaSesiones", sesionService.findAll());
 		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("sesion", sesion);
+		model.addAttribute("mostrarForm", false);
 		return "sesiones";
 	}
 	
 	@PostMapping("/edicion")
-	public String addSesion(@ModelAttribute("nuevaSesion") Sesion nuevaSesion,  Model model) {
-		sesionService.save(nuevaSesion);
+	public String addSesion(@ModelAttribute("sesion") Sesion sesion,  Model model) {
+		if(sesion.getFechaReserva() == null) {
+			sesion.setFechaReserva(LocalDateTime.now());
+		}
+		sesionService.save(sesion);
 		return "redirect:/sesiones/";
 	}
 	
@@ -50,6 +55,7 @@ public class SesionController {
 		model.addAttribute("listaSesiones", sesionService.findAll());
 		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("sesion", sesionService.findById(id));
+		model.addAttribute("mostrarForm", true);
 		return "sesiones";
 	}
 	

@@ -33,6 +33,7 @@ public class Sesion {
 	@Id @GeneratedValue
 	private long id;
 	
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime fechaReserva;
 	
 	@DateTimeFormat(iso = ISO.DATE_TIME)
