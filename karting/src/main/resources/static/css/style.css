@@ -174,9 +174,6 @@ main{
 .logo{
     width: 100px;
 }
-footer>*{
-    width: auto !important;
-}
 @media screen AND (max-width: 1080px) {
     #banner-main{
         background-position: 0px 0px;

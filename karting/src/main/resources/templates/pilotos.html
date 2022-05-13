@@ -32,8 +32,13 @@
 	<main class="mainadmin mt-0 p-5 row">
 		<h1 class="col-xl-9 order-xl-1 w-50">Pilotos</h1>
 		<div class="col-xl-3 order-xl-3">
+			<form method="GET" th:action="@{/pilotos/busqueda}">
+				<div class="input-group">
+				  <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Buscar">
+				  <button class="btn btn-danger" type="submit">Go</button>
+				</div>
+			</form>
 			<form>
-				<input id="buscar" type="text" placeholder="Buscar" class="w-100">
 				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addPiloto" class="btn-danger mt-3 rounded-3 w-100">
 			</form>
 		</div>

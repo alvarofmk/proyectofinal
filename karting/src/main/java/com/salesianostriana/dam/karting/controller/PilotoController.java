@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.karting.model.Kart;
 import com.salesianostriana.dam.karting.model.Piloto;
@@ -46,6 +47,14 @@ public class PilotoController {
 	public String addPiloto(@ModelAttribute("nuevoPiloto") Piloto nuevoPiloto,  Model model) {
 		pilotoService.save(nuevoPiloto);
 		return "redirect:/pilotos/";
+	}
+	
+	@GetMapping("/busqueda")
+	public String buscarPiloto(@RequestParam("nombre")String nombre,  Model model) {
+		model.addAttribute("listaPilotos", pilotoService.buscarPorNombre(nombre));
+		model.addAttribute("piloto", new Piloto());
+		model.addAttribute("mostrarForm", false);
+		return "pilotos";
 	}
 
 }

@@ -29,5 +29,9 @@ public class PilotoService extends BaseService<Piloto, String, PilotoRepository>
 		*/
 		return pilotos;
 	}
+	
+	public List<Piloto> buscarPorNombre (String nombre){
+		return repositorio.findByNombre(nombre);
+	}
 
 }
