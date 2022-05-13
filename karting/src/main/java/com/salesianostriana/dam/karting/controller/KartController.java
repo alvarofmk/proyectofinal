@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.karting.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.karting.model.Kart;
 import com.salesianostriana.dam.karting.service.KartService;
@@ -24,6 +27,7 @@ public class KartController {
 		Kart kart = new Kart();
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("kart", kart);
+		model.addAttribute("searchName", "");
 		model.addAttribute("mostrarForm", false);
 		return "karts";
 	}
@@ -40,6 +44,16 @@ public class KartController {
 	public String borrarKart(@PathVariable("id") long id,  Model model) {
 		kartservice.deleteById(id);
 		return "redirect:/karts/";
+	}
+	
+	@GetMapping("/busqueda")
+	public String buscarKart(@RequestParam(name = "nombre")String nombre,  Model model) {
+		Kart kart = new Kart();
+		model.addAttribute("karts", kartservice.buscarPorNombre(nombre));
+		model.addAttribute("kart", kart);
+		model.addAttribute("searchName", "");
+		model.addAttribute("mostrarForm", false);
+		return "karts";
 	}
 	
 	@PostMapping("/edicion")
