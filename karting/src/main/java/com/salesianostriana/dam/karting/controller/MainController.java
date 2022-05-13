@@ -36,6 +36,7 @@ public class MainController {
 	public String loginFail(Model model) {
 		model.addAttribute("numeroPilotos", pilotoService.findAll().size());
 		model.addAttribute("karts", kartservice.findAll());
+		model.addAttribute("error", true);
 		return "index";
 	}
 

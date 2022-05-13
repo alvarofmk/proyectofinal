@@ -50,6 +50,8 @@ h1{
 #login input{
     border-bottom: 2px solid white !important;
     width: 100%;
+    font-family: russo;
+    outline: none;
 }
 #login input::placeholder{
     color: white;

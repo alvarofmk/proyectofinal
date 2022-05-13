@@ -86,7 +86,6 @@
 		        <form method="POST" th:action="@{/sesiones/edicion}" th:object="${sesion}">
 		        	<input th:if="${sesion.id != 0}" type="hidden" name="id" th:field="*{id}" />
 		        	<div class="mb-3 mt-3 hidden">
-		        		<label for="fechaSesion">Fecha y hora de reserva</label>
 						<input type="datetime-local" id="fechaReserva" name="fechaReserva" th:field="*{fechaReserva}" th:value="${fechaReserva}">
 		        	</div>
 		        	<div class="mb-3 mt-3">
