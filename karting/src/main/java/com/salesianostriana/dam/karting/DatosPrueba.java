@@ -42,55 +42,6 @@ public class DatosPrueba {
 	@PostConstruct
 	public void generarDatos () {
 		
-		List<Piloto> pilotosPre = List.of(Piloto.builder()
-					.dni("54219289D")
-					.nombre("Alvaro")
-					.apellidos("Franco Martínez")
-					.email("alvaro@gmail.com")
-					.imgUrl(null)
-					.fechaNacimiento(LocalDate.of(1995, 11, 14))
-					.build(),
-					
-					Piloto.builder()
-					.dni("58792129D")
-					.nombre("Pablo")
-					.apellidos("Franco Martínez")
-					.email("pablo@gmail.com")
-					.imgUrl(null)
-					.fechaNacimiento(LocalDate.of(2001, 06, 1))
-					.build(),
-					
-					Piloto.builder()
-					.dni("23542345E")
-					.nombre("Alejandro")
-					.apellidos("Gonzalez")
-					.email("ale@gmail.com")
-					.imgUrl(null)
-					.fechaNacimiento(LocalDate.of(1995, 10, 2))
-					.build(),
-					
-					Piloto.builder()
-					.dni("98237421Q")
-					.nombre("Miguel Angel")
-					.apellidos("Bailón")
-					.email("miguel@gmail.com")
-					.imgUrl(null)
-					.fechaNacimiento(LocalDate.of(1996, 7, 1))
-					.build(),
-					
-					Piloto.builder()
-					.dni("9823674A")
-					.nombre("Jose Antonio")
-					.apellidos("Espinal")
-					.email("jose@gmail.com")
-					.imgUrl(null)
-					.fechaNacimiento(LocalDate.of(1996, 8, 8))
-					.build()
-				
-				);
-		
-		pilotoService.saveAll(pilotosPre);
-		
 		Sesion carrera = Sesion.builder()
 					.fechaReserva(LocalDateTime.now().minusDays(3))
 					.fechaSesion(LocalDateTime.now().minusDays(1))
