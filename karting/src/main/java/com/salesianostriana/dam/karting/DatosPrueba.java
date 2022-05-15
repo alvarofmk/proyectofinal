@@ -42,42 +42,6 @@ public class DatosPrueba {
 	@PostConstruct
 	public void generarDatos () {
 		
-		List<Kart> kartsPre = List.of(Kart.builder()
-					.nombre("Junior")
-					.descripcion("La experiencia de karting perfecta para los mas pequeños")
-					.edadMinima(8)
-					.imgUrl("")
-					.potencia(12)
-					.centimetrosCubicos(50)
-					.velocidadMaxima(40)
-					.precioSesion(10)
-					.build(),
-				
-					Kart.builder()
-					.nombre("Senior")
-					.descripcion("Siente la potencia de un motor de dos tiempos de 150 centímetros cúbicos")
-					.edadMinima(15)
-					.imgUrl("")
-					.potencia(28)
-					.centimetrosCubicos(150)
-					.velocidadMaxima(68)
-					.precioSesion(14)
-					.build(),
-					
-					Kart.builder()
-					.nombre("Competicion")
-					.descripcion("Karts federados con los reglajes usados en el campeonato español, para los amantes de la adrenalina")
-					.edadMinima(18)
-					.imgUrl("")
-					.potencia(45)
-					.centimetrosCubicos(275)
-					.velocidadMaxima(85)
-					.precioSesion(18)
-					.build()
-				);
-		
-		kartService.saveAll(kartsPre);
-		
 		List<Piloto> pilotosPre = List.of(Piloto.builder()
 					.dni("54219289D")
 					.nombre("Alvaro")
@@ -130,7 +94,7 @@ public class DatosPrueba {
 		Sesion carrera = Sesion.builder()
 					.fechaReserva(LocalDateTime.now().minusDays(3))
 					.fechaSesion(LocalDateTime.now().minusDays(1))
-					.kart(kartService.findAll().get(2))
+					.kart(kartService.findAll().get(1))
 					.build();
 		
 		sesionService.save(carrera);
