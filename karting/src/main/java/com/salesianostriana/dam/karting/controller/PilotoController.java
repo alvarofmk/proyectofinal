@@ -50,8 +50,8 @@ public class PilotoController {
 	}
 	
 	@GetMapping("/busqueda")
-	public String buscarPiloto(@RequestParam("nombre")String nombre,  Model model) {
-		model.addAttribute("listaPilotos", pilotoService.buscarPorNombre(nombre));
+	public String buscarPiloto(@RequestParam("nombre")String busqueda,  Model model) {
+		model.addAttribute("listaPilotos", pilotoService.buscarPorNombre(busqueda, busqueda, busqueda, busqueda));
 		model.addAttribute("piloto", new Piloto());
 		model.addAttribute("mostrarForm", false);
 		return "pilotos";

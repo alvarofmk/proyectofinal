@@ -30,8 +30,8 @@ public class PilotoService extends BaseService<Piloto, String, PilotoRepository>
 		return pilotos;
 	}
 	
-	public List<Piloto> buscarPorNombre (String nombre){
-		return repositorio.findByNombre(nombre);
+	public List<Piloto> buscarPorNombre (String nombre, String apellidos, String email, String dni){
+		return repositorio.findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCaseOrEmailContainsIgnoreCaseOrDniIgnoreCase(nombre, apellidos, email, dni);
 	}
 
 }
