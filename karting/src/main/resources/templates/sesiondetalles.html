@@ -17,7 +17,7 @@
 <body>
 	<nav class="bg-danger navadmin p-4 text-center">
 		<i class="bi bi-list text-white h2"></i>
-		<a href="#"><img src="../static/media/logo blanco.png" th:src="@{media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
+		<a href="#"><img src="../static/media/logo blanco.png" th:src="@{/media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
 		<div class="separador"></div>
 		<ul class="px-1">
 			<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
@@ -26,7 +26,7 @@
 			<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}">Log out</a></li>
 		</ul>
 	</nav>
-	<main class="details mt-0 p-5 w-100 mainadmin">
+	<main class="details mt-0 p-5 mainadmin">
 		<h1>Sesion</h1>
 		<div class="w-100 row bg-secondary text-white p-2">
 			<div class="col-xl-3">
@@ -58,8 +58,8 @@
 					</thead>
 					<tbody>
 						<tr th:each="participacion : ${sesion.participantes}">
-							<td th:text="${registro.key.dni}"></td>
-							<td th:text="${registro.key.nombre + ' ' + registro.key.apellidos}"></td>
+							<td th:text="${participacion.piloto.dni}"></td>
+							<td th:text="${participacion.piloto.nombre + ' ' + participacion.piloto.apellidos}"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -75,11 +75,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="registro, iter : ${sesion.registroVueltas}">
+						<!-- Modal body 
+						<tr th:each="participante, iter : ${sesion.participantes}">
 							<td th:text="${iter.index + 1}"></td>
 							<td th:text="${registro.key.nombre + ' ' + registro.key.apellidos}"></td>
 							<td th:text="${registro.value[0]}"></td>
 						</tr>
+						-->
 					</tbody>
 				</table>
 			</div>
@@ -88,7 +90,7 @@
 				<div class="d-flex flex-row">
 					<label for="pilotoVueltas" class="form-label m-2">Piloto</label>
 					<select class="form-select" name="pilotoVueltas" id="pilotoVueltas">
-					  <option th:each="registro : ${sesion.registroVueltas}" th:text="${registro.key.nombre + ' ' + registro.key.apellidos}" th:value="${registro.key.dni}"></option>
+					  <option th:each="participacion : ${sesion.participantes}" th:text="${participacion.piloto.nombre + ' ' + participacion.piloto.apellidos}" th:value="${participacion.piloto.dni}"></option>
 					</select>
 				</div>
 				<table class="table" id="tablaVueltas">
@@ -98,10 +100,10 @@
 							<th>Tiempo vuelta</th>
 						</tr>
 					</thead>
-					<tbody th:each="registro : ${sesion.registroVueltas}" th:id="${registro.key.dni}">
-						<tr th:each="vuelta, iter : ${registro.value}">
-							<td th:text="${iter.index + 1}"></td>
-							<td th:text="${vuelta.seconds / 60} + ':' + ${vuelta.seconds - (60 * (vuelta.seconds/60))} + '.' + ${#numbers.formatInteger(vuelta.nano/1000000,3)}"></td>
+					<tbody th:each="participacion : ${sesion.participantes}" th:id="${participacion.piloto.dni}">
+						<tr th:each="vuelta : ${participacion.registroVueltas}">
+							<td th:text="${vuelta.numeroVuelta}"></td>
+							<td th:text="${vuelta.tiempo.seconds/60} + ':' + ${vuelta.tiempo.seconds - (60*(vuelta.tiempo.seconds/60))} + '.' +${vuelta.tiempo.nano / 1000000}"></td>
 						</tr>
 					</tbody>
 				</table>

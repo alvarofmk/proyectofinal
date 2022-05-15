@@ -132,6 +132,9 @@ main{
     margin: 10px auto 10px auto;
     transform: skewX(-20deg);
 }
+nav .separador{
+	width: 80%;
+}
 .precios{
     font-size: 1.4em;
     justify-content: center;

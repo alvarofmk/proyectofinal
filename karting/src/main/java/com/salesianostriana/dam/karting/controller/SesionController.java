@@ -68,7 +68,6 @@ public class SesionController {
 	@GetMapping("/detalles/{id}")
 	public String detallesSesionAdmin(@PathVariable("id") Long id, Model model) {
 		Sesion sesion = sesionService.findById(id);
-		
 		model.addAttribute("sesion", sesion);
 		return "sesiondetalles";
 	}
