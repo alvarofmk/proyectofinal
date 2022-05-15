@@ -42,14 +42,6 @@ public class DatosPrueba {
 	@PostConstruct
 	public void generarDatos () {
 		
-		Sesion carrera = Sesion.builder()
-					.fechaReserva(LocalDateTime.now().minusDays(3))
-					.fechaSesion(LocalDateTime.now().minusDays(1))
-					.kart(kartService.findAll().get(1))
-					.build();
-		
-		sesionService.save(carrera);
-		
 		/*	Algo debe fallar en addParticipacion() o dentro con VueltaPK
 		 
 		for (Piloto piloto : pilotosPre) {

@@ -7,3 +7,10 @@ INSERT INTO PILOTO (dni, nombre, apellidos, email, fecha_nacimiento) VALUES ('58
 INSERT INTO PILOTO (dni, nombre, apellidos, email, fecha_nacimiento) VALUES ('12323674A','Jose Antonio','Espinal','jose@gmail.com','1996-08-12');
 INSERT INTO PILOTO (dni, nombre, apellidos, email, fecha_nacimiento) VALUES ('98237421Q','Miguel Angel','Bailón','miguel@gmail.com','1996-04-22');
 INSERT INTO PILOTO (dni, nombre, apellidos, email, fecha_nacimiento) VALUES ('23542345E','Alejandro','Gonzalez','ale@gmail.com','1995-09-12');
+
+INSERT INTO SESION (id, fecha_reserva, fecha_sesion, precio, kart_id) VALUES (NEXTVAL('hibernate_sequence'), '2022-04-27T10:38:54', '2022-05-02T12:30:00', 40, 2);
+
+INSERT INTO PARTICIPACION (sesion_id, piloto_dni, precio) VALUES (4, '54219289D', (SELECT precio_sesion FROM kart WHERE id=(SELECT kart_id FROM sesion WHERE id=4)));
+INSERT INTO PARTICIPACION (sesion_id, piloto_dni, precio) VALUES (4, '12323674A', (SELECT precio_sesion FROM kart WHERE id=(SELECT kart_id FROM sesion WHERE id=4)));
+INSERT INTO PARTICIPACION (sesion_id, piloto_dni, precio) VALUES (4, '98237421Q', (SELECT precio_sesion FROM kart WHERE id=(SELECT kart_id FROM sesion WHERE id=4)));
+INSERT INTO PARTICIPACION (sesion_id, piloto_dni, precio) VALUES (4, '23542345E', (SELECT precio_sesion FROM kart WHERE id=(SELECT kart_id FROM sesion WHERE id=4)));
