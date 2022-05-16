@@ -60,7 +60,7 @@ function comprobarImg(){
 }
 function comprobarEdad(){
 	let edad = formKarts.EdadMinima;
-	let correcto = edad.value!="" &&  !isNaN(edad.value) && edad.value > 6;
+	let correcto = edad.value!="" &&  !isNaN(edad.value) && edad.value >= 6;
 	
 	if(correcto){
 		edad.nextElementSibling.hidden = true;

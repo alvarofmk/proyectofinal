@@ -1,6 +1,7 @@
 let selectorPiloto = document.getElementById("pilotoVueltas");
 
 selectorPiloto.addEventListener('change',showLaps);
+document.addEventListener("DOMContentLoaded", showLaps);
 
 function showLaps(evento){
 	let tablasVueltas = document.querySelectorAll("#tablaVueltas tbody");
@@ -13,3 +14,5 @@ function showLaps(evento){
 		}
 	}
 }
+
+showLaps();

@@ -18,6 +18,7 @@
     	let fsesion =  /*[[${sesion.fechaSesion}]]*/ null;
     </script>
     <script src="../static/js/mostrarFormularioEditar.js" th:src="@{/js/mostrarFormularioEditar.js}" defer ></script>
+    <script src="../static/js/validacionSesion.js" th:src="@{/js/validacionSesion.js}" defer ></script>
 </head>
 <body>
 	<nav class="bg-danger navadmin p-4 text-center">
@@ -35,7 +36,6 @@
 		<h1 class="col-xl-9 order-xl-1 w-50">Sesiones</h1>
 		<div class="col-xl-3 order-xl-3">
 			<form>
-				<input id="buscar" type="text" placeholder="Buscar" class="w-100">
 				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addSesion" class="btn-danger mt-3 rounded-3 w-100">
 			</form>
 		</div>
@@ -87,7 +87,7 @@
 		
 		      <!-- Modal body -->
 		      <div class="modal-body">
-		        <form method="POST" th:action="@{/sesiones/edicion}" th:object="${sesion}">
+		        <form method="POST" th:action="@{/sesiones/edicion}" th:object="${sesion}" onsubmit="return validarFormulario();" id="formSesiones">
 		        	<input th:if="${sesion.id != 0}" type="hidden" name="id" th:field="*{id}" />
 		        	<div class="mb-3 mt-3 d-none">
 						<input type="datetime-local" id="fechaReserva" name="fechaReserva" th:field="*{fechaReserva}" th:value="${sesion.fechaReserva}">
@@ -96,16 +96,17 @@
 		        		<p th:text="${fechaSesion}"></p>
 		        		<label for="fechaSesion">Fecha y hora de sesion</label>
 						<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" th:value="${sesion.fechaSesion}">
+						<p class="errorForm my-1">La fecha de la sesión no puede ser pasada.</p>
 		        	</div>
 		        	<div class="mb-3 mt-3">
 		        		<label for="kart" class="form-label">Kart</label>
-						<select class="form-select" name="kart" id="kart" th:field="*{kart}">
+						<select required class="form-select" name="kart" id="kart" th:field="*{kart}">
 						  <option th:each="kart : ${karts}" th:text="${kart.nombre} + ' ' + ${kart.precioSesion} + '€'" th:value="${kart.id}"></option>
 						</select>
 		        	</div>
 		        	<div class="mb-3 mt-3">
 		        		<label for="participantes" class="form-label">Participantes</label>
-						<select multiple class="form-select" name="participantes" id="participantes" th:field="*{participantes}">
+						<select required multiple class="form-select" name="participantes" id="participantes" th:field="*{participantes}">
 						  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" th:value="${piloto.dni}"></option>
 						</select>
 		        	</div>
