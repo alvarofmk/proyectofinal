@@ -70,8 +70,27 @@
 						<td th:text="${kart.precioSesion} + ' €'"></td>
 						<td>
 							<a th:href="@{/karts/update/{id}(id=${kart.id})}"><i class="bi bi-pencil-square"></i></a>
-							<a th:href="@{/karts/remove/{id}(id=${kart.id})}"><i class="bi bi-trash"></i></a>
+							<a href="#" data-bs-toggle="modal" th:attr="data-bs-target='#removeKart'+ '-' + ${kart.id}"><i class="bi bi-trash"></i></a>
 						</td>
+						
+						<div class="modal text-white" th:id="removeKart + '-' + ${kart.id}">
+					      <div class="modal-dialog remove">
+					        <div class="modal-content">
+
+					          <div class="modal-header bg-danger border-0">
+					            <h4 class="modal-title mx-auto">¿Estas seguro?</h4>
+					            <button type="button" class="btn-close mx-0" data-bs-dismiss="modal"></button>
+					          </div>
+					
+					          <!-- Modal body -->
+					          <div class="modal-body bg-danger">
+					            <a class="btn bg-white mx-auto w-100" th:href="@{/karts/remove/{id}(id=${kart.id})}">Borrar</a>
+					          </div>
+					
+					        </div>
+					      </div>
+					    </div>
+						
 					</tr>
 				</tbody>
   			</table>
