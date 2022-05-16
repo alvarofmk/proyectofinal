@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @IdClass(VueltaPK.class)
-public class Vuelta {
+public class Vuelta implements Comparable<Vuelta>{
 	
 	@Id
 	@ManyToOne
@@ -30,5 +30,10 @@ public class Vuelta {
 	private int numeroVuelta;
 	
 	private Duration tiempo;
+
+	@Override
+	public int compareTo(Vuelta o) {
+		return tiempo.compareTo(o.getTiempo());
+	}
 
 }

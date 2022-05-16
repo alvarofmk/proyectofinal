@@ -20,6 +20,33 @@ INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vu
 INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '54219289D', 3, 72312000000);
 INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '54219289D', 4, 72312000000);
 INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '54219289D', 5, 72312000000);
-INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '54219289D', 6, 72312000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '54219289D', 6, 72302000000);
 INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '54219289D', 7, 72312000000);
 INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '54219289D', 8, 72312000000);
+
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 1, 72412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 2, 72412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 3, 72412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 4, 72412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 5, 72412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 6, 72412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 7, 72404000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '12323674A', 8, 72412000000);
+
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 1, 73412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 2, 73412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 3, 73412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 4, 73412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 5, 73412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 6, 73412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 7, 73312000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '98237421Q', 8, 73212000000);
+
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 1, 74372000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 2, 71412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 3, 74412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 4, 74412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 5, 74412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 6, 74412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 7, 74412000000);
+INSERT INTO VUELTA (participacion_sesion_id, participacion_piloto_dni, numero_vuelta, tiempo) VALUES (4, '23542345E', 8, 74812000000);

@@ -1,22 +1,37 @@
 package com.salesianostriana.dam.karting.controller;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.comparator.Comparators;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianostriana.dam.karting.model.Participacion;
 import com.salesianostriana.dam.karting.model.Piloto;
 import com.salesianostriana.dam.karting.model.Sesion;
+import com.salesianostriana.dam.karting.model.Vuelta;
 import com.salesianostriana.dam.karting.service.KartService;
 import com.salesianostriana.dam.karting.service.PilotoService;
 import com.salesianostriana.dam.karting.service.SesionService;
+
+import lombok.val;
 
 @Controller
 @RequestMapping("/sesiones")
@@ -69,6 +84,18 @@ public class SesionController {
 	public String detallesSesionAdmin(@PathVariable("id") Long id, Model model) {
 		Sesion sesion = sesionService.findById(id);
 		model.addAttribute("sesion", sesion);
+		
+		Map<Piloto, Vuelta> mejorVuelta = new HashMap<Piloto, Vuelta>();
+		
+		for (Participacion p : sesion.getParticipantes()) {
+			;
+			mejorVuelta.put(p.getPiloto(), p.getRegistroVueltas().stream().min(Comparator.naturalOrder()).get());
+		}
+		
+		LinkedHashMap<Piloto, Vuelta> resultados = new LinkedHashMap<>();
+		mejorVuelta.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(e -> resultados.put(e.getKey(), e.getValue()));
+		
+		model.addAttribute("resultados", resultados);
 		return "sesiondetalles";
 	}
 
