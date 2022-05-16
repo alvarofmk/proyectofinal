@@ -16,6 +16,7 @@
     	let mostrar =  /*[[${mostrarForm}]]*/ false;
     </script>
     <script src="../static/js/mostrarFormularioEditar.js" th:src="@{/js/mostrarFormularioEditar.js}" defer ></script>
+    <script src="../static/js/validacionPilotos.js" th:src="@{/js/validacionPilotos.js}" defer ></script>
 </head>
 <body>
 	<nav class="bg-danger navadmin p-4 text-center">
@@ -87,7 +88,7 @@
 		
 		      <!-- Modal body -->
 		      <div class="modal-body">
-		        <form method="POST" th:action="@{/pilotos/edicion}" th:object="${piloto}">
+		        <form method="POST" th:action="@{/pilotos/edicion}" th:object="${piloto}" onsubmit="return validarFormulario();" id="formPilotos">
 		        	<div class="form-floating mb-3 mt-3">
 					  <input type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
 					  <label for="nombrePiloto">Nombre</label>
