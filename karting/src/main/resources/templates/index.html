@@ -20,8 +20,8 @@
     <a class="navbar-brand bg-danger" href="#"><img th:src="@{media/logo gris.png}" src="../static/media/logo gris.png" alt="Phoenix Karting"></a>
     <nav class="navbar navbar-expand bg-danger navbar-dark text-dark">
         <div class="container-fluid justify-content-end">
-          <ul class="navbar-nav">
-          	<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+          <ul class="navbar-nav w-100">
+          	<li id="btnadmin" class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
               <a class="nav-link btn btn-dark text-danger mx-1" href="http://localhost:9000/sesiones/" role="button">Administración</a>
             </li>
             <li class="nav-item" sec:authorize="!isAuthenticated()">
@@ -105,7 +105,8 @@
           <div id="karts-pc" class="d-flex flex-row px-4">
           
             <div class="card mx-2 border border-white border-1" th:each="kart : ${karts}">
-              <img class="card-img-top" th:src="@{media/kart2.jpg}" src="../static/media/kart2.jpg" alt="Card image">
+              <img class="card-img-top" th:src="${not (#strings.isEmpty(kart.imgUrl))} 
+								              ? ${kart.imgUrl} : 'https://cdn3.iconfinder.com/data/icons/vehicle-22/50/Kart-512.png'" alt="Kart">
               <div class="card-body">
                 <h4 class="card-title" th:text="${kart.nombre}"></h4>
                 <p class="card-text" th:text="${kart.descripcion}"></p>
@@ -129,7 +130,8 @@
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
               <div class="carousel-item card border border-white border-1 w-100" th:each="kart, iter : ${karts}" th:classappend ="${iter.index==0} ? active">
-                <img class="card-img-top" th:src="@{media/kart2.jpg}" src="../static/media/kart2.jpg" alt="Card image">
+                <img class="card-img-top" th:src="${not (#strings.isEmpty(kart.imgUrl))} 
+								              ? ${kart.imgUrl} : 'https://cdn3.iconfinder.com/data/icons/vehicle-22/50/Kart-512.png'" alt="Kart">
 	            <div class="card-body">
 	              <h4 class="card-title" th:text="${kart.nombre}"></h4>
 	              <p class="card-text" th:text="${kart.descripcion}"></p>
@@ -156,23 +158,97 @@
             </button>
           </div>
         </div>
-
-        <div id="grupo" class="bg-white row">
-        </div>
     </main>
-    <footer class="row bg-dark text-white py-4 px-5">
-      <div class="col-lg-4">
-      	<img class="w-25 mx-auto" src="../static/media/logo rojo.png" th:src="@{media/logo rojo.png}" alt="Phoenix karting">
-      </div>
-      <div class="col-lg-4">
-        <ul class="mx-auto w-auto">
-          <li>Nuestro circuito</li>
-          <li>Tarifas individuales</li>
-          <li>Tarifas de grupo</li>
-          <li>Mi cuenta</li>
-          <li>Contacto</li>
-        </ul>
-      </div>
-    </footer>
+    <div class="w-100 mx-0 footercontainer">
+
+	    <footer class="text-white text-center text-lg-start bg-dark">
+
+	    <div class="container p-4">
+	      
+	      <div class="row mt-4">
+	        <!--Grid column-->
+	        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+	          <h5 class="text-uppercase mb-4">Phoenix Karting</h5>
+	  
+	          <p>
+	            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+	            voluptatum deleniti atque corrupti.
+	          </p>
+	  
+	          <p>
+	            Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
+	            molestias.
+	          </p>
+	  
+	          <div class="mt-4">
+	            <!-- Facebook -->
+	            <a type="button" class="btn btn-floating btn-primary btn-lg"><i class="fab fa-facebook-f"></i></a>
+	            <!-- Dribbble -->
+	            <a type="button" class="btn btn-floating btn-primary btn-lg"><i class="fab fa-dribbble"></i></a>
+	            <!-- Twitter -->
+	            <a type="button" class="btn btn-floating btn-primary btn-lg"><i class="fab fa-twitter"></i></a>
+	            <!-- Google + -->
+	            <a type="button" class="btn btn-floating btn-primary btn-lg"><i class="fab fa-google-plus-g"></i></a>
+	            <!-- Linkedin -->
+	          </div>
+	        </div>
+	        <!--Grid column-->
+	  
+	        <!--Grid column-->
+	        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+	          <h5 class="text-uppercase mb-4 pb-1">Search something</h5>
+	  
+	          <ul class="fa-ul" style="margin-left: 1.65em;">
+	            <li class="mb-3">
+	              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">New York, NY 10012, US</span>
+	            </li>
+	            <li class="mb-3">
+	              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">info@example.com</span>
+	            </li>
+	            <li class="mb-3">
+	              <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 01 234 567 88</span>
+	            </li>
+	            <li class="mb-3">
+	              <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+ 01 234 567 89</span>
+	            </li>
+	          </ul>
+	        </div>
+	        <!--Grid column-->
+	  
+	        <!--Grid column-->
+	        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+	          <h5 class="text-uppercase mb-4">Horarios</h5>
+	  
+	          <table class="table text-center text-white">
+	            <tbody class="font-weight-normal">
+	              <tr>
+	                <td>Mon - Thu:</td>
+	                <td>8am - 9pm</td>
+	              </tr>
+	              <tr>
+	                <td>Fri - Sat:</td>
+	                <td>8am - 1am</td>
+	              </tr>
+	              <tr>
+	                <td>Sunday:</td>
+	                <td>9am - 10pm</td>
+	              </tr>
+	            </tbody>
+	          </table>
+	        </div>
+	        <!--Grid column-->
+	      </div>
+	      <!--Grid row-->
+	    </div>
+	    <!-- Grid container -->
+	  
+	    <!-- Copyright -->
+	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+	      <p>© 2021 Copyright: Álvaro Franco</p>
+	    </div>
+	    <!-- Copyright -->
+	  </footer>
+	  
+	</div>
 </body>
 </html>

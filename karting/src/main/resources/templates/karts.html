@@ -59,7 +59,8 @@
 				</thead>
 				<tbody>
 					<tr th:each="kart : ${karts}">
-						<td><img src="../static/media/kart2.jpg" th:src="@{/media/kart2.jpg}" class="h-100"></td>
+						<td><img th:src="${not (#strings.isEmpty(kart.imgUrl))} 
+								              ? ${kart.imgUrl} : 'https://cdn3.iconfinder.com/data/icons/vehicle-22/50/Kart-512.png'" class="h-100"></td>
 						<td th:text="${kart.id}"></td>
 						<td th:text="${kart.nombre}"></td>
 						<td th:text="${kart.centimetrosCubicos} + ' cc'"></td>

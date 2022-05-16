@@ -57,7 +57,8 @@
 				</thead>
 				<tbody>
 					<tr th:each="piloto : ${listaPilotos}">
-						<td><img src="https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png" th:src="@{https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png}" class="h-100"></td>
+						<td><img th:src="${not (#strings.isEmpty(piloto.imgUrl))} 
+								              ? ${piloto.imgUrl} : 'https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png'" class="h-100"></td>
 						<td th:text="${piloto.dni}"></td>
 						<td th:text="${piloto.nombre}"></td>
 						<td th:text="${piloto.apellidos}"></td>

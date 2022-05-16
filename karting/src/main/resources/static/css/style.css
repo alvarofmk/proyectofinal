@@ -147,21 +147,12 @@ nav .separador{
 .precio{
     font-family: russo;
 }
-#grupo{
-    width: 150%;
-    margin-left: -25%;
-    padding-left: 25%;
-    padding-right: 25%;
-    padding-top: 3%;
-    z-index: 50;
-    position:relative;
-    margin-top: -2.5%;
+main{
+	z-index: 5;
 }
-#grupo>div:first-child{
-    background-image: url(../media/bg-grupo.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 400px;
+.footercontainer{
+	z-index: 10;
+	margin-top: -2%;
 }
 .dropdown-menu{
     margin-left: -150%;
@@ -182,7 +173,7 @@ nav .separador{
         background-position: 0px 0px;
     }
     #img-circuito img{
-        width: 500px;
+        width: 460px;
         margin-left: -10%;
     }
     .h3{
@@ -232,6 +223,9 @@ nav .separador{
 	}
 	.mainadmin{
 		margin-left: 2% !important;
+	}
+	#btnadmin{
+		margin-right: auto;
 	}
 }
 @media screen AND (min-width: 1080px) {
