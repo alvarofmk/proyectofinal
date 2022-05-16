@@ -62,9 +62,27 @@
 						<td th:text="${sesion.precio} + ' €'"></td>
 						<td>
 							<a th:href="@{/sesiones/update/{id}(id=${sesion.id})}"><i class="bi bi-pencil-square"></i></a>
-							<a th:href="@{/sesiones/remove/{id}(id=${sesion.id})}"><i class="bi bi-trash"></i></a>
+							<a href="#" data-bs-toggle="modal" th:attr="data-bs-target='#removeSesion'+ '-' + ${sesion.id}"><i class="bi bi-trash"></i></a>
 							<a th:href="@{/sesiones/detalles/{id}(id=${sesion.id})}"><i class="bi bi-journal-text"></i></a>
 						</td>
+						
+						<div class="modal text-white" th:id="removeSesion + '-' + ${sesion.id}">
+					      <div class="modal-dialog remove">
+					        <div class="modal-content">
+
+					          <div class="modal-header bg-danger border-0">
+					            <h4 class="modal-title mx-auto">¿Estas seguro?</h4>
+					            <button type="button" class="btn-close mx-0" data-bs-dismiss="modal"></button>
+					          </div>
+					
+					          <!-- Modal body -->
+					          <div class="modal-body bg-danger">
+					            <a class="btn bg-white mx-auto w-100" th:href="@{/sesiones/remove/{id}(id=${sesion.id})}">Borrar</a>
+					          </div>
+					
+					        </div>
+					      </div>
+					    </div>
 					</tr>
 				</tbody>
   			</table>
