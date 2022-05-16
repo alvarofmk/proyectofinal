@@ -17,6 +17,7 @@
     	let mostrar =  /*[[${mostrarForm}]]*/ false;
     </script>
     <script src="../static/js/mostrarFormularioEditar.js" th:src="@{/js/mostrarFormularioEditar.js}" defer ></script>
+    <script src="../static/js/validacionKarts.js" th:src="@{/js/validacionKarts.js}" defer ></script>
 </head>
 <body>
 	<nav class="bg-danger navadmin p-4 text-center">
@@ -90,18 +91,21 @@
 		
 		      <!-- Modal body -->
 		      <div class="modal-body">
-		        <form method="POST" th:action="@{/karts/edicion}" th:object="${kart}">
+		        <form method="POST" th:action="@{/karts/edicion}" th:object="${kart}" onsubmit="return validarFormulario();" id="formKarts">
 		        	<input th:if="${kart.id != 0}" type="hidden" name="id" th:field="*{id}" />
 		        	<div class="form-floating mb-3 mt-3">
-					  <input type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
+					  <input required type="text" class="form-control" id="nombreKart" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
+					  <p class="errorForm my-1">El nombre no puede estar vacío.</p>
 					  <label for="nombreKart">Nombre</label>
 					</div>
 					<div class="form-floating">
-					  <textarea class="form-control" id="descripcionKart" name="Descripcion" placeholder="Introduzca la descripcion para la página web" th:field="*{descripcion}"></textarea>
+					  <textarea required class="form-control" id="descripcionKart" name="Descripcion" placeholder="Introduzca la descripcion para la página web" th:field="*{descripcion}"></textarea>
+					  <p class="errorForm my-1">La descripción debe ser de al menos 25 carácteres.</p>
 					  <label for="descripcionKart">Descripcion</label>
 					</div>
 					<div class="form-floating mb-3 mt-3">
-					  <input type="text" class="form-control" id="imgKart" placeholder="Pege la url de la imagen" name="Imagen" th:field="*{imgUrl}">
+					  <input required type="text" class="form-control" id="imgKart" placeholder="Pege la url de la imagen" name="Imagen" th:field="*{imgUrl}">
+					  <p class="errorForm my-1">La dirección de la imagen no puede estar vacía.</p>
 					  <label for="imgKart">Imagen (URL)</label>
 					</div>
 					<div class="row">
@@ -118,13 +122,16 @@
 						  <span class="input-group-text">km/h</span>
 						</div>
 					</div>
+					<p id="mensajeSpecs" class="errorForm my-1">Las especificaciones deben ser positivas.</p>
 					<div class="row">
 						<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-						  <input type="text" class="form-control" id="EdadMinima" placeholder="Edad minima" name="Edad minima" th:field="*{edadMinima}">
+						  <input required type="text" class="form-control" id="EdadMinima" placeholder="Edad minima" name="Edad minima" th:field="*{edadMinima}">
+						  <p class="errorForm my-1">La edad mínima debe ser de al menos 6 años.</p>
 						  <label for="EdadMinima">Edad minima</label>
 						</div>
 						<div class="form-floating mb-3 mt-3 col-* w-50 mx-auto">
-						  <input type="text" class="form-control" id="PrecioSesion" placeholder="Precio" name="Precio" th:field="*{precioSesion}">
+						  <input required type="text" class="form-control" id="PrecioSesion" placeholder="Precio" name="Precio" th:field="*{precioSesion}">
+						  <p class="errorForm my-1">El precio debe ser superior a 0.</p>
 						  <label for="PrecioSesion">Precio</label>
 						</div>
 					</div>
