@@ -180,6 +180,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.remove{
+	width: 300px !important;
+}
+.remove .modal-body a{
+	font-family: russo;
+}
 @media screen AND (max-width: 1080px) {
     #banner-main{
         background-position: 0px 0px;
