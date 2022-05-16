@@ -168,6 +168,10 @@ main{
 .logo{
     width: 100px;
 }
+.errorForm{
+	color:red;
+	font-size: 0.8em;
+}
 @media screen AND (max-width: 1080px) {
     #banner-main{
         background-position: 0px 0px;

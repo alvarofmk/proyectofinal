@@ -90,15 +90,18 @@
 		      <div class="modal-body">
 		        <form method="POST" th:action="@{/pilotos/edicion}" th:object="${piloto}" onsubmit="return validarFormulario();" id="formPilotos">
 		        	<div class="form-floating mb-3 mt-3">
-					  <input type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
+					  <input required type="text" class="form-control" id="nombrePiloto" placeholder="Introduzca el nombre" name="Nombre" th:field="*{nombre}">
+					  <p class="errorForm my-1">El nombre no puede estar vacío.</p>
 					  <label for="nombrePiloto">Nombre</label>
 					</div>
 					<div class="form-floating mb-3 mt-3">
-					  <input type="text" class="form-control" id="apellidosPiloto" placeholder="Introduzca los apellidos" name="Apellidos" th:field="*{apellidos}">
+					  <input required type="text" class="form-control" id="apellidosPiloto" placeholder="Introduzca los apellidos" name="Apellidos" th:field="*{apellidos}">
+					  <p class="errorForm my-1">Los apellidos no pueden estar vacíos.</p>
 					  <label for="apellidosPiloto">Apellidos</label>
 					</div>
 					<div class="form-floating mb-3 mt-3">
-					  <input type="text" class="form-control" id="dniPiloto" placeholder="Introduzca el dni" name="dni" th:field="*{dni}">
+					  <input required type="text" class="form-control" id="dniPiloto" placeholder="Introduzca el dni" name="dni" th:field="*{dni}" minlength="9" maxlength="9">
+					  <p class="errorForm my-1">El DNI no es válido.</p>
 					  <label for="dniPiloto">DNI</label>
 					</div>
 					<div class="form-floating mb-3 mt-3">
@@ -106,11 +109,13 @@
 					  <label for="imgPiloto">Imagen (URL)</label>
 					</div>
 					<div class="form-floating mb-3 mt-3">
-					  <input type="email" class="form-control" id="emailPiloto" placeholder="Introduzca el email" name="Email" th:field="*{email}">
+					  <input required type="email" class="form-control" id="emailPiloto" placeholder="Introduzca el email" name="Email" th:field="*{email}">
+					  <p class="errorForm my-1">El email no puede estar vacío.</p>
 					  <label for="emailPiloto">Email</label>
 					</div>
 					<label for="fechaNacimiento">Fecha de nacimiento</label>
-					<input type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}">
+					<input required type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}">
+					<p class="errorForm my-1">El piloto debe tener al menos 6 años.</p>
 					<div class="modal-footer">
 						<input type="submit" class="btn btn-success" value="Guardar">
 				    </div>
