@@ -15,6 +15,7 @@
     	let mostrar =  /*[[${error}]]*/ false;
     </script>
     <script src="../static/js/mostrarLoginIncorrecto.js" th:src="@{/js/mostrarLoginIncorrecto.js}" defer ></script>
+    <script src="../static/js/validacionSesion.js" th:src="@{/js/validacionSesion.js}" defer ></script>
 </head>
 <body>
     <a class="navbar-brand bg-danger" href="#"><img th:src="@{media/logo gris.png}" src="../static/media/logo gris.png" alt="Phoenix Karting"></a>
@@ -50,7 +51,7 @@
             <form method="POST" th:action="@{/login}" class="px-5">
               <input id="username" name="username" type="text" placeholder="Usuario" class="bg-danger my-2 border-0 text-white text-center">
               <input name="password" id="password" type="password" placeholder="Contraseña" class="bg-danger my-2 border-0 text-white text-center">
-              <input type="submit" class="btn bg-white my-2"></input>
+              <input type="submit" class="btn bg-white my-2" value="Entrar"></input>
             </form>
             <p class="text-center my-1" th:if="${error}">Usuario / contraseña incorrectos</p>
           </div>
@@ -100,9 +101,9 @@
           </div>
         </div>
         
-        <div id="karts" class="bg-danger mt-5 text-white">
-          <h2 class="h2">Tarifas individuales</h2>
-          <div id="karts-pc" class="d-flex flex-row px-4">
+        <div id="karts" class="bg-danger mt-5 text-white pt-4">
+          <h2 class="h2 text-center">Tarifas individuales</h2>
+          <div id="karts-pc" class="d-flex flex-row px-2 justify-content-center">
           
             <div class="card mx-2 border border-white border-1" th:each="kart : ${karts}">
               <img class="card-img-top" th:src="${not (#strings.isEmpty(kart.imgUrl))} 
@@ -119,7 +120,7 @@
                 <div class="precios w-100 mt-2 text-white d-flex flex-row">
                   <p>1 TANDA</p><p class="precio" th:text="${kart.precioSesion + ' €'}"></p>
                 </div>
-                <a href="#" class="btn btn-outline-light w-100" sec:authorize="isAuthenticated()">Reservar</a>
+                <a data-bs-toggle="modal" data-bs-target="#addSesion" class="btn btn-outline-light w-100" sec:authorize="isAuthenticated()">Reservar</a>
               </div>
             </div>
             
@@ -144,7 +145,7 @@
 	              <div class="precios w-100 mt-2 text-white d-flex flex-row">
 	                <p>1 TANDA</p><p class="precio" th:text="${kart.precioSesion + ' €'}"></p>
 	              </div>
-	              <a href="#" class="btn btn-outline-light w-100" sec:authorize="isAuthenticated()">Reservar</a>
+	              <a data-bs-toggle="modal" data-bs-target="#addSesion" class="btn btn-outline-light w-100" sec:authorize="isAuthenticated()">Reservar</a>
 	            </div>
               </div>
             </div>
@@ -167,7 +168,7 @@
 	      
 	      <div class="row mt-4">
 	        <!--Grid column-->
-	        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+	        <div class="col-lg-4 col-md-12 mb-4 mb-md-0 text-center">
 	          <h5 class="text-uppercase mb-4">Phoenix Karting</h5>
 	  
 	          <p>
@@ -195,10 +196,10 @@
 	        <!--Grid column-->
 	  
 	        <!--Grid column-->
-	        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+	        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
 	          <h5 class="text-uppercase mb-4 pb-1">Search something</h5>
 	  
-	          <ul class="fa-ul" style="margin-left: 1.65em;">
+	          <ul class="fa-ul list-unstyled">
 	            <li class="mb-3">
 	              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">New York, NY 10012, US</span>
 	            </li>
@@ -216,10 +217,10 @@
 	        <!--Grid column-->
 	  
 	        <!--Grid column-->
-	        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+	        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
 	          <h5 class="text-uppercase mb-4">Horarios</h5>
 	  
-	          <table class="table text-center text-white">
+	          <table class="table text-white">
 	            <tbody class="font-weight-normal">
 	              <tr>
 	                <td>Mon - Thu:</td>
@@ -228,10 +229,6 @@
 	              <tr>
 	                <td>Fri - Sat:</td>
 	                <td>8am - 1am</td>
-	              </tr>
-	              <tr>
-	                <td>Sunday:</td>
-	                <td>9am - 10pm</td>
 	              </tr>
 	            </tbody>
 	          </table>
@@ -249,6 +246,44 @@
 	    <!-- Copyright -->
 	  </footer>
 	  
+	</div>
+	
+	<div class="modal" id="addSesion" sec:authorize="isAuthenticated()">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	      	<h4 class="modal-title">Reserva</h4>
+	        <form action="http://localhost:9000/">
+	        	<button type="submit" class="btn-close"></button>
+	        </form>
+	      </div>
+	
+	      <!-- Modal body -->
+	      <div class="modal-body">
+	        <form method="POST" th:action="@{/nuevaReserva}" th:object="${sesion}" onsubmit="return validarFormulario();" id="formSesiones">
+	        	<input th:if="${sesion.id != 0}" type="hidden" name="id" th:field="*{id}" />
+	        	<div class="mb-3 mt-3">
+	        		<p th:text="${fechaSesion}"></p>
+	        		<label for="fechaSesion">Fecha y hora de sesion</label>
+					<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" th:value="${sesion.fechaSesion}">
+					<p class="errorForm my-1">La fecha de la sesión no puede ser pasada.</p>
+	        	</div>
+	        	<div class="mb-3 mt-3">
+	        		<label for="kart" class="form-label">Kart</label>
+					<select required class="form-select" name="kart" id="kart" th:field="*{kart}">
+					  <option th:each="kart : ${karts}" th:text="${kart.nombre} + ' ' + ${kart.precioSesion} + '€'" th:value="${kart.id}"></option>
+					</select>
+	        	</div>
+	        	<div class="modal-footer">
+					<input type="submit" class="btn btn-success" value="Guardar">
+			    </div>
+	        </form>
+	      </div>
+	
+	    </div>
+	  </div>
 	</div>
 </body>
 </html>

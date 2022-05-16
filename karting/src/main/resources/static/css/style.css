@@ -100,16 +100,12 @@ main{
 }
 #karts{
     width: 150%;
-    transform: skewY(2deg);
     margin-left: -25%;
     padding-bottom: 75px;
     padding-left: 25%;
     padding-right: 25%;
     padding-top: 3%;
     z-index: 40;
-}
-#karts>*{
-    transform: skewY(-2deg);
 }
 .card{
     width: 400px;
@@ -202,6 +198,7 @@ input[type=number] {
     }
     #karts-mobile{
         display: visible !important;
+        padding-bottom: 20px;
     }
     #banner-main div{
         margin-left: 1%;

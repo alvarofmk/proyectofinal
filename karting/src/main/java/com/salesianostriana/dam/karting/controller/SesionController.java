@@ -66,7 +66,7 @@ public class SesionController {
 	}
 	
 	@GetMapping("/update/{id}")
-	public String actualizarPiloto(@PathVariable("id") Long id,  Model model) {
+	public String actualizarSesion(@PathVariable("id") Long id,  Model model) {
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("listaSesiones", sesionService.findAll());
 		model.addAttribute("listaPilotos", pilotoService.findAll());
