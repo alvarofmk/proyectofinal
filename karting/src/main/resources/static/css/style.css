@@ -71,6 +71,10 @@ h1{
     height: 400px;
     padding: 2%;
 }
+#banner-main p{
+	font-size: 1.2em;
+	font-family: quatrobold;
+}
 #banner-main>*{
     transform: skewY(2deg);
 }
@@ -237,7 +241,7 @@ input[type=number] {
 		display: visible;
 	}
 	.mainadmin{
-		margin-left: 2% !important;
+		margin-left: 3%;
 	}
 	#btnadmin{
 		margin-right: auto;
