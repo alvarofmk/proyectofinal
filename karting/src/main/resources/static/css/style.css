@@ -242,6 +242,7 @@ input[type=number] {
 	}
 	.mainadmin{
 		margin-left: 3%;
+		width: 97%;
 	}
 	#btnadmin{
 		margin-right: auto;
@@ -260,11 +261,18 @@ input[type=number] {
 	.mainadmin h1{
 		margin-bottom: 0px !important;
 	}
+	.mainadmin{
+		margin-left: 10%;
+		width: 90%;
+	}
+	.tabla{
+		overflow-x: hidden !important;
+	}
 
 }
-.mainadmin{
-	margin-left: 10%;
-	width: 90%;
+.tabla{
+	overflow: scroll;
+	overflow-y: hidden;
 }
 .navadmin{
 	height: 100%; /* Full-height: remove this if you want "auto" height */

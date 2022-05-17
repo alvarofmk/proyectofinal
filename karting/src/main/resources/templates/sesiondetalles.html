@@ -79,7 +79,7 @@
 						<tr th:each="resultado, iter : ${resultados}">
 							<td th:text="${iter.index + 1}"></td>
 							<td th:text="${resultado.key.nombre + ' ' + resultado.key.apellidos}"></td>
-							<td th:text="${resultado.value.tiempo}"></td>
+							<td th:text="${resultado.value.tiempo.seconds/60} + ':' + ${resultado.value.tiempo.seconds - (60*(resultado.value.tiempo.seconds/60))} + '.' +${resultado.value.tiempo.nano / 1000000}"></td>
 						</tr>
 						
 					</tbody>
