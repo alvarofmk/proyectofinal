@@ -61,12 +61,13 @@ public class SesionController {
 		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("sesion", sesion);
 		model.addAttribute("mostrarForm", false);
-		model.addAttribute("participantes", new ArrayList<Piloto>());
+		model.addAttribute("pilotosp", new ArrayList<Piloto>());
 		return "sesiones";
 	}
 	
 	@PostMapping("/edicion")
-	public String addSesion(@ModelAttribute("sesion") Sesion sesion, @ModelAttribute("participantes") ArrayList lista,  Model model) {
+	public String addSesion(@ModelAttribute("sesion") Sesion sesion, @ModelAttribute("pilotosp") ArrayList lista,  Model model) {
+		
 		if(sesion.getFechaReserva() == null) {
 			sesion.setFechaReserva(LocalDateTime.now());
 		}

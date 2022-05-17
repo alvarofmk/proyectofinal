@@ -122,9 +122,9 @@
 						  <option th:each="kart : ${karts}" th:text="${kart.nombre} + ' ' + ${kart.precioSesion} + '€'" th:value="${kart.id}"></option>
 						</select>
 		        	</div>
-		        	<div class="mb-3 mt-3">
+		        	<div class="mb-3 mt-3" th:object="${pilotosp}">
 		        		<label for="participantes" class="form-label">Participantes</label>
-						<select required multiple class="form-select" name="participantes" id="participantes" th:field="*{participantes}">
+						<select required multiple class="form-select" name="participantes" id="participantes" th:field="${pilotosp}">
 						  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" th:value="${piloto.dni}"></option>
 						</select>
 		        	</div>
