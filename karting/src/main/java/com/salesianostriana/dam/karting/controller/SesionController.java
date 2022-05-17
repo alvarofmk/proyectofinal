@@ -84,6 +84,7 @@ public class SesionController {
 		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("sesion", sesionService.findById(id));
 		model.addAttribute("mostrarForm", true);
+		model.addAttribute("pilotosp", new ArrayList<Piloto>());
 		return "sesiones";
 	}
 	
