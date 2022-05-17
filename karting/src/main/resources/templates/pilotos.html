@@ -132,8 +132,10 @@
 					  <p class="errorForm my-1">El email no puede estar vacío.</p>
 					  <label for="emailPiloto">Email</label>
 					</div>
-					<label for="fechaNacimiento">Fecha de nacimiento</label>
-					<input required type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}">
+					<div class="input-group mb-3 mt-3">
+						<span class="input-group-text"><i class="bi bi-calendar-fill mx-2"></i>Fecha nacimiento</span>
+						<input class="form-control" required type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}">
+					</div>
 					<p class="errorForm my-1">El piloto debe tener al menos 6 años.</p>
 					<div class="modal-footer">
 						<input type="submit" class="btn btn-success" value="Guardar">

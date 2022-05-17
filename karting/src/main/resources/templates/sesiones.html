@@ -110,18 +110,17 @@
 		        	<div class="mb-3 mt-3 d-none">
 						<input type="datetime-local" id="fechaReserva" name="fechaReserva" th:field="*{fechaReserva}" th:value="${sesionWrap.fechaReserva}">
 		        	</div>
-		        	<div class="mb-3 mt-3">
-		        		<p th:text="${fechaSesion}"></p>
-		        		<label for="fechaSesion">Fecha y hora de sesion</label>
-						<input type="datetime-local" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" th:value="${sesionWrap.fechaSesion}">
-						<p class="errorForm my-1">La fecha de la sesión no puede ser pasada.</p>
-		        	</div>
-		        	<div class="mb-3 mt-3">
-		        		<label for="kart" class="form-label">Kart</label>
-						<select required class="form-select" name="kart" id="kart" th:field="*{kart}">
+		        	<div class="input-group mb-3 mt-3">
+						<span class="input-group-text"><i class="bi bi-calendar-fill mx-2"></i>Fecha y hora de sesion</span>
+						<input type="datetime-local" class="form-control" id="fechaSesion" name="fechaSesion" th:field="*{fechaSesion}" th:value="${sesionWrap.fechaSesion}">
+					</div>
+					<p class="errorForm my-1">La fecha de la sesión no puede ser pasada.</p>
+					<div class="input-group mb-3 mt-3">
+						<span class="input-group-text"><i class="bi bi-wrench-adjustable-circle-fill mx-2"></i>Kart</span>
+						<select required class="form-select form-control" name="kart" id="kart" th:field="*{kart}">
 						  <option th:each="kart : ${karts}" th:text="${kart.nombre} + ' ' + ${kart.precioSesion} + '€'" th:value="${kart.id}"></option>
 						</select>
-		        	</div>
+					</div>
 		        	<div class="mb-3 mt-3">
 		        		<label for="participantes" class="form-label">Participantes</label>
 						<select required multiple class="form-select" name="participantes" id="participantes" th:field="*{pilotos}">

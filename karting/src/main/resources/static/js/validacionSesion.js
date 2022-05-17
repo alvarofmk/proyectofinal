@@ -14,9 +14,9 @@ function comprobarReserva(){
 	let correcto = fecha.value!="" && Date.parse(fecha.value) > Date.now();
 	
 	if(correcto){
-		fecha.nextElementSibling.hidden = true;
+		fecha.parentNode.nextElementSibling.hidden = true;
 	}else{
-		fecha.nextElementSibling.hidden = false;
+		fecha.parentNode.nextElementSibling.hidden = false;
 	}
 	
 	return correcto;
