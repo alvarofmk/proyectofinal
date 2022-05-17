@@ -25,12 +25,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.karting.model.Participacion;
+import com.salesianostriana.dam.karting.model.ParticipacionPK;
 import com.salesianostriana.dam.karting.model.Piloto;
 import com.salesianostriana.dam.karting.model.Sesion;
 import com.salesianostriana.dam.karting.model.Vuelta;
+import com.salesianostriana.dam.karting.model.VueltaPK;
 import com.salesianostriana.dam.karting.service.KartService;
+import com.salesianostriana.dam.karting.service.ParticipacionService;
 import com.salesianostriana.dam.karting.service.PilotoService;
 import com.salesianostriana.dam.karting.service.SesionService;
+import com.salesianostriana.dam.karting.service.VueltasService;
 
 import lombok.val;
 
@@ -44,6 +48,10 @@ public class SesionController {
 	private PilotoService pilotoService;
 	@Autowired
 	private SesionService sesionService;
+	@Autowired
+	private ParticipacionService participacionService;
+	@Autowired
+	private VueltasService vueltasService;
 
 	@GetMapping("/")
 	public String sesionesAdmin(Model model) {
@@ -53,11 +61,12 @@ public class SesionController {
 		model.addAttribute("listaPilotos", pilotoService.findAll());
 		model.addAttribute("sesion", sesion);
 		model.addAttribute("mostrarForm", false);
+		model.addAttribute("participantes", new ArrayList<Piloto>());
 		return "sesiones";
 	}
 	
 	@PostMapping("/edicion")
-	public String addSesion(@ModelAttribute("sesion") Sesion sesion,  Model model) {
+	public String addSesion(@ModelAttribute("sesion") Sesion sesion, @ModelAttribute("participantes") ArrayList lista,  Model model) {
 		if(sesion.getFechaReserva() == null) {
 			sesion.setFechaReserva(LocalDateTime.now());
 		}
@@ -98,6 +107,16 @@ public class SesionController {
 		
 		model.addAttribute("resultados", resultados);
 		return "sesiondetalles";
+	}
+	
+	@GetMapping("/detalles/penalizar/{sesionid}-{pilotodni}-{nvuelta}")
+	public String detallesSesionAdmin(@PathVariable("sesionid") Long id, @PathVariable("pilotodni") String dni, @PathVariable("nvuelta") int nvuelta, Model model) {
+		Participacion pilotoSesion = participacionService.findById(new ParticipacionPK(dni, id));
+		VueltaPK clavePrimaria = new VueltaPK(pilotoSesion, nvuelta);
+		Vuelta v = vueltasService.findById(clavePrimaria);
+		v.setTiempo(v.getTiempo().plusMillis(500));
+		vueltasService.save(v);
+		return "redirect:/sesiones/detalles/" + id;
 	}
 
 }
