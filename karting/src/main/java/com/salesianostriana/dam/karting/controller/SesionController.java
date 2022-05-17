@@ -28,6 +28,7 @@ import com.salesianostriana.dam.karting.model.Participacion;
 import com.salesianostriana.dam.karting.model.ParticipacionPK;
 import com.salesianostriana.dam.karting.model.Piloto;
 import com.salesianostriana.dam.karting.model.Sesion;
+import com.salesianostriana.dam.karting.model.SesionWrapper;
 import com.salesianostriana.dam.karting.model.Vuelta;
 import com.salesianostriana.dam.karting.model.VueltaPK;
 import com.salesianostriana.dam.karting.service.KartService;
@@ -55,25 +56,19 @@ public class SesionController {
 
 	@GetMapping("/")
 	public String sesionesAdmin(Model model) {
-		Sesion sesion = new Sesion ();
+		SesionWrapper wrap = new SesionWrapper();
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("listaSesiones", sesionService.findAll());
 		model.addAttribute("listaPilotos", pilotoService.findAll());
-		model.addAttribute("sesion", sesion);
+		model.addAttribute("sesionWrap", wrap);
 		model.addAttribute("mostrarForm", false);
 		model.addAttribute("pilotosp", new ArrayList<Piloto>());
 		return "sesiones";
 	}
 	
 	@PostMapping("/edicion")
-	public String addSesion(@ModelAttribute("sesion") Sesion sesion, @ModelAttribute("pilotosp") ArrayList<Piloto> pilotosp,  Model model) {
-		if(sesion.getFechaReserva() == null) {
-			sesion.setFechaReserva(LocalDateTime.now());
-		}
-		
-		pilotosp.stream().forEach(p -> participacionService.addParticipacion(p, sesion));
-		
-		sesionService.save(sesion);
+	public String addSesion(@ModelAttribute("sesionWrap") SesionWrapper sesionWrap,  Model model) {
+		sesionService.save(sesionWrap);
 		return "redirect:/sesiones/";
 	}
 	

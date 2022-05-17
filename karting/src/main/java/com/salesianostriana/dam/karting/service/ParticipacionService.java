@@ -15,9 +15,6 @@ public class ParticipacionService extends BaseService<Participacion, Participaci
 	
 	@Autowired
 	private PilotoService pilotoService;
-	
-	@Autowired
-	private SesionService sesionService;
 
 	public ParticipacionService(ParticipacionRepository repositorio) {
 		super(repositorio);
@@ -33,7 +30,7 @@ public class ParticipacionService extends BaseService<Participacion, Participaci
 		
 		pilotoService.save(piloto);
 		this.save(p);
-		return sesionService.findById(sesion.getId());
+		return sesion;
 	}
 	
 

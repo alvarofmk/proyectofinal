@@ -28,6 +28,13 @@ import lombok.ToString;
 @Entity
 public class Sesion {
 	
+	public Sesion(long id, LocalDateTime fechaSesion, Kart kart) {
+		super();
+		this.id = id;
+		this.fechaSesion = fechaSesion;
+		this.kart = kart;
+	}
+
 	@Id @GeneratedValue
 	private long id;
 	
@@ -41,7 +48,6 @@ public class Sesion {
 	@ManyToOne
 	private Kart kart;
 	
-	@Builder.Default
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany(mappedBy="sesion", fetch = FetchType.EAGER)

@@ -24,6 +24,7 @@ import com.salesianostriana.dam.karting.service.VueltasService;
 @Component
 public class DatosPrueba {
 	
+	/*
 	@Autowired
 	private PilotoService pilotoService;
 	
@@ -42,14 +43,15 @@ public class DatosPrueba {
 	@PostConstruct
 	public void generarDatos () {
 		
-		/*	Algo debe fallar en addParticipacion() o dentro con VueltaPK
+		Algo debe fallar en addParticipacion() o dentro con VueltaPK
 		 
 		for (Piloto piloto : pilotosPre) {
 			participacionService.addParticipacion(piloto, carrera);
 		}
 		
 		sesionService.realizarSesion(carrera);
-		*/
+		
 	}
+	*/
 	
 }
