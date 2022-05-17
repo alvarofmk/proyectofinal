@@ -66,11 +66,13 @@ public class SesionController {
 	}
 	
 	@PostMapping("/edicion")
-	public String addSesion(@ModelAttribute("sesion") Sesion sesion, @ModelAttribute("pilotosp") ArrayList lista,  Model model) {
-		
+	public String addSesion(@ModelAttribute("sesion") Sesion sesion, @ModelAttribute("pilotosp") ArrayList<Piloto> pilotosp,  Model model) {
 		if(sesion.getFechaReserva() == null) {
 			sesion.setFechaReserva(LocalDateTime.now());
 		}
+		
+		pilotosp.stream().forEach(p -> participacionService.addParticipacion(p, sesion));
+		
 		sesionService.save(sesion);
 		return "redirect:/sesiones/";
 	}

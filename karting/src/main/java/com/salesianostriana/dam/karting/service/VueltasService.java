@@ -21,7 +21,7 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 		super(repositorio);
 		// TODO Auto-generated constructor stub
 	}
-
+	/*
 	public List<Vuelta> generarVueltasPiloto (Participacion participacion, Duration tiempoLimite){
 		int numeroVuelta = 1;
 		Duration vueltaMedia = Duration.ofSeconds(Math.round((120-(participacion.getSesion().getKart().getPotencia()*0.8))));
@@ -56,5 +56,6 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 		participacion.setRegistroVueltas(vueltas);
 		return vueltas;
 	}
+	*/
 
 }

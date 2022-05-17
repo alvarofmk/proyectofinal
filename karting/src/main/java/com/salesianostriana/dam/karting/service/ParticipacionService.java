@@ -27,13 +27,11 @@ public class ParticipacionService extends BaseService<Participacion, Participaci
 	public Sesion addParticipacion(Piloto piloto, Sesion sesion) {
 		Participacion p = new Participacion(sesion, piloto, sesion.getKart().getPrecioSesion());
 		//cambiar esto por generacion de precios
-		sesion.setPrecio(sesion.getPrecio() + p.getPrecio());
 		
 		sesion.getParticipantes().add(p);
 		piloto.getParticipaciones().add(p);
 		
 		pilotoService.save(piloto);
-		sesionService.save(sesion);
 		this.save(p);
 		return sesionService.findById(sesion.getId());
 	}
