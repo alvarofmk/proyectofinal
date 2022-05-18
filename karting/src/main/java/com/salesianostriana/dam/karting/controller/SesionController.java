@@ -74,10 +74,11 @@ public class SesionController {
 	
 	@GetMapping("/update/{id}")
 	public String actualizarSesion(@PathVariable("id") Long id,  Model model) {
+		SesionWrapper sesion = new SesionWrapper(sesionService.findById(id));
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("listaSesiones", sesionService.findAll());
 		model.addAttribute("listaPilotos", pilotoService.findAll());
-		model.addAttribute("sesion", sesionService.findById(id));
+		model.addAttribute("sesionWrap", sesion);
 		model.addAttribute("mostrarForm", true);
 		model.addAttribute("pilotosp", new ArrayList<Piloto>());
 		return "sesiones";
@@ -97,7 +98,7 @@ public class SesionController {
 		Map<Piloto, Vuelta> mejorVuelta = new HashMap<Piloto, Vuelta>();
 		
 		for (Participacion p : sesion.getParticipantes()) {
-			;
+			
 			mejorVuelta.put(p.getPiloto(), p.getRegistroVueltas().stream().min(Comparator.naturalOrder()).get());
 		}
 		
