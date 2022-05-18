@@ -58,6 +58,11 @@ public class SesionController {
 
 	@GetMapping("/")
 	public String sesionesAdmin(Model model) {
+		List <Sesion> sesionesARealizar = sesionService.encontrarSesionesAEjecutar();
+		if (!sesionesARealizar.isEmpty()) {
+			sesionService.realizarSesiones(sesionesARealizar);
+		}
+		
 		SesionWrapper wrap = new SesionWrapper();
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("listaSesiones", sesionService.findAll());
@@ -113,9 +118,11 @@ public class SesionController {
 		Optional<Sesion> aBorrar = sesionService.findById(id);
 			
 		if (aBorrar.isPresent()) {
-			if(aBorrar.get().getFechaSesion().isAfter(LocalDateTime.now())) {
+			if(aBorrar.get().getFechaSesion().isAfter(LocalDateTime.now()) && aBorrar.get().getParticipantes().isEmpty()) {
 				sesionService.deleteById(id);
 				return "redirect:/sesiones/";
+			}else if (!aBorrar.get().getParticipantes().isEmpty()) {
+				return "redirect:/sesiones/?errorParticipaciones=true";
 			}
 		}
 		

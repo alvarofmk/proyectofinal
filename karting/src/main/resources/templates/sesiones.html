@@ -53,6 +53,11 @@
 			<button type="button" class="btn-close mx-2 my-0 close" data-bs-dismiss="alert"></button>
 			<div class="d-block">La sesión no se ha realizado aún.</div>
 		</div>
+		<div class="alert alert-danger d-flex flex-row alert-dismissible" aria-label="Close" role="alert"
+			th:if="${param.errorParticipaciones}">
+			<button type="button" class="btn-close mx-2 my-0 close" data-bs-dismiss="alert"></button>
+			<div class="d-block">Por favor, elimine los participantes antes de cancelar la sesión.</div>
+		</div>
 		<div class="col-xl-9 order-xl-2 tabla">
   			<table class="table table-hover">
   				<thead>
@@ -138,7 +143,7 @@
 					</div>
 		        	<div class="mb-3 mt-3">
 		        		<label for="participantes" class="form-label">Participantes</label>
-						<select required multiple class="form-select" name="participantes" id="participantes" th:field="*{pilotos}">
+						<select multiple class="form-select" name="participantes" id="participantes" th:field="*{pilotos}">
 						  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" th:value="${piloto.dni}"></option>
 						</select>
 		        	</div>

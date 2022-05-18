@@ -63,13 +63,16 @@ public class SesionService extends BaseService<Sesion, Long, SesionRepository> {
 	}
 
 	
-	
-	/*
-	public void realizarSesion (Sesion sesion) {
-		sesion.getParticipantes().stream().forEach(p -> vueltasService.generarVueltasPiloto(p, Duration.ofMinutes(15)));
-		this.save(sesion);
+	public List<Sesion> encontrarSesionesAEjecutar (){
+		return repositorio.findSesionWithNoLaps();
 	}
-	*/
-	
 
+	public void realizarSesiones (List<Sesion> sesiones) {
+		sesiones.stream().forEach(s -> realizarSesion(s));
+	}
+	
+	public void realizarSesion (Sesion sesion) {
+		sesion.getParticipantes().forEach(p -> vueltasService.generarVueltasPiloto(p, Duration.ofMinutes(15)));
+	}
+	
 }

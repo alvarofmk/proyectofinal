@@ -21,7 +21,7 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 		super(repositorio);
 		// TODO Auto-generated constructor stub
 	}
-	/*
+
 	public List<Vuelta> generarVueltasPiloto (Participacion participacion, Duration tiempoLimite){
 		int numeroVuelta = 1;
 		Duration vueltaMedia = Duration.ofSeconds(Math.round((120-(participacion.getSesion().getKart().getPotencia()*0.8))));
@@ -34,7 +34,7 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 		}
 		
 		List<Vuelta> vueltas = new ArrayList<Vuelta>();
-		Vuelta primeraVuelta = new Vuelta(participacion, numeroVuelta, vueltaMedia);
+		Vuelta primeraVuelta = new Vuelta(participacion, numeroVuelta, vueltaMedia, true);
 		vueltas.add(primeraVuelta);
 		Duration sum = vueltaMedia;
 		
@@ -48,7 +48,7 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 				nuevaVuelta = vueltas.get(numeroVuelta-1).getTiempo().minus(desviacionVuelta);
 			}
 			numeroVuelta++;
-			vueltas.add(new Vuelta(participacion, numeroVuelta, nuevaVuelta));
+			vueltas.add(new Vuelta(participacion, numeroVuelta, nuevaVuelta, true));
 			sum = sum.plus(nuevaVuelta);
 		}
 		
@@ -56,6 +56,6 @@ public class VueltasService extends BaseService<Vuelta, VueltaPK, VueltaReposito
 		participacion.setRegistroVueltas(vueltas);
 		return vueltas;
 	}
-	*/
+
 
 }
