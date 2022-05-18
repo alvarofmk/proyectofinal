@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,6 +70,19 @@ public class SesionController {
 	
 	@PostMapping("/edicion")
 	public String addSesion(@ModelAttribute("sesionWrap") SesionWrapper sesionWrap,  Model model) {
+		Optional<Sesion> sesionCheck = sesionService.findById(sesionWrap.getId());
+		if (sesionCheck.isPresent()) {
+			List<Piloto> pilotosABorrar = sesionCheck.get()
+											.getParticipantes()
+											.stream()
+											.map(p -> p.getPiloto())
+											.dropWhile(piloto -> sesionWrap.getPilotos().contains(piloto))
+											.collect(Collectors.toList());
+			if(!pilotosABorrar.isEmpty()) {
+				pilotosABorrar.stream().forEach(piloto -> participacionService.delete(new Participacion(sesionCheck.get(), piloto)));
+			}
+		}
+		
 		sesionService.save(sesionWrap);
 		return "redirect:/sesiones/";
 	}
@@ -128,7 +142,7 @@ public class SesionController {
 				mejorVuelta.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(e -> resultados.put(e.getKey(), e.getValue()));
 				
 				model.addAttribute("resultados", resultados);
-				return "sesiondetalles";
+				return "sesiondetalles"; 
 			}
 		}
 		

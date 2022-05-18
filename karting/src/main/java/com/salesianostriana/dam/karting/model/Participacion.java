@@ -24,6 +24,16 @@ import lombok.ToString;
 @Entity
 public class Participacion {
 	
+	public Participacion(Sesion sesion, Piloto piloto) {
+		this.sesion = sesion;
+		this.piloto = piloto;
+		
+		//asignar ids
+		id.setPiloto_dni(this.piloto.getDni());
+		id.setSesion_id(this.sesion.getId());
+		
+	}
+	
 	public Participacion(Sesion sesion, Piloto piloto, double precio) {
 		this.sesion = sesion;
 		this.piloto = piloto;
