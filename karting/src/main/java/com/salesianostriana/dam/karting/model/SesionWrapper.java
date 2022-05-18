@@ -15,6 +15,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SesionWrapper {
 	
+	public SesionWrapper(Sesion sesion) {
+		super();
+		this.id = sesion.getId();
+		this.fechaReserva = sesion.getFechaReserva();
+		this.fechaSesion = sesion.getFechaSesion();
+		this.kart = sesion.getKart();
+		this.pilotos = sesion.getParticipantes().stream().map(p -> p.getPiloto()).toList();
+	}
+	
 	private long id;
 	
 	@DateTimeFormat(iso = ISO.DATE_TIME)
