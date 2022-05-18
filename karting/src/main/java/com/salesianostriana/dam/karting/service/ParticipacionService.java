@@ -28,7 +28,8 @@ public class ParticipacionService extends BaseService<Participacion, Participaci
 		sesion.getParticipantes().add(p);
 		piloto.getParticipaciones().add(p);
 		
-		pilotoService.save(piloto);
+		//no hace falta guardar piloto
+		// pilotoService.save(piloto);
 		this.save(p);
 		return sesion;
 	}

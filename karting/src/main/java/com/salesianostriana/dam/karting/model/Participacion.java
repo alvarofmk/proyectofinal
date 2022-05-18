@@ -28,10 +28,16 @@ public class Participacion {
 		this.sesion = sesion;
 		this.piloto = piloto;
 		this.precio = precio;
+		
+		//asignar ids
+		id.setPiloto_dni(this.piloto.getDni());
+		id.setSesion_id(this.sesion.getId());
+		
 	}
-
+	
+	//crear instancia
 	@EmbeddedId
-	private ParticipacionPK id;
+	private ParticipacionPK id = new ParticipacionPK();
 	
 	@ManyToOne
 	@MapsId("sesion_id")

@@ -41,10 +41,12 @@ public class SesionService extends BaseService<Sesion, Long, SesionRepository> {
 			sesionAEditar.setFechaReserva(wrap.getFechaReserva());
 		}
 		
-		wrap.getPilotos().stream().forEach(p -> participacionService.addParticipacion(p, sesionAEditar));
-		sesionAEditar.setPrecio(calcularPrecioSesion(sesionAEditar));
+		Sesion guardada = save(sesionAEditar);
 		
-		return save(sesionAEditar);
+		wrap.getPilotos().stream().forEach(p -> participacionService.addParticipacion(p, guardada));
+		guardada.setPrecio(calcularPrecioSesion(guardada));
+		
+		return save(guardada);
 	}
 	
 	public double calcularPrecioSesion (Sesion s) {
