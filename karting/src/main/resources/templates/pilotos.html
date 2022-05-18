@@ -47,9 +47,9 @@
 				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addPiloto" class="btn-danger mt-3 rounded-3 w-100">
 			</form>
 		</div>
-		<div class="alert alert-danger d-flex flex-row" role="alert"
+		<div class="alert alert-danger d-flex flex-row alert-dismissible" role="alert"
 			th:if="${param.error}">
-			<button type="button" class="btn-close mx-2 my-0 close" data-dismiss="alert"></button>
+			<button type="button" class="btn-close mx-2 my-0 close" data-bs-dismiss="alert"></button>
 			<div class="d-block">No se puede borrar un piloto que ya ha participado en alguna sesion.</div>
 		</div>
 		<div class="col-xl-9 order-xl-2 tabla">

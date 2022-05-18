@@ -48,9 +48,9 @@
 				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger w-100">
 			</form>
 		</div>
-		<div class="alert alert-danger d-flex flex-row" role="alert"
+		<div class="alert alert-danger d-flex flex-row alert-dismissible" aria-label="Close" role="alert"
 			th:if="${param.error}">
-			<button type="button" class="btn-close mx-2 my-0 close" data-dismiss="alert"></button>
+			<button type="button" class="btn-close mx-2 my-0 close" data-bs-dismiss="alert"></button>
 			<div class="d-block">No se puede borrar un kart ya usado en sesiones.</div>
 		</div>
 		<div class="col-xl-9 order-xl-2 tabla">
