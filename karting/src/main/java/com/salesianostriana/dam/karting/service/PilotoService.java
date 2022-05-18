@@ -34,4 +34,8 @@ public class PilotoService extends BaseService<Piloto, String, PilotoRepository>
 		return repositorio.findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCaseOrEmailContainsIgnoreCaseOrDniIgnoreCase(nombre, apellidos, email, dni);
 	}
 
+	public int contarSesionesPorPiloto (Piloto piloto) {
+		return repositorio.findNumSesionesByPiloto(piloto);
+	}
+	
 }

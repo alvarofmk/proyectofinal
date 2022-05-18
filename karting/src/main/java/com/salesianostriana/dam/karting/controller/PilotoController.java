@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.karting.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +41,15 @@ public class PilotoController {
 	
 	@GetMapping("/remove/{id}")
 	public String borrarPiloto(@PathVariable("id") String dni,  Model model) {
-		pilotoService.deleteById(dni);
+		Optional<Piloto> aBorrar = pilotoService.findById(dni);
+		
+		if(aBorrar.isPresent()) {
+			if(pilotoService.contarSesionesPorPiloto(aBorrar.get()) == 0) {
+				pilotoService.deleteById(dni);
+			}else {
+				return "redirect:/pilotos/?error=true";
+			}
+		}
 		return "redirect:/pilotos/";
 	}
 	

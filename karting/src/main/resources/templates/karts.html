@@ -26,9 +26,13 @@
 		<div class="separador"></div>
 		<ul class="px-1">
 			<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
+			<li class="my-2"><a href="http://localhost:9000/sesiones/"><i class="bi bi-flag"></i></a></li>
 			<li class="my-2"><a href="http://localhost:9000/karts/">Karts</a></li>
+			<li class="my-2"><a href="http://localhost:9000/karts/"><i class="bi bi-wrench-adjustable-circle-fill"></i></a></li>
 			<li class="my-2"><a href="http://localhost:9000/pilotos/">Pilotos</a></li>
+			<li class="my-2"><a href="http://localhost:9000/pilotos/"><i class="bi bi-person-fill"></i></a></li>
 			<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}">Log out</a></li>
+			<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}"><i class="bi bi-x-circle-fill"></i></a></li>
 		</ul>
 	</nav>
 	<main class="mainadmin mt-0 p-5 row">
@@ -44,10 +48,10 @@
 				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger w-100">
 			</form>
 		</div>
-		<div class="alert alert-danger" role="alert"
+		<div class="alert alert-danger d-flex flex-row" role="alert"
 			th:if="${param.error}">
-			<button type="button" class="btn-close mx-2 my-0" data-dismiss="alert"></button>
-			<div class="d-inline-block">No se puede borrar un kart ya usado en sesiones.</div>
+			<button type="button" class="btn-close mx-2 my-0 close" data-dismiss="alert"></button>
+			<div class="d-block">No se puede borrar un kart ya usado en sesiones.</div>
 		</div>
 		<div class="col-xl-9 order-xl-2 tabla">
   			<table class="table table-hover">

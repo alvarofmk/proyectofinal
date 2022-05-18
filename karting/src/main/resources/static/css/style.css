@@ -187,6 +187,9 @@ input[type=number] {
 	font-family: russo;
 }
 @media screen AND (max-width: 1080px) {
+	.alert-danger{
+		margin-top: 10px !important;
+	}
     #banner-main{
         background-position: 0px 0px;
     }
@@ -231,8 +234,11 @@ input[type=number] {
 	.navadmin ul{
 		visibility: hidden;
 	}
+	.navadmin li:nth-child(odd){
+		display: none;
+	}
 	.navadmin:hover {
-		width: 20%;
+		width: 15%;
 	}
 	.navadmin:hover ul{
 		visibility: visible;

@@ -35,7 +35,7 @@ public class KartController {
 	@GetMapping("/update/{id}")
 	public String actualizarKart(@PathVariable("id") long id,  Model model) {
 		model.addAttribute("karts", kartservice.findAll());
-		model.addAttribute("kart", kartservice.findById(id));
+		model.addAttribute("kart", kartservice.findById(id).get());
 		model.addAttribute("mostrarForm", true);
 		return "karts";
 	}
