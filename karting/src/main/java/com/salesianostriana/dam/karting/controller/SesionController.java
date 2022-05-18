@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -74,39 +75,65 @@ public class SesionController {
 	
 	@GetMapping("/update/{id}")
 	public String actualizarSesion(@PathVariable("id") Long id,  Model model) {
-		SesionWrapper sesion = new SesionWrapper(sesionService.findById(id).get());
-		model.addAttribute("karts", kartservice.findAll());
-		model.addAttribute("listaSesiones", sesionService.findAll());
-		model.addAttribute("listaPilotos", pilotoService.findAll());
-		model.addAttribute("sesionWrap", sesion);
-		model.addAttribute("mostrarForm", true);
-		model.addAttribute("pilotosp", new ArrayList<Piloto>());
-		return "sesiones";
+		Optional<Sesion> aEditar = sesionService.findById(id);
+		
+		if (aEditar.isPresent()) {
+			if(aEditar.get().getFechaSesion().isAfter(LocalDateTime.now())) {
+				SesionWrapper sesion = new SesionWrapper(sesionService.findById(id).get());
+				model.addAttribute("karts", kartservice.findAll());
+				model.addAttribute("listaSesiones", sesionService.findAll());
+				model.addAttribute("listaPilotos", pilotoService.findAll());
+				model.addAttribute("sesionWrap", sesion);
+				model.addAttribute("mostrarForm", true);
+				model.addAttribute("pilotosp", new ArrayList<Piloto>());
+				return "sesiones";
+			}
+		}
+		
+		return "redirect:/sesiones/?errorFecha=true";
+		
 	}
 	
 	@GetMapping("/remove/{id}")
 	public String borrarSesion(@PathVariable("id") Long id,  Model model) {
-		sesionService.deleteById(id);
-		return "redirect:/sesiones/";
+		Optional<Sesion> aBorrar = sesionService.findById(id);
+			
+		if (aBorrar.isPresent()) {
+			if(aBorrar.get().getFechaSesion().isAfter(LocalDateTime.now())) {
+				sesionService.deleteById(id);
+				return "redirect:/sesiones/";
+			}
+		}
+		
+		return "redirect:/sesiones/?errorFecha=true";
 	}
 	
 	@GetMapping("/detalles/{id}")
 	public String detallesSesionAdmin(@PathVariable("id") Long id, Model model) {
-		Sesion sesion = sesionService.findById(id).get();
-		model.addAttribute("sesion", sesion);
+		Optional<Sesion> aConsultar = sesionService.findById(id);
 		
-		Map<Piloto, Vuelta> mejorVuelta = new HashMap<Piloto, Vuelta>();
-		
-		for (Participacion p : sesion.getParticipantes()) {
-			
-			mejorVuelta.put(p.getPiloto(), p.getRegistroVueltas().stream().min(Comparator.naturalOrder()).get());
+		if (aConsultar.isPresent()) {
+			if (aConsultar.get().getFechaSesion().isBefore(LocalDateTime.now())) {
+				Sesion sesion = aConsultar.get();
+				model.addAttribute("sesion", sesion);
+				
+				Map<Piloto, Vuelta> mejorVuelta = new HashMap<Piloto, Vuelta>();
+				
+				for (Participacion p : sesion.getParticipantes()) {
+					
+					mejorVuelta.put(p.getPiloto(), p.getRegistroVueltas().stream().min(Comparator.naturalOrder()).get());
+				}
+				
+				LinkedHashMap<Piloto, Vuelta> resultados = new LinkedHashMap<>();
+				mejorVuelta.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(e -> resultados.put(e.getKey(), e.getValue()));
+				
+				model.addAttribute("resultados", resultados);
+				return "sesiondetalles";
+			}
 		}
 		
-		LinkedHashMap<Piloto, Vuelta> resultados = new LinkedHashMap<>();
-		mejorVuelta.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(e -> resultados.put(e.getKey(), e.getValue()));
-		
-		model.addAttribute("resultados", resultados);
-		return "sesiondetalles";
+		return "redirect:/sesiones/?errorDetalles=true";
+	
 	}
 	
 	@GetMapping("/detalles/penalizar/{sesionid}-{pilotodni}-{nvuelta}")
