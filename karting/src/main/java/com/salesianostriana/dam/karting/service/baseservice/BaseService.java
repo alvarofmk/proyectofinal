@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.karting.service.baseservice;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -22,8 +23,8 @@ public class BaseService <T, ID, R extends JpaRepository<T, ID>> implements Base
 	}
 
 	@Override
-	public T findById(ID id) {
-		return repositorio.findById(id).orElse(null);
+	public Optional<T> findById(ID id) {
+		return Optional.ofNullable(repositorio.findById(id).orElse(null));
 	}
 
 	@Override

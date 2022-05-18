@@ -74,7 +74,7 @@ public class SesionController {
 	
 	@GetMapping("/update/{id}")
 	public String actualizarSesion(@PathVariable("id") Long id,  Model model) {
-		SesionWrapper sesion = new SesionWrapper(sesionService.findById(id));
+		SesionWrapper sesion = new SesionWrapper(sesionService.findById(id).get());
 		model.addAttribute("karts", kartservice.findAll());
 		model.addAttribute("listaSesiones", sesionService.findAll());
 		model.addAttribute("listaPilotos", pilotoService.findAll());
@@ -92,7 +92,7 @@ public class SesionController {
 	
 	@GetMapping("/detalles/{id}")
 	public String detallesSesionAdmin(@PathVariable("id") Long id, Model model) {
-		Sesion sesion = sesionService.findById(id);
+		Sesion sesion = sesionService.findById(id).get();
 		model.addAttribute("sesion", sesion);
 		
 		Map<Piloto, Vuelta> mejorVuelta = new HashMap<Piloto, Vuelta>();
@@ -111,9 +111,9 @@ public class SesionController {
 	
 	@GetMapping("/detalles/penalizar/{sesionid}-{pilotodni}-{nvuelta}")
 	public String detallesSesionAdmin(@PathVariable("sesionid") Long id, @PathVariable("pilotodni") String dni, @PathVariable("nvuelta") int nvuelta, Model model) {
-		Participacion pilotoSesion = participacionService.findById(new ParticipacionPK(dni, id));
+		Participacion pilotoSesion = participacionService.findById(new ParticipacionPK(dni, id)).get();
 		VueltaPK clavePrimaria = new VueltaPK(pilotoSesion, nvuelta);
-		Vuelta v = vueltasService.findById(clavePrimaria);
+		Vuelta v = vueltasService.findById(clavePrimaria).get();
 		v.setTiempo(v.getTiempo().plusMillis(500));
 		vueltasService.save(v);
 		return "redirect:/sesiones/detalles/" + id;

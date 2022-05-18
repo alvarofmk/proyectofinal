@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.karting.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,16 @@ public class KartController {
 	
 	@GetMapping("/remove/{id}")
 	public String borrarKart(@PathVariable("id") long id,  Model model) {
-		kartservice.deleteById(id);
+		Optional<Kart> aBorrar = kartservice.findById(id);
+		if(aBorrar.isPresent()) {
+			if(kartservice.contarSesionesPorKart(aBorrar.get()) == 0) {
+				kartservice.deleteById(id);
+			}else {
+				return "redirect:/karts/?error=true";
+			}
+			
+		}
+		
 		return "redirect:/karts/";
 	}
 	

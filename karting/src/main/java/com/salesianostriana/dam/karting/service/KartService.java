@@ -31,5 +31,9 @@ public class KartService extends BaseService<Kart, Long, KartRepository> {
 	public List<Kart> buscarPorNombre (String nombre){
 		return repositorio.findByNombreContainsIgnoreCase(nombre);
 	}
+	
+	public int contarSesionesPorKart (Kart kart) {
+		return repositorio.findNumSesionesByKart(kart);
+	}
 
 }
