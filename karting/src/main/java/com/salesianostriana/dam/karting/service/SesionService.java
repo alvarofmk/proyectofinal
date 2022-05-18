@@ -50,7 +50,16 @@ public class SesionService extends BaseService<Sesion, Long, SesionRepository> {
 	}
 	
 	public double calcularPrecioSesion (Sesion s) {
-		return s.getParticipantes().size() * s.getKart().getPrecioSesion();
+		double precio = s.getParticipantes().size() * s.getKart().getPrecioSesion();
+		if(s.getParticipantes().size() >= 5) {
+			precio *= 0.9;
+			double precioIndividual = precio / s.getParticipantes().size();
+			s.getParticipantes().stream().forEach( (p) -> {
+																p.setPrecio(precioIndividual);
+																participacionService.edit(p);
+															});
+		}
+		return precio;
 	}
 
 	
