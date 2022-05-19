@@ -113,7 +113,7 @@
 					<tbody th:each="participacion : ${sesion.participantes}" th:id="${participacion.piloto.dni}">
 						<tr th:each="vuelta : ${participacion.registroVueltas}">
 							<td th:text="${vuelta.numeroVuelta}"></td>
-							<td th:text="${vuelta.tiempo.seconds/60} + ':' + ${vuelta.tiempo.seconds - (60*(vuelta.tiempo.seconds/60))} + '.' +${vuelta.tiempo.nano / 1000000}"></td>
+							<td th:text="${vuelta.tiempo.seconds/60} + ':' + ${vuelta.tiempo.seconds - (60*(vuelta.tiempo.seconds/60))} + '.' +${#numbers.formatInteger(vuelta.tiempo.nano / 1000000,3)}"></td>
 							<td>
 							<a th:href="@{/sesiones/detalles/penalizar/{sesionid}-{pilotodni}-{nvuelta}(sesionid=${participacion.sesion.id}, pilotodni=${participacion.piloto.dni}, nvuelta=${vuelta.numeroVuelta})}">
 								<i class="bi bi-stopwatch-fill" data-bs-toggle="tooltip" title="Penalizar (+ 0.5s)"></i>

@@ -87,7 +87,7 @@ function comprobarSpecs(){
 	let cilindrada = formKarts.cc;
 	let vpunta = formKarts.kmh;
 	let mensaje = document.getElementById("mensajeSpecs");
-	let correcto = !isNaN(caballos.value) && caballos.value >= 0 &&
+	let correcto = !isNaN(caballos.value) && caballos.value >= 0 && caballos.value <= 100 &&
 				!isNaN(cilindrada.value) && cilindrada.value >= 0 &&
 				!isNaN(vpunta.value) && vpunta.value >= 0;
 	

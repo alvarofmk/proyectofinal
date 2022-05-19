@@ -354,3 +354,19 @@ td a:hover{
 form>.input-group{
 	width: 100% !important;
 }
+.recaudadoLabel{
+	color: #b4b4b4;
+	font-family: quatrobold;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+.recaudado{
+	font-family: russo;
+	font-weight: bold;
+	font-size: 2em;
+}
+.resumenRecaudacion h2{
+	border-bottom: solid 2px lightgrey;
+	color: red;
+	font-size: 1em;
+}

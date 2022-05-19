@@ -70,6 +70,9 @@ public class SesionController {
 		model.addAttribute("sesionWrap", wrap);
 		model.addAttribute("mostrarForm", false);
 		model.addAttribute("pilotosp", new ArrayList<Piloto>());
+		model.addAttribute("ganadoHoy", sesionService.recaudadoHoy());
+		model.addAttribute("ganadoMes", sesionService.recaudadoMes());
+		model.addAttribute("ganadoAnio", sesionService.recaudadoAnio());
 		return "sesiones";
 	}
 	

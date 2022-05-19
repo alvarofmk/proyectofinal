@@ -75,4 +75,16 @@ public class SesionService extends BaseService<Sesion, Long, SesionRepository> {
 		sesion.getParticipantes().forEach(p -> vueltasService.generarVueltasPiloto(p, Duration.ofMinutes(15)));
 	}
 	
+	public double recaudadoHoy () {
+		return repositorio.findEarnedToday();
+	}
+	
+	public double recaudadoMes () {
+		return repositorio.findEarnedThisMonth();
+	}
+	
+	public double recaudadoAnio () {
+		return repositorio.findEarnedThisYear();
+	}
+	
 }

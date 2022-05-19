@@ -42,6 +42,20 @@
 			<form>
 				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addSesion" class="btn-danger mt-3 rounded-3 w-100">
 			</form>
+			<div class="rounded text-dark text-center my-4 resumenRecaudacion">
+				<div>
+					<p class="h1 recaudado mb-0" th:text="${ganadoHoy}">2<span class="h5">€</span></p>
+					<h3 class="recaudadoLabel mt-0">Hoy</h3>
+				</div>
+				<div>
+					<p class="h1 recaudado mb-0" th:text="${ganadoMes}"><span class="h5">€</span></p>
+					<h3 class="recaudadoLabel mt-0">Este mes</h3>
+				</div>
+				<div>
+					<p class="h1 recaudado mb-0" th:text="${ganadoAnio}"><span class="h5">€</span></p>
+					<h3 class="recaudadoLabel mt-0">Este año</h3>
+				</div>
+			</div>
 		</div>
 		<div class="alert alert-danger d-flex flex-row alert-dismissible" aria-label="Close" role="alert"
 			th:if="${param.errorFecha}">
