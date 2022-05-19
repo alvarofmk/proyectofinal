@@ -232,16 +232,11 @@ input[type=number] {
 		display: none;
 	}
 	.navadmin ul{
-		visibility: hidden;
+		transition: all 0.5s;
+		margin-left: -400px;
 	}
 	.navadmin li:nth-child(odd){
 		display: none;
-	}
-	.navadmin:hover {
-		width: 15%;
-	}
-	.navadmin:hover ul{
-		visibility: visible;
 	}
 	.navadmin i{
 		display: visible;
@@ -255,6 +250,9 @@ input[type=number] {
 	}
 }
 @media screen AND (min-width: 1080px) {
+	.navadmin li:nth-child(even){
+		display: none;
+	}
     #karts-pc{
         display: visible !important;
     }
@@ -276,16 +274,22 @@ input[type=number] {
 	}
 
 }
+.desplegado {
+	width: 34% !important;
+}
+.desplegado ul{
+	margin-left: 0px !important;
+}
 .tabla{
 	overflow: scroll;
 	overflow-y: hidden;
 }
 .navadmin{
-	height: 100%; /* Full-height: remove this if you want "auto" height */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
+	height: 100%;
+  	position: fixed;
+  	z-index: 1;
+ 	top: 0;
+  	left: 0;
 	width: 10%;
 }
 .navadmin ul{
