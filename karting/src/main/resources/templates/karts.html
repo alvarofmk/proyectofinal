@@ -41,11 +41,11 @@
 			<form method="GET" th:action="@{/karts/busqueda}">
 				<div class="input-group mb-3">
 				  <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Buscar">
-				  <button class="btn btn-danger" type="submit">Go</button>
+				  <button class="btn btn-danger" type="submit"><i class="bi bi-search"></i></button>
 				</div>
 			</form>
 			<form>
-				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger w-100">
+				<input id="add" type="button" value="Añadir" data-bs-toggle="modal" data-bs-target="#addKart" class="btn-danger w-100 rounded-3">
 			</form>
 		</div>
 		<div class="alert alert-danger d-flex flex-row alert-dismissible" aria-label="Close" role="alert"

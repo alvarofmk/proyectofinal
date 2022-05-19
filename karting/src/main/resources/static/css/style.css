@@ -305,8 +305,11 @@ input[type=number] {
 	border-bottom: solid 2px black;
 }
 .btn-danger{
-	border-radius: 0px !important;
 	font-family: russo;
+	border: 0px !important;
+}
+#add{
+	height: 30px;
 }
 .input-group{
 	width: 33% !important;

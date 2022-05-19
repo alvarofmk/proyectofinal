@@ -41,7 +41,7 @@
 		<div class="w-100 row bg-secondary text-white p-2">
 			<div class="col-xl-3">
 				<h3>Fecha / hora</h3>
-  				<p th:text="${sesion.fechaSesion}" class="h5"></p>
+  				<p th:text="${#temporals.format(sesion.fechaSesion, 'dd-MM-YY HH:mm')}" class="h5"></p>
 			</div>
 			<div class="col-xl-3">
 				<h3>Kart</h3>
@@ -89,7 +89,7 @@
 						<tr th:each="resultado, iter : ${resultados}">
 							<td th:text="${iter.index + 1}"></td>
 							<td th:text="${resultado.key.nombre + ' ' + resultado.key.apellidos}"></td>
-							<td th:text="${resultado.value.tiempo.seconds/60} + ':' + ${resultado.value.tiempo.seconds - (60*(resultado.value.tiempo.seconds/60))} + '.' +${resultado.value.tiempo.nano / 1000000}"></td>
+							<td th:text="${resultado.value.tiempo.seconds/60} + ':' + ${resultado.value.tiempo.seconds - (60*(resultado.value.tiempo.seconds/60))} + '.' +${#numbers.formatInteger(resultado.value.tiempo.nano / 1000000,3)}"></td>
 						</tr>
 						
 					</tbody>
