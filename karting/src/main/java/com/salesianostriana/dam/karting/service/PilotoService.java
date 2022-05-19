@@ -20,16 +20,6 @@ public class PilotoService extends BaseService<Piloto, String, PilotoRepository>
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Piloto> generarPilotos (){
-		List <Piloto> pilotos = new ArrayList <Piloto>();
-		/*
-		pilotos.add(new Piloto("78643876", "Alvaro", "Franco Martinez", "alvarofmk@gmail.com", "", LocalDate.of(1995, 11, 14)));
-		pilotos.add(new Piloto("82642378", "Pablo", "Franco Martinez", "pablomamon@gmail.com", "", LocalDate.of(2000, 6, 14)));
-		pilotos.add(new Piloto("87623487", "Carlos", "Jesús Durbán", "Jesuseldeverdad@gmail.com", "", LocalDate.of(1002, 5, 1)));
-		*/
-		return pilotos;
-	}
-	
 	public List<Piloto> buscarPorNombre (String nombre, String apellidos, String email, String dni){
 		return repositorio.findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCaseOrEmailContainsIgnoreCaseOrDniIgnoreCase(nombre, apellidos, email, dni);
 	}

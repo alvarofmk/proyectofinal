@@ -146,8 +146,11 @@
 						<select multiple class="form-select" name="participantes" id="participantes" th:field="*{pilotos}">
 						  <option th:each="piloto : ${listaPilotos}" th:text="${piloto.nombre + ' ' + piloto.apellidos}" th:value="${piloto.dni}"></option>
 						</select>
+						<p class="errorForm my-1">Alguno de los participantes no cumple con la edad minima.</p>
 		        	</div>
 		        	<div class="modal-footer">
+		        		<p class="d-none" th:each="kart : ${karts}" th:id="${kart.id}" th:text="${kart.edadMinima}"></p>
+		        		<p class="d-none" th:each="piloto : ${listaPilotos}" th:id="${piloto.dni}" th:text="${piloto.fechaNacimiento}"></p>
 						<input type="submit" class="btn btn-success" value="Guardar">
 				    </div>
 		        </form>
