@@ -50,7 +50,7 @@ public class SesionService extends BaseService<Sesion, Long, SesionRepository> {
 	}
 	
 	public double calcularPrecioSesion (Sesion s) {
-		double precio = s.getParticipantes().size() * s.getKart().getPrecioSesion();
+		double precio = s.getParticipantes().stream().mapToDouble(p -> p.getPrecio()).sum();
 		if(s.getParticipantes().size() >= 5) {
 			precio *= 0.9;
 			double precioIndividual = precio / s.getParticipantes().size();
