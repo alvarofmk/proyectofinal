@@ -17,9 +17,12 @@
     </script>
     <script src="../static/js/mostrarLoginIncorrecto.js" th:src="@{/js/mostrarLoginIncorrecto.js}" defer ></script>
     <script src="../static/js/validacionSesion.js" th:src="@{/js/validacionSesion.js}" defer ></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <a class="navbar-brand bg-danger" href="#"><img th:src="@{media/logo gris.png}" src="../static/media/logo gris.png" alt="Phoenix Karting"></a>
+    <a class="navbar-brand bg-danger" href="#">
+    	<img th:src="@{media/logo gris.png}" src="../static/media/logo gris.png" alt="Phoenix Karting">
+    </a>
     <nav class="navbar navbar-expand bg-danger navbar-dark text-dark">
         <div class="container-fluid justify-content-end">
           <ul class="navbar-nav w-100">
@@ -77,7 +80,7 @@
             de resistencia y experiencias de circuito con superdeportivos.
             <br><br>
             Ven a vivir la competición desde dentro, te estamos esperando.</p>
-            <div id="datos-circuito" class="d-flex flex-row mt-5 text-center justify-content-around">
+            <div id="datos-circuito" class="d-flex flex-row mt-5 text-center justify-content-around" data-aos="fade-up">
               <div class="mx-1">
                 <div class="bg-dark mx-auto text-white">
                   <p>10</p>
@@ -107,7 +110,7 @@
           <h2 class="h2 text-center">Tarifas individuales</h2>
           <div id="karts-pc" class="d-flex flex-row px-2 justify-content-center">
           
-            <div class="card mx-2 border border-white border-1" th:each="kart : ${karts}">
+            <div class="card mx-2 border border-white border-1" th:each="kart : ${karts}" data-aos="fade-left">
               <img class="card-img-top" th:src="${not (#strings.isEmpty(kart.imgUrl))} 
 								              ? ${kart.imgUrl} : 'https://cdn3.iconfinder.com/data/icons/vehicle-22/50/Kart-512.png'" alt="Kart">
               <div class="card-body">
@@ -274,5 +277,9 @@
 	    </div>
 	  </div>
 	</div>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+	  AOS.init();
+	</script>
 </body>
 </html>
