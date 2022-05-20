@@ -28,8 +28,8 @@
 			<div class="col-lg-7 p-3 overflow-hidden" id="datosReserva">
 				<h3 th:text="${#temporals.format(reserva.fechaSesion, 'dd-MM-YY HH:mm')}"></h3>
 				<div class="row">
-					<h4 th:text="'Kart: ' + ${reserva.kart.nombre}" class="d-inline-block mx-2 col-lg-6"></h4>
-					<h4 th:text="'Precio: ' + ${reserva.kart.precioSesion} + '€'" class="d-inline-block mx-2 col-lg-6"></h4>
+					<h4 th:text="'Kart: ' + ${reserva.kart.nombre}" class="d-block mx-2 col-lg"></h4>
+					<h4 th:text="'Precio: ' + ${reserva.kart.precioSesion} + '€'" class="d-block mx-2 col-lg"></h4>
 				</div>
 				<p id="avisoReserva"> Por favor, guarde este resguardo para identificarse al llegar al circuito. Usted podrá cancelar o modificar la reserva poniéndose en contacto con nosotros con al menos un día de antelación.
 					Todas las modificaciones quedan sujetas a la disponibilidad de pista y karts del circuito.</p> 
