@@ -128,6 +128,10 @@ public class SesionController {
 		Optional<Sesion> aConsultar = sesionService.findById(id);
 		
 		if (aConsultar.isPresent()) {
+			List <Sesion> sesionesARealizar = sesionService.encontrarSesionesAEjecutar();
+			if (sesionesARealizar.contains(aConsultar.get())) {
+				sesionService.realizarSesiones(sesionesARealizar);
+			}
 			if (aConsultar.get().getFechaSesion().isBefore(LocalDateTime.now())) {
 				Sesion sesion = aConsultar.get();
 				model.addAttribute("sesion", sesion);
