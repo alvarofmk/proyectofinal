@@ -81,6 +81,7 @@
 				<div class="d-flex flex-row">
 					<label for="pilotoVueltas" class="form-label m-2">Piloto</label>
 					<select class="form-select" name="pilotoVueltas" id="pilotoVueltas">
+					  <option> - - - </option>
 					  <option th:each="participacion : ${sesion.participantes}" th:text="${participacion.piloto.nombre + ' ' + participacion.piloto.apellidos}" th:value="${participacion.piloto.dni}"></option>
 					</select>
 				</div>

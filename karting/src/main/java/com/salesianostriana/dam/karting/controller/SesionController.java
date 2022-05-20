@@ -80,17 +80,8 @@ public class SesionController {
 	public String addSesion(@ModelAttribute("sesionWrap") SesionWrapper sesionWrap,  Model model) {
 		Optional<Sesion> sesionCheck = sesionService.findById(sesionWrap.getId());
 		if (sesionCheck.isPresent()) {
-			List<Piloto> pilotosABorrar = sesionCheck.get()
-											.getParticipantes()
-											.stream()
-											.map(p -> p.getPiloto())
-											.dropWhile(piloto -> sesionWrap.getPilotos().contains(piloto))
-											.collect(Collectors.toList());
-			if(!pilotosABorrar.isEmpty()) {
-				pilotosABorrar.stream().forEach(piloto -> participacionService.delete(new Participacion(sesionCheck.get(), piloto)));
-			}
+			sesionService.borrarParticipaciones(sesionWrap, sesionCheck.get());
 		}
-		
 		sesionService.save(sesionWrap);
 		return "redirect:/sesiones/";
 	}
@@ -140,18 +131,7 @@ public class SesionController {
 			if (aConsultar.get().getFechaSesion().isBefore(LocalDateTime.now())) {
 				Sesion sesion = aConsultar.get();
 				model.addAttribute("sesion", sesion);
-				
-				Map<Piloto, Vuelta> mejorVuelta = new HashMap<Piloto, Vuelta>();
-				
-				for (Participacion p : sesion.getParticipantes()) {
-					
-					mejorVuelta.put(p.getPiloto(), p.getRegistroVueltas().stream().min(Comparator.naturalOrder()).get());
-				}
-				
-				LinkedHashMap<Piloto, Vuelta> resultados = new LinkedHashMap<>();
-				mejorVuelta.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(e -> resultados.put(e.getKey(), e.getValue()));
-				
-				model.addAttribute("resultados", resultados);
+				model.addAttribute("resultados", sesionService.calcularResultados(sesion));
 				return "sesiondetalles"; 
 			}
 		}
