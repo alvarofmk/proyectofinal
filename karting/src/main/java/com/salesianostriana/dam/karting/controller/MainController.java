@@ -59,5 +59,10 @@ public class MainController {
 		model.addAttribute("reserva", sesion);
 		return "resumenReserva";
 	}
+	
+	@GetMapping("/errorAcceso")
+	public String errorPermiso() {
+		return "errorAcceso";
+	}
 
 }

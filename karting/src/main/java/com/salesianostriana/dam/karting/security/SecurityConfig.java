@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/karts/**", "/pilotos/**", "/sesiones/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
-                .and().exceptionHandling().accessDeniedPage("/error")
+                .and().exceptionHandling().accessDeniedPage("/errorAcceso")
                 .and().formLogin().loginPage("/").loginProcessingUrl("/login").failureUrl("/login-error").permitAll()
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll()
                 .and().headers().frameOptions().disable();
