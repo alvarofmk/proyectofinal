@@ -194,11 +194,14 @@ input[type=number] {
         background-position: 0px 0px;
     }
     #img-circuito img{
-        width: 460px;
-        margin-left: -10%;
+        width: 450px;
+        margin-left: -22%;
     }
     .h3{
         font-size: 1.2em;
+    }
+    #karts{
+    	width: 141.7%;
     }
     #karts-pc{
         display: none !important;
