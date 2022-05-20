@@ -56,7 +56,8 @@ public class MainController {
 	public String addSesion(@ModelAttribute("sesion") Sesion sesion,  Model model) {
 		sesion.setFechaReserva(LocalDateTime.now());
 		sesionService.save(sesion);
-		return "redirect:/";
+		model.addAttribute("reserva", sesion);
+		return "resumenReserva";
 	}
 
 }
