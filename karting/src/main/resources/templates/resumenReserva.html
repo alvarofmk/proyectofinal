@@ -24,10 +24,13 @@
 		<img class="my-2" th:src="@{media/logo rojo.png}" src="../static/media/logo rojo.png" alt="Phoenix Karting" id="logoReserva">
 		<h1>Su reserva</h1>
 		<div class="rounded-3 row shadow-lg">
-			<div class="col-5 overflow-hidden" id="imgReserva"><img th:src="${reserva.kart.imgUrl}" class="w-100"></div>
-			<div class="col-7 p-3 overflow-hidden" id="datosReserva">
+			<div class="col-lg-5 overflow-hidden" id="imgReserva"><img th:src="${reserva.kart.imgUrl}" class="w-100"></div>
+			<div class="col-lg-7 p-3 overflow-hidden" id="datosReserva">
 				<h3 th:text="${#temporals.format(reserva.fechaSesion, 'dd-MM-YY HH:mm')}"></h3>
-				<span><h4 th:text="'Kart: ' + ${reserva.kart.nombre}" class="d-inline mx-2"></h4><h4 th:text="'Precio: ' + ${reserva.kart.precioSesion} + '€'" class="d-inline mx-2"></h4></span>
+				<div class="row">
+					<h4 th:text="'Kart: ' + ${reserva.kart.nombre}" class="d-inline-block mx-2 col-lg-6"></h4>
+					<h4 th:text="'Precio: ' + ${reserva.kart.precioSesion} + '€'" class="d-inline-block mx-2 col-lg-6"></h4>
+				</div>
 				<p id="avisoReserva"> Por favor, guarde este resguardo para identificarse al llegar al circuito. Usted podrá cancelar o modificar la reserva poniéndose en contacto con nosotros con al menos un día de antelación.
 					Todas las modificaciones quedan sujetas a la disponibilidad de pista y karts del circuito.</p> 
 				<a href="http://localhost:9000/" class="btn btn-danger">Volver</a>
