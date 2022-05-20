@@ -89,7 +89,7 @@ main{
     flex-basis: 50%;
 }
 #img-circuito img{
-    width: 140%;
+    width: 132%;
 }
 #datos-circuito{
     font-family: russo;
@@ -103,7 +103,7 @@ main{
     padding: 10%;
 }
 #karts{
-    width: 150%;
+    width: 141.7%;
     margin-left: -25%;
     padding-bottom: 75px;
     padding-left: 25%;
@@ -195,13 +195,10 @@ input[type=number] {
     }
     #img-circuito img{
         width: 450px;
-        margin-left: -22%;
+        margin-left: -15%;
     }
     .h3{
         font-size: 1.2em;
-    }
-    #karts{
-    	width: 141.7%;
     }
     #karts-pc{
         display: none !important;
