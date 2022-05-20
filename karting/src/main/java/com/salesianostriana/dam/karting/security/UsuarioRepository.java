@@ -29,7 +29,7 @@ public class UsuarioRepository {
 					,
 					Usuario.builder()
 					.username("user")
-					.password("user")
+					.password("1234")
 					.role("USER")
 					.build()
 				);

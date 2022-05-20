@@ -22,21 +22,7 @@
     <script src="../static/js/menuMovil.js" th:src="@{/js/menuMovil.js}" defer ></script>
 </head>
 <body>
-	<nav class="bg-danger navadmin p-4 text-center">
-		<i class="bi bi-list text-white h2" id="burgerMenuIcon"></i>
-		<a href="http://localhost:9000/"><img src="../static/media/logo blanco.png" th:src="@{/media/logo blanco.png}" alt="Phoenix Karting" class="w-100"></a>
-		<div class="separador"></div>
-		<ul class="px-1">
-			<li class="my-2"><a href="http://localhost:9000/sesiones/">Sesiones</a></li>
-			<li class="my-2"><a href="http://localhost:9000/sesiones/"><i class="bi bi-flag"></i> Sesiones</a></li>
-			<li class="my-2"><a href="http://localhost:9000/karts/">Karts</a></li>
-			<li class="my-2"><a href="http://localhost:9000/karts/"><i class="bi bi-wrench-adjustable-circle-fill"></i> Karts</a></li>
-			<li class="my-2"><a href="http://localhost:9000/pilotos/">Pilotos</a></li>
-			<li class="my-2"><a href="http://localhost:9000/pilotos/"><i class="bi bi-person-fill"></i> Pilotos</a></li>
-			<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}">Log out</a></li>
-			<li id="logoutAdmin" sec:authorize="isAuthenticated()"><a href="#" role="button"  th:href="@{/logout}"><i class="bi bi-x-circle-fill"></i> Log out</a></li>
-		</ul>
-	</nav>
+	<nav th:replace="~{fragments/nav::nav}"></nav>
 	<main class="mainadmin mt-0 p-5 row">
 		<h1 class="col-xl-9 order-xl-1 w-50">Sesiones</h1>
 		<div class="col-xl-3 order-xl-3">
